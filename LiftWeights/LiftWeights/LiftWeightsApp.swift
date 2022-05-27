@@ -13,7 +13,7 @@ struct LiftWeightsApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            LauncherView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
