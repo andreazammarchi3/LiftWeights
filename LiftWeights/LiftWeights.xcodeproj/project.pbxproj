@@ -7,15 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		650953BE2841276E007C1822 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650953BD2841276E007C1822 /* HomeView.swift */; };
 		65CBA0DD283E732D007AE1B4 /* LiftWeightsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CBA0DC283E732D007AE1B4 /* LiftWeightsApp.swift */; };
 		65CBA0E1283E732E007AE1B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65CBA0E0283E732E007AE1B4 /* Assets.xcassets */; };
 		65CBA0E4283E732E007AE1B4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65CBA0E3283E732E007AE1B4 /* Preview Assets.xcassets */; };
 		65CBA0E6283E732E007AE1B4 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CBA0E5283E732E007AE1B4 /* Persistence.swift */; };
 		65CBA0E9283E732E007AE1B4 /* LiftWeights.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 65CBA0E7283E732E007AE1B4 /* LiftWeights.xcdatamodeld */; };
 		65E0432F283E7E6A00C8D9D6 /* LauncherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E0432E283E7E6A00C8D9D6 /* LauncherView.swift */; };
+		65F37B0E2841317200F3298D /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 65F37B0D2841317200F3298D /* SDWebImage */; };
+		65F37B102841317200F3298D /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 65F37B0F2841317200F3298D /* SDWebImageMapKit */; };
+		65F37B13284131A000F3298D /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 65F37B12284131A000F3298D /* SDWebImageSwiftUI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		650953BD2841276E007C1822 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		65CBA0D9283E732D007AE1B4 /* LiftWeights.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiftWeights.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65CBA0DC283E732D007AE1B4 /* LiftWeightsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiftWeightsApp.swift; sourceTree = "<group>"; };
 		65CBA0E0283E732E007AE1B4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -30,6 +35,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65F37B13284131A000F3298D /* SDWebImageSwiftUI in Frameworks */,
+				65F37B102841317200F3298D /* SDWebImageMapKit in Frameworks */,
+				65F37B0E2841317200F3298D /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				65E0432E283E7E6A00C8D9D6 /* LauncherView.swift */,
+				650953BD2841276E007C1822 /* HomeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -97,6 +106,11 @@
 			dependencies = (
 			);
 			name = LiftWeights;
+			packageProductDependencies = (
+				65F37B0D2841317200F3298D /* SDWebImage */,
+				65F37B0F2841317200F3298D /* SDWebImageMapKit */,
+				65F37B12284131A000F3298D /* SDWebImageSwiftUI */,
+			);
 			productName = LiftWeights;
 			productReference = 65CBA0D9283E732D007AE1B4 /* LiftWeights.app */;
 			productType = "com.apple.product-type.application";
@@ -125,6 +139,10 @@
 				Base,
 			);
 			mainGroup = 65CBA0D0283E732D007AE1B4;
+			packageReferences = (
+				65F37B0C2841317200F3298D /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				65F37B11284131A000F3298D /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+			);
 			productRefGroup = 65CBA0DA283E732D007AE1B4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -154,6 +172,7 @@
 				65CBA0E6283E732E007AE1B4 /* Persistence.swift in Sources */,
 				65E0432F283E7E6A00C8D9D6 /* LauncherView.swift in Sources */,
 				65CBA0E9283E732E007AE1B4 /* LiftWeights.xcdatamodeld in Sources */,
+				650953BE2841276E007C1822 /* HomeView.swift in Sources */,
 				65CBA0DD283E732D007AE1B4 /* LiftWeightsApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -357,6 +376,43 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		65F37B0C2841317200F3298D /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		65F37B11284131A000F3298D /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		65F37B0D2841317200F3298D /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 65F37B0C2841317200F3298D /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		65F37B0F2841317200F3298D /* SDWebImageMapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 65F37B0C2841317200F3298D /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImageMapKit;
+		};
+		65F37B12284131A000F3298D /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 65F37B11284131A000F3298D /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		65CBA0E7283E732E007AE1B4 /* LiftWeights.xcdatamodeld */ = {
