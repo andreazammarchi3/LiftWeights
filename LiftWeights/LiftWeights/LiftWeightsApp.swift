@@ -9,12 +9,9 @@ import SwiftUI
 
 @main
 struct LiftWeightsApp: App {
-    let persistenceController = PersistenceController.shared
-
     var body: some Scene {
         WindowGroup {
-            LauncherView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            ContentView()
         }
     }
 }
