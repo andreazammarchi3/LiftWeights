@@ -11,7 +11,11 @@ import CoreData
 
 /// ViewModel
 class DataLoader: UIResponder, ObservableObject{
-    @Published var model = ModelData<Routine>(fileName: "routines")
+    @Published var model = ModelData<Routine>(fileName: "routinesEmpty")
+    
+    var lastID: Int {
+            UserDefaults.standard.integer(forKey: "lastID")
+        }
     
     //MARK: -Access to model
     var routines: [Routine] {
@@ -55,37 +59,31 @@ class DataLoader: UIResponder, ObservableObject{
         }
     }
     
-    func addRoutine(viewContext: NSManagedObjectContext) {
+    func addRoutine(routine: Routine, viewContext: NSManagedObjectContext) {
         withAnimation {
             let newRoutine = RoutineEntity(context: viewContext)
-            /*
-             TO-DO: ROUTINE ID PICKER
-             */
-            let alertNameController = UIAlertController(title: "New Routine", message: "Insert Routine name", preferredStyle: .alert)
-            
-            alertNameController.addTextField { (textField) in
-                textField.placeholder = "Name"
-            }
-            
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-            let saveAction = UIAlertAction(title: "Save", style: .default) { _ in
-                let inputName = alertNameController.textFields![0].text
-                newRoutine.name = inputName
-                newRoutine.id = 3
-            }
-            
-            alertNameController.addAction(cancelAction)
-            alertNameController.addAction(saveAction)
-            if let vc = self.next(ofType: UIViewController.self) {
-                vc.present(alertNameController, animated: true, completion: nil)
-            }
+            newRoutine.id = Int64(lastID + 1)
+            newRoutine.name = routine.name
         }
-        
         do {
             try viewContext.save()
         } catch {
             let nsError = error as NSError
             fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+        }
+    }
+    
+    func deleteItems(routines: [RoutineEntity], viewContext: NSManagedObjectContext) {
+        withAnimation {
+            for routine in routines {
+                viewContext.delete(routine)
+            }
+            do {
+                try viewContext.save()
+            } catch {
+                let nsError = error as NSError
+                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+            }
         }
     }
 }

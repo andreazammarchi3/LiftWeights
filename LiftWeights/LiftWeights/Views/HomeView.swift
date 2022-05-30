@@ -15,6 +15,8 @@ struct HomeView: View {
     @FetchRequest(sortDescriptors: [], predicate: nil, animation: .default)
     private var routinesCoreData: FetchedResults<RoutineEntity>
     
+    @State var showAddRoutineView = false
+    
     var routines: [Routine] {
         var list = viewModel.routines
         for routine in routinesCoreData {
@@ -23,25 +25,40 @@ struct HomeView: View {
         list.sort {
             $0.id < $1.id
         }
+        
+        UserDefaults.standard.set(list.last?.id ?? 0, forKey: "lastID")
         return list
     }
     
     var body: some View {
         NavigationView {
-            List(routines) { routine in
-                NavigationLink(destination: RoutineView()) {
-                    RoutineRowView(viewModel: viewModel, routine: routine)
+            List {
+                ForEach(routines) { routine in
+                    NavigationLink(destination: RoutineView()) {
+                        RoutineRowView(viewModel: viewModel, routine: routine)
+                    }
+                }.onDelete { indexSet in
+                    var itemsToRemove = [RoutineEntity]()
+                    for indexToRemove in indexSet {
+                        itemsToRemove.append(contentsOf: routinesCoreData.filter { item in
+                            item.id == routines[indexToRemove].id
+                        })
+                        viewModel.deleteItems(routines: itemsToRemove, viewContext: viewContext)
+                    }
                 }
             }.navigationTitle("Routines")
                 .listStyle(PlainListStyle())
                 .toolbar {
                     ToolbarItem {
                         Button(action: {
-                            viewModel.addRoutine(viewContext: viewContext)
+                            showAddRoutineView = true
                         }, label: {
                             Label("New Routine", systemImage: "plus")
                         })
                     }
+                }.sheet(isPresented: $showAddRoutineView) {
+                    AddRoutineView(viewModel: viewModel)
+                        .environment(\.managedObjectContext, viewContext)
                 }
         }
     }
