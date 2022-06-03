@@ -20,15 +20,14 @@ struct RoutineView: View {
                         ExRowView(viewModel: viewModel, exercise: exercise)
                     }
                 }.onDelete { indexSet in
-                    var itemsToRemove = [ExEntity]()
+                    var exercisesToRemove = [Exercise]()
                     for indexToRemove in indexSet {
-                        itemsToRemove.append(contentsOf: routinesCoreData.filter { item in
+                        exercisesToRemove.append(contentsOf: routine.exercises.filter { item in
                             item.id == routine.exercises[indexToRemove].id
                         })
-                        viewModel.deleteExercises(exercises: itemsToRemove, viewContext: viewContext)
                     }
                 }
-            }.navigationTitle("Exercises")
+            }.navigationTitle("Exercises").font(.title3)
                 .listStyle(PlainListStyle())
                 .toolbar {
                     ToolbarItem {
@@ -37,11 +36,13 @@ struct RoutineView: View {
                         }, label: {
                             Text("Start")
                         })
-                        
+                    }
+                    
+                    ToolbarItem {
                         Button(action: {
                             
                         }, label: {
-                            Text("Edit")
+                            Text("Add Exercise")
                         })
                     }
                 }

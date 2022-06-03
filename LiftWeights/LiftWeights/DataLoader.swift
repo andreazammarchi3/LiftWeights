@@ -13,78 +13,40 @@ import CoreData
 class DataLoader: UIResponder, ObservableObject{
     @Published var model = ModelData<Routine>(fileName: "routinesEmpty")
     
-    var lastID: Int {
-            UserDefaults.standard.integer(forKey: "lastID")
-        }
-    
     var routines: [Routine] {
         model.list
     }
     
-    func addRoutine(routine: Routine, viewContext: NSManagedObjectContext) {
+    func addRoutine(routine: Routine) {
         withAnimation {
-            let newRoutine = RoutineEntity(context: viewContext)
-            newRoutine.id = Int64(lastID + 1)
-            newRoutine.name = routine.name
-            newRoutine.image = routine.image
-        }
-        do {
-            try viewContext.save()
-        } catch {
-            let nsError = error as NSError
-            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+            var id = 1
+            if model.list.count != 0 {
+                id = (model.list.last)!.id + 1
+            }
+            let newRoutine = Routine(
+                id: id,
+                name: routine.name,
+                image: UIImage(data: routine.image)!,
+                exercises: [Exercise]())
+            model.list.append(newRoutine)
         }
     }
     
-    func deleteRoutines(routines: [RoutineEntity], viewContext: NSManagedObjectContext) {
+    func deleteRoutines(routines: [Routine]) {
         withAnimation {
             for routine in routines {
-                viewContext.delete(routine)
-            }
-            do {
-                try viewContext.save()
-            } catch {
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+                model.list = model.list.filter(){$0.id != routine.id}
             }
         }
     }
     
-    func addExercise(exercise: Exercise, viewContext: NSManagedObjectContext) {
-        withAnimation {
-            let newEx = ExEntity(context: viewContext)
-            newEx.id = Int64(lastID + 1)
-            newEx.name = exercise.name
-            newEx.image = exercise.image
-            newEx.reps = exercise.reps
-        }
-        do {
-            try viewContext.save()
-        } catch {
-            let nsError = error as NSError
-            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-        }
-    }
-    
-    func deleteExercises(exercises: [ExEntity], viewContext: NSManagedObjectContext) {
+    func deleteExercisesFromRoutine(routine: Routine, exercises: [Exercise]) {
         withAnimation {
             for exercise in exercises {
-                viewContext.delete(exercise)
-            }
-            do {
-                try viewContext.save()
-            } catch {
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+                if let fooOffset = model.list.firstIndex(where: {$0.id == routine.id}) {
+                    model.list[fooOffset].exercises = model.list[fooOffset].exercises.filter() {$0.id != exercise.id}
+                }
             }
         }
-    }
-    
-    func addRep() {
-        
-    }
-    
-    func deleteReps() {
-        
     }
 }

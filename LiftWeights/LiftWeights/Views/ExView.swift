@@ -8,13 +8,17 @@
 import SwiftUI
 
 struct ExView: View {
+    var exercise: Exercise
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text(exercise.name)
     }
 }
 
+/*
 struct ExView_Previews: PreviewProvider {
     static var previews: some View {
         ExView()
     }
 }
+*/

@@ -14,12 +14,12 @@ struct Routine: Decodable, Identifiable {
     var id: Int
     var name: String
     var image: Data
-    var exercises: NSOrderedSet
+    var exercises: Array<Exercise>
     
-    init(id: Int, name: String, image: UIImage){
+    init(id: Int, name: String, image: UIImage, exercises: Array<Exercise>){
         self.id = id
         self.name = name
         self.image = image.pngData()!
-        self.exercises = NSOrderedSet()
+        self.exercises = exercises
     }
 }

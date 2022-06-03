@@ -8,12 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
-    let persistenceController = PersistenceController.shared
-    
     var body: some View {
         TabView {
             HomeView(viewModel: DataLoader())
-                            .environment(\.managedObjectContext, persistenceController.container.viewContext)
                             .tabItem {
                                 Image(systemName: "house")
                                 Text("Home")

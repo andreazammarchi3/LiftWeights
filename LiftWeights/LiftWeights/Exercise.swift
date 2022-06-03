@@ -14,12 +14,12 @@ struct Exercise: Decodable, Identifiable {
     var id: Int
     var name: String
     var image: Data
-    var reps: NSOrderedSet
+    var sets: Array<Set>
     
-    init(id: Int, name: String, image: UIImage){
+    init(id: Int, name: String, image: UIImage, sets: Array<Set>){
         self.id = id
         self.name = name
         self.image = image.pngData()!
-        self.reps = NSOrderedSet()
+        self.sets = sets
     }
 }
