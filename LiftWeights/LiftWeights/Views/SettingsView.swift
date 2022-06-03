@@ -9,9 +9,7 @@ import SwiftUI
 
 struct SettingsView: View {
     var body: some View {
-        ZStack {
-            Image(systemName: "gearshape")
-                .font(.system(size: 100))
+        VStack {
         }
     }
 }

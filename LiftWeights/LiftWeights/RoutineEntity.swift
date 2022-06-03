@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreData
+import SwiftUI
 
 extension RoutineEntity {
     static func fetchRequest(_ predicate: NSPredicate) -> NSFetchRequest<RoutineEntity> {
@@ -17,6 +18,6 @@ extension RoutineEntity {
     }
     
     func convertToRoutine() -> Routine {
-        Routine(id: Int(self.id), name: self.name!)
+        Routine(id: Int(self.id), name: self.name!, image: UIImage(data: self.image!)!)
     }
 }

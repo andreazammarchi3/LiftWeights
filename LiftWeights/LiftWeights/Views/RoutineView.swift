@@ -8,13 +8,36 @@
 import SwiftUI
 
 struct RoutineView: View {
+    var routine: Routine
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            VStack(alignment: .leading) {
+                HStack(alignment: .center) {
+                    Button {
+                        
+                    } label: {
+                        Text("Start Routine")
+                    }
+                    
+                    Button {
+                        
+                    } label: {
+                        Text("Edit")
+                    }
+                }
+                List {
+                    Text("List")
+                }
+            }
+        }.navigationTitle(routine.name)
     }
 }
 
+/*
 struct RoutineView_Previews: PreviewProvider {
     static var previews: some View {
         RoutineView()
     }
 }
+*/

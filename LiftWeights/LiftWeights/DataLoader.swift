@@ -17,46 +17,8 @@ class DataLoader: UIResponder, ObservableObject{
             UserDefaults.standard.integer(forKey: "lastID")
         }
     
-    //MARK: -Access to model
     var routines: [Routine] {
         model.list
-    }
-    
-    //@Published var image = UIImage()
-    @Published var images: [Int: UIImage] = [:]
-    var isLoading = true
-    
-    //MARK: -Utilities
-    /*func loadImage(imageName: String) {
-        image = UIImage(named: imageName)!
-        self.isLoading = false
-    }
-    
-    func loadImage(url:URL) {
-        DispatchQueue.global(qos: .background).async {
-            let data = try? Data(contentsOf: url)
-            DispatchQueue.main.async {
-                if let imageData = data {
-                    self.image = UIImage(data: imageData)!
-                    self.isLoading = false
-                }
-            }
-        }
-    }*/
-    
-    let notFoundImage = UIImage(systemName: "multiply.circle")
-    
-    func loadImage(url:URL, id: Int) {
-        self.isLoading = true
-        DispatchQueue.global(qos: .background).async {
-            let data = try? Data(contentsOf: url)
-            DispatchQueue.main.async {
-                if let imageData = data {
-                    self.images[id] = UIImage(data: imageData)!
-                    self.isLoading = false
-                }
-            }
-        }
     }
     
     func addRoutine(routine: Routine, viewContext: NSManagedObjectContext) {
@@ -64,6 +26,7 @@ class DataLoader: UIResponder, ObservableObject{
             let newRoutine = RoutineEntity(context: viewContext)
             newRoutine.id = Int64(lastID + 1)
             newRoutine.name = routine.name
+            newRoutine.image = routine.image
         }
         do {
             try viewContext.save()
@@ -73,7 +36,7 @@ class DataLoader: UIResponder, ObservableObject{
         }
     }
     
-    func deleteItems(routines: [RoutineEntity], viewContext: NSManagedObjectContext) {
+    func deleteRoutines(routines: [RoutineEntity], viewContext: NSManagedObjectContext) {
         withAnimation {
             for routine in routines {
                 viewContext.delete(routine)
@@ -85,5 +48,21 @@ class DataLoader: UIResponder, ObservableObject{
                 fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
             }
         }
+    }
+    
+    func addExercise() {
+        
+    }
+    
+    func deleteExercises() {
+        
+    }
+    
+    func addRep() {
+        
+    }
+    
+    func deleteReps() {
+        
     }
 }

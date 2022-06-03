@@ -34,7 +34,7 @@ struct HomeView: View {
         NavigationView {
             List {
                 ForEach(routines) { routine in
-                    NavigationLink(destination: RoutineView()) {
+                    NavigationLink(destination: RoutineView(routine: routine)) {
                         RoutineRowView(viewModel: viewModel, routine: routine)
                     }
                 }.onDelete { indexSet in
@@ -43,7 +43,7 @@ struct HomeView: View {
                         itemsToRemove.append(contentsOf: routinesCoreData.filter { item in
                             item.id == routines[indexToRemove].id
                         })
-                        viewModel.deleteItems(routines: itemsToRemove, viewContext: viewContext)
+                        viewModel.deleteRoutines(routines: itemsToRemove, viewContext: viewContext)
                     }
                 }
             }.navigationTitle("Routines")

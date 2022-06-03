@@ -13,9 +13,11 @@ struct RoutineRowView: View {
     
     var body: some View {
         HStack {
-            Text(String(routine.id))
-                .font(.largeTitle)
-                .frame(alignment: .center)
+            Image(uiImage: UIImage(data: routine.image)!)
+                .resizable()
+                .frame(width: 75, height: 75, alignment: .center)
+                .clipShape(Circle())
+                .shadow(radius: 5)
             Text(routine.name)
         }
     }
