@@ -50,12 +50,34 @@ class DataLoader: UIResponder, ObservableObject{
         }
     }
     
-    func addExercise() {
-        
+    func addExercise(exercise: Exercise, viewContext: NSManagedObjectContext) {
+        withAnimation {
+            let newEx = ExEntity(context: viewContext)
+            newEx.id = Int64(lastID + 1)
+            newEx.name = exercise.name
+            newEx.image = exercise.image
+            newEx.reps = exercise.reps
+        }
+        do {
+            try viewContext.save()
+        } catch {
+            let nsError = error as NSError
+            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+        }
     }
     
-    func deleteExercises() {
-        
+    func deleteExercises(exercises: [ExEntity], viewContext: NSManagedObjectContext) {
+        withAnimation {
+            for exercise in exercises {
+                viewContext.delete(exercise)
+            }
+            do {
+                try viewContext.save()
+            } catch {
+                let nsError = error as NSError
+                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+            }
+        }
     }
     
     func addRep() {
