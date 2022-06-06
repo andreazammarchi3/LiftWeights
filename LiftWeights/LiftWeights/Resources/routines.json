@@ -5,18 +5,19 @@
         "image": "iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAAXNSR0IArs4c6QAAABxpRE9UAAAAAgAAAAAAAAAEAAAAKAAAAAQAAAAEAAAAWxzQ72oAAAAnSURBVCgVYjhzeOX\/\/1+uYGCQOAgz4JPEqgCmE0SDNKOYgC4JUgAAAAD\/\/ytw2SEAAAAnSURBVGP4\/+XKfxA+c3glHMPEQDQDPkmwAlw6YaYwwBTABJBpkBwAoM\/kGdRps6oAAAAASUVORK5CYII=",
         "exercises": [
             {
-                "id": 3,
+                "id": 1,
                 "name": "Biceps",
                 "image": "iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAAXNSR0IArs4c6QAAABxpRE9UAAAAAgAAAAAAAAAEAAAAKAAAAAQAAAAEAAAAWxzQ72oAAAAnSURBVCgVYjhzeOX\/\/1+uYGCQOAgz4JPEqgCmE0SDNKOYgC4JUgAAAAD\/\/ytw2SEAAAAnSURBVGP4\/+XKfxA+c3glHMPEQDQDPkmwAlw6YaYwwBTABJBpkBwAoM\/kGdRps6oAAAAASUVORK5CYII=",
                 "miniSets": [
                     {
-                        "id": 4,
+                        "id": 1,
                         "reps": 8,
                         "weight": 12.5
                     }
                 ]
             },
-        ]
+        ],
+        "imageUrl": ""
     },
     {
         "id": 2,

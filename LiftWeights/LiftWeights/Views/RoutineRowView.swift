@@ -14,11 +14,19 @@ struct RoutineRowView: View {
     
     var body: some View {
         HStack {
-            Image(uiImage: UIImage(data: routine.image)!)
+            Image(uiImage: viewModel.image)
                 .resizable()
                 .frame(width: 75, height: 75, alignment: .center)
                 .clipShape(Circle())
                 .shadow(radius: 5)
+                .onAppear {
+                    if routine.id <= 2 {
+                        viewModel.loadImage(url: routine.imageUrl)
+                    } else {
+                        viewModel.image = UIImage(data: routine.image)!
+                    }
+                }
+            
             Text(routine.name)
         }
     }

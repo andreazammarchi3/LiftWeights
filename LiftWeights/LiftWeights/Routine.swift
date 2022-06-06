@@ -15,11 +15,21 @@ struct Routine: Decodable, Identifiable {
     var name: String
     var image: Data
     var exercises: Array<Exercise>
+    var imageURL: Optional<String>
     
     init(id: Int, name: String, image: UIImage, exercises: Array<Exercise>){
         self.id = id
         self.name = name
         self.image = image.pngData()!
         self.exercises = exercises
+        self.imageURL = nil
+    }
+    
+    var imageUrl: URL {
+        URL(string: imageURL!)!
+    }
+    
+    mutating func setImageUrl(url: URL) {
+        self.imageURL = url.absoluteString
     }
 }
