@@ -21,6 +21,7 @@ class DataLoader: UIResponder, ObservableObject{
     
     func addRoutine(routine: Routine) {
         withAnimation {
+            /*
             let newRoutine = Routine(
                 id: lastId + 1,
                 name: routine.name,
@@ -29,6 +30,7 @@ class DataLoader: UIResponder, ObservableObject{
                 image: "")
             model.list.append(newRoutine)
             lastId += 1
+             */
         }
     }
     
@@ -45,8 +47,9 @@ class DataLoader: UIResponder, ObservableObject{
             let newEx = Exercise(
                 id: lastId + 1,
                 name: exercise.name,
-                image: UIImage(data: exercise.image)!,
-                miniSets: [MiniSet]())
+                imagePic: UIImage(data: exercise.imagePic)!,
+                miniSets: [MiniSet](),
+                image: "")
             if let fooOffset = model.list.firstIndex(where: {$0.id == routine.id}) {
                 model.list[fooOffset].exercises.append(newEx)
             }

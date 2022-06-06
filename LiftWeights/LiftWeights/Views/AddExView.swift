@@ -48,7 +48,7 @@ struct AddExView: View {
                 }
                 
                 Button {
-                    let exercise = Exercise(id: 0, name: exName, image: exImage, miniSets: [MiniSet]())
+                    let exercise = Exercise(id: 0, name: exName, imagePic: exImage, miniSets: [MiniSet](), image: "")
                     viewModel.addExercise(routine: routine, exercise: exercise)
                     dismiss()
                 } label: {

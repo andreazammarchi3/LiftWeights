@@ -13,23 +13,19 @@ import SwiftUI
 struct Exercise: Decodable, Identifiable {
     var id: Int
     var name: String
-    var image: Data
+    var imagePic: Data
     var miniSets: Array<MiniSet>
-    var imageURL: Optional<String>
+    var image: String
     
-    init(id: Int, name: String, image: UIImage, miniSets: Array<MiniSet>){
+    init(id: Int, name: String, imagePic: UIImage, miniSets: Array<MiniSet>, image: String){
         self.id = id
         self.name = name
-        self.image = image.pngData()!
+        self.imagePic = imagePic.pngData()!
         self.miniSets = miniSets
-        self.imageURL = nil
+        self.image = image
     }
     
     var imageUrl: URL {
-        URL(string: imageURL!)!
-    }
-    
-    mutating func setImageUrl(url: URL) {
-        self.imageURL = url.absoluteString
+        URL(string: image)!
     }
 }

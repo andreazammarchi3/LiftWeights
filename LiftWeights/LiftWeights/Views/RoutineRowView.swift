@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RoutineRowView: View {
-    @ObservedObject var viewModel: DataLoader
+    @ObservedObject var viewModel = DataLoader()
     
     var routine: Routine
     
@@ -20,8 +20,7 @@ struct RoutineRowView: View {
                 .clipShape(Circle())
                 .shadow(radius: 5)
                 .onAppear {
-                    if routine.id <= 3 {
-                        
+                    if routine.id <= 40 {
                         viewModel.loadImage(url: routine.imageUrl)
                     } else {
                         viewModel.image = UIImage(data: routine.imagePic)!

@@ -14,11 +14,18 @@ struct ExRowView: View {
     
     var body: some View {
         HStack {
-            Image(uiImage: UIImage(data: exercise.image)!)
+            Image(uiImage: viewModel.image)
                 .resizable()
                 .frame(width: 75, height: 75, alignment: .center)
                 .clipShape(Circle())
                 .shadow(radius: 5)
+                .onAppear {
+                    if exercise.id <= 40 {
+                        viewModel.loadImage(url: exercise.imageUrl)
+                    } else {
+                        viewModel.image = UIImage(data: exercise.imagePic)!
+                    }
+                }
             Text(exercise.name)
         }
     }

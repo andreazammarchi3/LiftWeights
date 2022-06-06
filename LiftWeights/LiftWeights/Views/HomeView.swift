@@ -17,7 +17,7 @@ struct HomeView: View {
             List {
                 ForEach(viewModel.routines) { routine in
                     NavigationLink(destination: RoutineView(viewModel: viewModel, routine: routine)) {
-                        RoutineRowView(viewModel: viewModel, routine: routine)
+                        RoutineRowView(routine: routine)
                     }
                 }.onDelete { indexSet in
                     var itemsToRemove = [Routine]()

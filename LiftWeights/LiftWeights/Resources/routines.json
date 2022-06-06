@@ -5,26 +5,237 @@
         "imagePic": "iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAAXNSR0IArs4c6QAAABxpRE9UAAAAAgAAAAAAAAAEAAAAKAAAAAQAAAAEAAAAWxzQ72oAAAAnSURBVCgVYjhzeOX\/\/1+uYGCQOAgz4JPEqgCmE0SDNKOYgC4JUgAAAAD\/\/ytw2SEAAAAnSURBVGP4\/+XKfxA+c3glHMPEQDQDPkmwAlw6YaYwwBTABJBpkBwAoM\/kGdRps6oAAAAASUVORK5CYII=",
         "exercises": [
             {
-                "id": 1,
+                "id": 4,
                 "name": "Biceps",
-                "image": "iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAAXNSR0IArs4c6QAAABxpRE9UAAAAAgAAAAAAAAAEAAAAKAAAAAQAAAAEAAAAWxzQ72oAAAAnSURBVCgVYjhzeOX\/\/1+uYGCQOAgz4JPEqgCmE0SDNKOYgC4JUgAAAAD\/\/ytw2SEAAAAnSURBVGP4\/+XKfxA+c3glHMPEQDQDPkmwAlw6YaYwwBTABJBpkBwAoM\/kGdRps6oAAAAASUVORK5CYII=",
+                "imagePic": "iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAAXNSR0IArs4c6QAAABxpRE9UAAAAAgAAAAAAAAAEAAAAKAAAAAQAAAAEAAAAWxzQ72oAAAAnSURBVCgVYjhzeOX\/\/1+uYGCQOAgz4JPEqgCmE0SDNKOYgC4JUgAAAAD\/\/ytw2SEAAAAnSURBVGP4\/+XKfxA+c3glHMPEQDQDPkmwAlw6YaYwwBTABJBpkBwAoM\/kGdRps6oAAAAASUVORK5CYII=",
                 "miniSets": [
                     {
-                        "id": 1,
+                        "id": 13,
                         "reps": 8,
                         "weight": 12.5
+                    },
+                    {
+                        "id": 14,
+                        "reps": 8,
+                        "weight": 15
+                    },
+                    {
+                        "id": 15,
+                        "reps": 8,
+                        "weight": 17.5
+                    },
+
+                ],
+                "image": "https://raw.githubusercontent.com/andreazammarchi3/LiftWeights/main/Resources/muscles/biceps.png"
+            },
+            {
+                "id": 5,
+                "name": "Triceps",
+                "imagePic": "iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAAXNSR0IArs4c6QAAABxpRE9UAAAAAgAAAAAAAAAEAAAAKAAAAAQAAAAEAAAAWxzQ72oAAAAnSURBVCgVYjhzeOX\/\/1+uYGCQOAgz4JPEqgCmE0SDNKOYgC4JUgAAAAD\/\/ytw2SEAAAAnSURBVGP4\/+XKfxA+c3glHMPEQDQDPkmwAlw6YaYwwBTABJBpkBwAoM\/kGdRps6oAAAAASUVORK5CYII=",
+                "miniSets": [
+                    {
+                        "id": 16,
+                        "reps": 8,
+                        "weight": 15
+                    },
+                    {
+                        "id": 17,
+                        "reps": 8,
+                        "weight": 17.5
+                    },
+                    {
+                        "id": 18,
+                        "reps": 8,
+                        "weight": 20
+                    },
+                ],
+                "image": "https://raw.githubusercontent.com/andreazammarchi3/LiftWeights/main/Resources/muscles/triceps.png"
+            },
+            {
+                "id": 6,
+                "name": "Shoulders",
+                "imagePic": "iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAAXNSR0IArs4c6QAAABxpRE9UAAAAAgAAAAAAAAAEAAAAKAAAAAQAAAAEAAAAWxzQ72oAAAAnSURBVCgVYjhzeOX\/\/1+uYGCQOAgz4JPEqgCmE0SDNKOYgC4JUgAAAAD\/\/ytw2SEAAAAnSURBVGP4\/+XKfxA+c3glHMPEQDQDPkmwAlw6YaYwwBTABJBpkBwAoM\/kGdRps6oAAAAASUVORK5CYII=",
+                "miniSets": [
+                    {
+                        "id": 19,
+                        "reps": 10,
+                        "weight": 15
+                    },
+                    {
+                        "id": 20,
+                        "reps": 10,
+                        "weight": 17.5
+                    },
+                    {
+                        "id": 21,
+                        "reps": 10,
+                        "weight": 20
                     }
-                ]
+                ],
+                "image": "https://raw.githubusercontent.com/andreazammarchi3/LiftWeights/main/Resources/muscles/shoulders.png"
             },
         ],
-        "image": "https://github.com/andreazammarchi3/LiftWeights/blob/main/Resources/muscles/arm.png"
+        "image": "https://raw.githubusercontent.com/andreazammarchi3/LiftWeights/main/Resources/muscles/arm.png"
     },
     {
         "id": 2,
         "name": "Legs",
         "imagePic": "iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAAXNSR0IArs4c6QAAABxpRE9UAAAAAgAAAAAAAAAEAAAAKAAAAAQAAAAEAAAAWxzQ72oAAAAnSURBVCgVYjhzeOX\/\/1+uYGCQOAgz4JPEqgCmE0SDNKOYgC4JUgAAAAD\/\/ytw2SEAAAAnSURBVGP4\/+XKfxA+c3glHMPEQDQDPkmwAlw6YaYwwBTABJBpkBwAoM\/kGdRps6oAAAAASUVORK5CYII=",
         "exercises": [
+            {
+                "id": 7,
+                "name": "Calves",
+                "imagePic": "iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAAXNSR0IArs4c6QAAABxpRE9UAAAAAgAAAAAAAAAEAAAAKAAAAAQAAAAEAAAAWxzQ72oAAAAnSURBVCgVYjhzeOX\/\/1+uYGCQOAgz4JPEqgCmE0SDNKOYgC4JUgAAAAD\/\/ytw2SEAAAAnSURBVGP4\/+XKfxA+c3glHMPEQDQDPkmwAlw6YaYwwBTABJBpkBwAoM\/kGdRps6oAAAAASUVORK5CYII=",
+                "miniSets": [
+                    {
+                        "id": 22,
+                        "reps": 10,
+                        "weight": 20
+                    },
+                    {
+                        "id": 23,
+                        "reps": 10,
+                        "weight": 20
+                    },
+                    {
+                        "id": 24,
+                        "reps": 10,
+                        "weight": 20
+                    },
+
+                ],
+                "image": "https://raw.githubusercontent.com/andreazammarchi3/LiftWeights/main/Resources/muscles/calves.png"
+            },
+            {
+                "id": 8,
+                "name": "Hamstrings",
+                "imagePic": "iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAAXNSR0IArs4c6QAAABxpRE9UAAAAAgAAAAAAAAAEAAAAKAAAAAQAAAAEAAAAWxzQ72oAAAAnSURBVCgVYjhzeOX\/\/1+uYGCQOAgz4JPEqgCmE0SDNKOYgC4JUgAAAAD\/\/ytw2SEAAAAnSURBVGP4\/+XKfxA+c3glHMPEQDQDPkmwAlw6YaYwwBTABJBpkBwAoM\/kGdRps6oAAAAASUVORK5CYII=",
+                "miniSets": [
+                    {
+                        "id": 25,
+                        "reps": 8,
+                        "weight": 35
+                    },
+                    {
+                        "id": 26,
+                        "reps": 8,
+                        "weight": 40
+                    },
+                    {
+                        "id": 27,
+                        "reps": 8,
+                        "weight": 45
+                    },
+                    {
+                        "id": 28,
+                        "reps": 8,
+                        "weight": 50
+                    },
+                ],
+                "image": "https://raw.githubusercontent.com/andreazammarchi3/LiftWeights/main/Resources/muscles/hamstrings.png"
+            },
+            {
+                "id": 9,
+                "name": "Quadriceps",
+                "imagePic": "iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAAXNSR0IArs4c6QAAABxpRE9UAAAAAgAAAAAAAAAEAAAAKAAAAAQAAAAEAAAAWxzQ72oAAAAnSURBVCgVYjhzeOX\/\/1+uYGCQOAgz4JPEqgCmE0SDNKOYgC4JUgAAAAD\/\/ytw2SEAAAAnSURBVGP4\/+XKfxA+c3glHMPEQDQDPkmwAlw6YaYwwBTABJBpkBwAoM\/kGdRps6oAAAAASUVORK5CYII=",
+                "miniSets": [
+                    {
+                        "id": 29,
+                        "reps": 10,
+                        "weight": 80
+                    },
+                    {
+                        "id": 30,
+                        "reps": 10,
+                        "weight": 100
+                    },
+                    {
+                        "id": 31,
+                        "reps": 10,
+                        "weight": 120
+                    }
+                ],
+                "image": "https://raw.githubusercontent.com/andreazammarchi3/LiftWeights/main/Resources/muscles/quadriceps.png"
+            },
         ],
-        "image": "https://github.com/andreazammarchi3/LiftWeights/blob/main/Resources/muscles/leg.png"
-    }
+        "image": "https://raw.githubusercontent.com/andreazammarchi3/LiftWeights/main/Resources/muscles/leg.png"
+    },
+    {
+        "id": 3,
+        "name": "Body",
+        "imagePic": "iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAAXNSR0IArs4c6QAAABxpRE9UAAAAAgAAAAAAAAAEAAAAKAAAAAQAAAAEAAAAWxzQ72oAAAAnSURBVCgVYjhzeOX\/\/1+uYGCQOAgz4JPEqgCmE0SDNKOYgC4JUgAAAAD\/\/ytw2SEAAAAnSURBVGP4\/+XKfxA+c3glHMPEQDQDPkmwAlw6YaYwwBTABJBpkBwAoM\/kGdRps6oAAAAASUVORK5CYII=",
+        "exercises": [
+            {
+                "id": 10,
+                "name": "Chest",
+                "imagePic": "iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAAXNSR0IArs4c6QAAABxpRE9UAAAAAgAAAAAAAAAEAAAAKAAAAAQAAAAEAAAAWxzQ72oAAAAnSURBVCgVYjhzeOX\/\/1+uYGCQOAgz4JPEqgCmE0SDNKOYgC4JUgAAAAD\/\/ytw2SEAAAAnSURBVGP4\/+XKfxA+c3glHMPEQDQDPkmwAlw6YaYwwBTABJBpkBwAoM\/kGdRps6oAAAAASUVORK5CYII=",
+                "miniSets": [
+                    {
+                        "id": 32,
+                        "reps": 8,
+                        "weight": 55
+                    },
+                    {
+                        "id": 33,
+                        "reps": 8,
+                        "weight": 57.5
+                    },
+                    {
+                        "id": 34,
+                        "reps": 8,
+                        "weight": 60
+                    },
+
+                ],
+                "image": "https://raw.githubusercontent.com/andreazammarchi3/LiftWeights/main/Resources/muscles/chest.png"
+            },
+            {
+                "id": 11,
+                "name": "Prelum",
+                "imagePic": "iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAAXNSR0IArs4c6QAAABxpRE9UAAAAAgAAAAAAAAAEAAAAKAAAAAQAAAAEAAAAWxzQ72oAAAAnSURBVCgVYjhzeOX\/\/1+uYGCQOAgz4JPEqgCmE0SDNKOYgC4JUgAAAAD\/\/ytw2SEAAAAnSURBVGP4\/+XKfxA+c3glHMPEQDQDPkmwAlw6YaYwwBTABJBpkBwAoM\/kGdRps6oAAAAASUVORK5CYII=",
+                "miniSets": [
+                    {
+                        "id": 35,
+                        "reps": 10,
+                        "weight": 5
+                    },
+                    {
+                        "id": 36,
+                        "reps": 10,
+                        "weight": 5
+                    },
+                    {
+                        "id": 37,
+                        "reps": 10,
+                        "weight": 5
+                    },
+                ],
+                "image": "https://raw.githubusercontent.com/andreazammarchi3/LiftWeights/main/Resources/muscles/prelum.png"
+            },
+            {
+                "id": 12,
+                "name": "Lats",
+                "imagePic": "iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAAXNSR0IArs4c6QAAABxpRE9UAAAAAgAAAAAAAAAEAAAAKAAAAAQAAAAEAAAAWxzQ72oAAAAnSURBVCgVYjhzeOX\/\/1+uYGCQOAgz4JPEqgCmE0SDNKOYgC4JUgAAAAD\/\/ytw2SEAAAAnSURBVGP4\/+XKfxA+c3glHMPEQDQDPkmwAlw6YaYwwBTABJBpkBwAoM\/kGdRps6oAAAAASUVORK5CYII=",
+                "miniSets": [
+                    {
+                        "id": 38,
+                        "reps": 8,
+                        "weight": 55
+                    },
+                    {
+                        "id": 39,
+                        "reps": 8,
+                        "weight": 60
+                    },
+                    {
+                        "id": 40,
+                        "reps": 8,
+                        "weight": 65
+                    }
+                ],
+                "image": "https://raw.githubusercontent.com/andreazammarchi3/LiftWeights/main/Resources/muscles/lats.png"
+            },
+        ],
+        "image": "https://raw.githubusercontent.com/andreazammarchi3/LiftWeights/main/Resources/muscles/body.png"
+    },
 ]
