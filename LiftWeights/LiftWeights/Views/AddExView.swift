@@ -1,16 +1,17 @@
 //
-//  AddRoutineView.swift
+//  AddExView.swift
 //  LiftWeights
 //
-//  Created by Andrea on 30/05/22.
+//  Created by Andrea on 06/06/22.
 //
 
 import SwiftUI
-import CoreData
 
-struct AddRoutineView: View {
-    @State var routineName = ""
-    @State var routineImage = UIImage()
+struct AddExView: View {
+    var routine: Routine
+    
+    @State var exName = ""
+    @State var exImage = UIImage()
     @State var isShowingImagePicker = false
     @State var imagePicked = false
     
@@ -21,15 +22,15 @@ struct AddRoutineView: View {
     var body: some View {
         NavigationView {
             Form {
-                Section(header: Text("Routine Details")) {
-                    TextField("Name", text: $routineName)
+                Section(header: Text("Exercise Details")) {
+                    TextField("Name", text: $exName)
                 }
                 
-                Section(header: Text("Routine Image")) {
+                Section(header: Text("Exercise Image")) {
                     if imagePicked {
                         HStack {
                             Spacer()
-                            Image(uiImage: routineImage)
+                            Image(uiImage: exImage)
                                 .resizable()
                                 .frame(width: 100, height: 100, alignment: .center)
                                 .clipShape(Circle())
@@ -42,26 +43,26 @@ struct AddRoutineView: View {
                     } label: {
                         Text("Pick Image")
                     }.sheet(isPresented: $isShowingImagePicker) {
-                        ImagePickerView(isPresented: $isShowingImagePicker, selectedImage: $routineImage, imagePicked: $imagePicked)
+                        ImagePickerView(isPresented: $isShowingImagePicker, selectedImage: $exImage, imagePicked: $imagePicked)
                     }
                 }
                 
                 Button {
-                    let routine = Routine(id: 0, name: routineName, image: routineImage, exercises: [Exercise]())
-                    viewModel.addRoutine(routine: routine)
+                    let exercise = Exercise(id: 0, name: exName, image: exImage, miniSets: [MiniSet]())
+                    viewModel.addExercise(routine: routine, exercise: exercise)
                     dismiss()
                 } label: {
-                    Text("Add Routine")
+                    Text("Add Exercise")
                 }
-            }.navigationTitle("Add Routine")
+            }.navigationTitle("Add Exercise")
         }
     }
 }
 
 /*
-struct AddRoutineView_Previews: PreviewProvider {
+struct AddExView_Previews: PreviewProvider {
     static var previews: some View {
-        AddRoutineView()
+        AddExView()
     }
 }
 */

@@ -1,5 +1,5 @@
 //
-//  Set.swift
+//  MiniSet.swift
 //  LiftWeights
 //
 //  Created by Andrea on 03/06/22.
@@ -10,7 +10,7 @@ import UIKit
 import SwiftUI
 
 /// Model for our application
-struct Set: Decodable, Identifiable {
+struct MiniSet: Decodable, Identifiable {
     var id: Int
     var reps: Int
     var weight: Float

@@ -10,43 +10,47 @@ import SwiftUI
 struct RoutineView: View {
     @ObservedObject var viewModel: DataLoader
     
+    @State var showAddExView = false
+    
     var routine: Routine
     
     var body: some View {
-        NavigationView {
-            List {
-                ForEach(routine.exercises) { exercise in
-                    NavigationLink(destination: ExView(exercise: exercise)) {
-                        ExRowView(viewModel: viewModel, exercise: exercise)
-                    }
-                }.onDelete { indexSet in
-                    var exercisesToRemove = [Exercise]()
-                    for indexToRemove in indexSet {
-                        exercisesToRemove.append(contentsOf: routine.exercises.filter { item in
-                            item.id == routine.exercises[indexToRemove].id
-                        })
-                    }
+        List {
+            ForEach(routine.exercises) { exercise in
+                NavigationLink(destination: ExView(viewModel: viewModel, routine: routine, exercise: exercise)) {
+                    ExRowView(viewModel: viewModel, exercise: exercise)
                 }
-            }.navigationTitle("Exercises").font(.title3)
-                .listStyle(PlainListStyle())
-                .toolbar {
-                    ToolbarItem {
-                        Button(action: {
-                            
-                        }, label: {
-                            Text("Start")
-                        })
-                    }
+            }.onDelete { indexSet in
+                var exercisesToRemove = [Exercise]()
+                for indexToRemove in indexSet {
+                    exercisesToRemove.append(contentsOf: routine.exercises.filter { item in
+                        item.id == routine.exercises[indexToRemove].id
+                    })
+                }
+                viewModel.deleteExercises(routine: routine, exercises: exercisesToRemove)
+            }
+        }.navigationTitle(routine.name).font(.title3)
+            .listStyle(PlainListStyle())
+            .toolbar {
+                ToolbarItemGroup(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        
+                    }, label: {
+                        Text("Start")
+                        Label("Start Routine", systemImage: "play.circle")
+                    })
+                        .border(.green, width: 2)
+                        .foregroundColor(.green)
                     
-                    ToolbarItem {
-                        Button(action: {
-                            
-                        }, label: {
-                            Text("Add Exercise")
-                        })
-                    }
+                    Button(action: {
+                        showAddExView = true
+                    }, label: {
+                        Label("New Exercise", systemImage: "plus")
+                    })
                 }
-        }.navigationTitle(routine.name)
+            }.sheet(isPresented: $showAddExView) {
+                AddExView(routine: routine, viewModel: viewModel)
+            }
     }
 }
 

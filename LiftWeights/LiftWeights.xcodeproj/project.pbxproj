@@ -20,6 +20,9 @@
 		6526D4962843BE7100A46AA4 /* RoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6526D4952843BE7100A46AA4 /* RoutineView.swift */; };
 		6526D4982843BE7F00A46AA4 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6526D4972843BE7F00A46AA4 /* Launch Screen.storyboard */; };
 		6526D49A2843BFD300A46AA4 /* RoutineRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6526D4992843BFD300A46AA4 /* RoutineRowView.swift */; };
+		65546A38284B5F740016DA94 /* MiniSetRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65546A37284B5F740016DA94 /* MiniSetRowView.swift */; };
+		65546A3A284B60470016DA94 /* MiniSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65546A39284B60470016DA94 /* MiniSetView.swift */; };
+		65546A3C284DFF7A0016DA94 /* AddExView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65546A3B284DFF7A0016DA94 /* AddExView.swift */; };
 		65CBA0DD283E732D007AE1B4 /* LiftWeightsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CBA0DC283E732D007AE1B4 /* LiftWeightsApp.swift */; };
 		65CBA0E1283E732E007AE1B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65CBA0E0283E732E007AE1B4 /* Assets.xcassets */; };
 		65CBA0E4283E732E007AE1B4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65CBA0E3283E732E007AE1B4 /* Preview Assets.xcassets */; };
@@ -48,6 +51,9 @@
 		6526D4952843BE7100A46AA4 /* RoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineView.swift; sourceTree = "<group>"; };
 		6526D4972843BE7F00A46AA4 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		6526D4992843BFD300A46AA4 /* RoutineRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineRowView.swift; sourceTree = "<group>"; };
+		65546A37284B5F740016DA94 /* MiniSetRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniSetRowView.swift; sourceTree = "<group>"; };
+		65546A39284B60470016DA94 /* MiniSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniSetView.swift; sourceTree = "<group>"; };
+		65546A3B284DFF7A0016DA94 /* AddExView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExView.swift; sourceTree = "<group>"; };
 		65CBA0D9283E732D007AE1B4 /* LiftWeights.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiftWeights.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65CBA0DC283E732D007AE1B4 /* LiftWeightsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiftWeightsApp.swift; sourceTree = "<group>"; };
 		65CBA0E0283E732E007AE1B4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -132,15 +138,18 @@
 				6526D4742843948500A46AA4 /* ContentView.swift */,
 				65E0432E283E7E6A00C8D9D6 /* LauncherView.swift */,
 				650953BD2841276E007C1822 /* HomeView.swift */,
-				6526D4952843BE7100A46AA4 /* RoutineView.swift */,
-				6526D4992843BFD300A46AA4 /* RoutineRowView.swift */,
 				6526D4722843941E00A46AA4 /* SettingsView.swift */,
 				6526D476284397FD00A46AA4 /* StatsView.swift */,
 				6526D4972843BE7F00A46AA4 /* Launch Screen.storyboard */,
 				650897C72844D5F000760082 /* AddRoutineView.swift */,
+				65546A3B284DFF7A0016DA94 /* AddExView.swift */,
 				65DD3BED2844F7080051EEC2 /* ImagePickerView.swift */,
+				6526D4952843BE7100A46AA4 /* RoutineView.swift */,
+				6526D4992843BFD300A46AA4 /* RoutineRowView.swift */,
 				65FD50FB284AA6420043E5B0 /* ExView.swift */,
 				65FD50FD284AA64E0043E5B0 /* ExRowView.swift */,
+				65546A39284B60470016DA94 /* MiniSetView.swift */,
+				65546A37284B5F740016DA94 /* MiniSetRowView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -240,10 +249,13 @@
 				650953BE2841276E007C1822 /* HomeView.swift in Sources */,
 				65DD3BEE2844F7080051EEC2 /* ImagePickerView.swift in Sources */,
 				6526D4852843ACA200A46AA4 /* ModelData.swift in Sources */,
+				65546A38284B5F740016DA94 /* MiniSetRowView.swift in Sources */,
 				65FD50FE284AA64E0043E5B0 /* ExRowView.swift in Sources */,
 				650897C82844D5F000760082 /* AddRoutineView.swift in Sources */,
 				65CBA0DD283E732D007AE1B4 /* LiftWeightsApp.swift in Sources */,
+				65546A3A284B60470016DA94 /* MiniSetView.swift in Sources */,
 				65FD5100284AB5110043E5B0 /* Set.swift in Sources */,
+				65546A3C284DFF7A0016DA94 /* AddExView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

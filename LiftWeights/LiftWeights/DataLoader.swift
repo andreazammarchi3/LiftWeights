@@ -11,24 +11,23 @@ import CoreData
 
 /// ViewModel
 class DataLoader: UIResponder, ObservableObject{
-    @Published var model = ModelData<Routine>(fileName: "routinesEmpty")
+    @Published var model = ModelData<Routine>(fileName: "routines")
     
     var routines: [Routine] {
         model.list
     }
     
+    var lastId = 2
+    
     func addRoutine(routine: Routine) {
         withAnimation {
-            var id = 1
-            if model.list.count != 0 {
-                id = (model.list.last)!.id + 1
-            }
             let newRoutine = Routine(
-                id: id,
+                id: lastId + 1,
                 name: routine.name,
                 image: UIImage(data: routine.image)!,
                 exercises: [Exercise]())
             model.list.append(newRoutine)
+            lastId += 1
         }
     }
     
@@ -40,11 +39,68 @@ class DataLoader: UIResponder, ObservableObject{
         }
     }
     
-    func deleteExercisesFromRoutine(routine: Routine, exercises: [Exercise]) {
+    func addExercise(routine: Routine, exercise: Exercise) {
+        withAnimation {
+            let newEx = Exercise(
+                id: lastId + 1,
+                name: exercise.name,
+                image: UIImage(data: exercise.image)!,
+                miniSets: [MiniSet]())
+            if let fooOffset = model.list.firstIndex(where: {$0.id == routine.id}) {
+                model.list[fooOffset].exercises.append(newEx)
+            }
+            lastId += 1
+        }
+    }
+    
+    func deleteExercises(routine: Routine, exercises: [Exercise]) {
         withAnimation {
             for exercise in exercises {
                 if let fooOffset = model.list.firstIndex(where: {$0.id == routine.id}) {
                     model.list[fooOffset].exercises = model.list[fooOffset].exercises.filter() {$0.id != exercise.id}
+                }
+            }
+        }
+    }
+    
+    func addMiniSet(routine: Routine, exercise: Exercise, miniSet: MiniSet) {
+        withAnimation {
+            let newMiniSet = MiniSet(
+                id: lastId + 1,
+                reps: miniSet.reps,
+                weight: miniSet.weight)
+            if let routineOffset = model.list.firstIndex(where: {$0.id == routine.id}) {
+                if let exOffset = model.list[routineOffset].exercises.firstIndex(where: {$0.id == exercise.id}) {
+                    model.list[routineOffset].exercises[exOffset].miniSets.append(newMiniSet)
+                }
+            }
+            lastId += 1
+        }
+    }
+    
+    func deleteMiniSets(routine: Routine, exercise: Exercise, miniSets: [MiniSet]) {
+        withAnimation {
+            for miniSet in miniSets {
+                if let routineOffset = model.list.firstIndex(where: {$0.id == routine.id}) {
+                    if let exOffset = model.list[routineOffset].exercises.firstIndex(where: {$0.id == exercise.id}) {
+                        model.list[routineOffset].exercises[exOffset].miniSets =
+                        model.list[routineOffset].exercises[exOffset].miniSets.filter() {$0.id != miniSet.id}
+                    }
+                }
+            }
+        }
+    }
+    
+    @Published var image = UIImage()
+    var isLoading = true
+    
+    func loadImage(url: URL) {
+        DispatchQueue.global(qos: .background).async {
+            let data = try? Data(contentsOf: url)
+            DispatchQueue.main.async {
+                if let imageData = data {
+                    self.image = UIImage(data: imageData)!
+                    self.isLoading = false
                 }
             }
         }
