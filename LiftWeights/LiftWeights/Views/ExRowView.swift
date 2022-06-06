@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ExRowView: View {
-    @ObservedObject var viewModel: DataLoader
+    @ObservedObject var viewModel = DataLoader()
     
     var exercise: Exercise
     

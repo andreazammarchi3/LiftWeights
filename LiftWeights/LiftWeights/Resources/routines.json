@@ -191,7 +191,7 @@
             },
             {
                 "id": 11,
-                "name": "Prelum",
+                "name": "Core",
                 "imagePic": "iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAAXNSR0IArs4c6QAAABxpRE9UAAAAAgAAAAAAAAAEAAAAKAAAAAQAAAAEAAAAWxzQ72oAAAAnSURBVCgVYjhzeOX\/\/1+uYGCQOAgz4JPEqgCmE0SDNKOYgC4JUgAAAAD\/\/ytw2SEAAAAnSURBVGP4\/+XKfxA+c3glHMPEQDQDPkmwAlw6YaYwwBTABJBpkBwAoM\/kGdRps6oAAAAASUVORK5CYII=",
                 "miniSets": [
                     {
@@ -210,7 +210,7 @@
                         "weight": 5
                     },
                 ],
-                "image": "https://raw.githubusercontent.com/andreazammarchi3/LiftWeights/main/Resources/muscles/prelum.png"
+                "image": "https://raw.githubusercontent.com/andreazammarchi3/LiftWeights/main/Resources/muscles/core.png"
             },
             {
                 "id": 12,

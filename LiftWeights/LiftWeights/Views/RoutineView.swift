@@ -18,7 +18,7 @@ struct RoutineView: View {
         List {
             ForEach(routine.exercises) { exercise in
                 NavigationLink(destination: ExView(viewModel: viewModel, routine: routine, exercise: exercise)) {
-                    ExRowView(viewModel: viewModel, exercise: exercise)
+                    ExRowView(exercise: exercise)
                 }
             }.onDelete { indexSet in
                 var exercisesToRemove = [Exercise]()
