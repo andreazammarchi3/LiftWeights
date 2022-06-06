@@ -20,10 +20,11 @@ struct RoutineRowView: View {
                 .clipShape(Circle())
                 .shadow(radius: 5)
                 .onAppear {
-                    if routine.id <= 2 {
+                    if routine.id <= 3 {
+                        
                         viewModel.loadImage(url: routine.imageUrl)
                     } else {
-                        viewModel.image = UIImage(data: routine.image)!
+                        viewModel.image = UIImage(data: routine.imagePic)!
                     }
                 }
             

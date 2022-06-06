@@ -47,7 +47,7 @@ struct AddRoutineView: View {
                 }
                 
                 Button {
-                    let routine = Routine(id: 0, name: routineName, image: routineImage, exercises: [Exercise]())
+                    let routine = Routine(id: 0, name: routineName, imagePic: routineImage, exercises: [Exercise](), image: "")
                     viewModel.addRoutine(routine: routine)
                     dismiss()
                 } label: {

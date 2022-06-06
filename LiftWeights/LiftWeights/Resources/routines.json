@@ -1,8 +1,8 @@
 [
     {
         "id": 1,
-        "name": "Monday",
-        "image": "iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAAXNSR0IArs4c6QAAABxpRE9UAAAAAgAAAAAAAAAEAAAAKAAAAAQAAAAEAAAAWxzQ72oAAAAnSURBVCgVYjhzeOX\/\/1+uYGCQOAgz4JPEqgCmE0SDNKOYgC4JUgAAAAD\/\/ytw2SEAAAAnSURBVGP4\/+XKfxA+c3glHMPEQDQDPkmwAlw6YaYwwBTABJBpkBwAoM\/kGdRps6oAAAAASUVORK5CYII=",
+        "name": "Arms",
+        "imagePic": "iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAAXNSR0IArs4c6QAAABxpRE9UAAAAAgAAAAAAAAAEAAAAKAAAAAQAAAAEAAAAWxzQ72oAAAAnSURBVCgVYjhzeOX\/\/1+uYGCQOAgz4JPEqgCmE0SDNKOYgC4JUgAAAAD\/\/ytw2SEAAAAnSURBVGP4\/+XKfxA+c3glHMPEQDQDPkmwAlw6YaYwwBTABJBpkBwAoM\/kGdRps6oAAAAASUVORK5CYII=",
         "exercises": [
             {
                 "id": 1,
@@ -17,13 +17,14 @@
                 ]
             },
         ],
-        "imageUrl": ""
+        "image": "https://github.com/andreazammarchi3/LiftWeights/blob/main/Resources/muscles/arm.png"
     },
     {
         "id": 2,
-        "name": "Tuesday",
-        "image": "iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAAXNSR0IArs4c6QAAABxpRE9UAAAAAgAAAAAAAAAEAAAAKAAAAAQAAAAEAAAAWxzQ72oAAAAnSURBVCgVYjhzeOX\/\/1+uYGCQOAgz4JPEqgCmE0SDNKOYgC4JUgAAAAD\/\/ytw2SEAAAAnSURBVGP4\/+XKfxA+c3glHMPEQDQDPkmwAlw6YaYwwBTABJBpkBwAoM\/kGdRps6oAAAAASUVORK5CYII=",
+        "name": "Legs",
+        "imagePic": "iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAAXNSR0IArs4c6QAAABxpRE9UAAAAAgAAAAAAAAAEAAAAKAAAAAQAAAAEAAAAWxzQ72oAAAAnSURBVCgVYjhzeOX\/\/1+uYGCQOAgz4JPEqgCmE0SDNKOYgC4JUgAAAAD\/\/ytw2SEAAAAnSURBVGP4\/+XKfxA+c3glHMPEQDQDPkmwAlw6YaYwwBTABJBpkBwAoM\/kGdRps6oAAAAASUVORK5CYII=",
         "exercises": [
-        ]
+        ],
+        "image": "https://github.com/andreazammarchi3/LiftWeights/blob/main/Resources/muscles/leg.png"
     }
 ]

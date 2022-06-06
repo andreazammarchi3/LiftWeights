@@ -24,8 +24,9 @@ class DataLoader: UIResponder, ObservableObject{
             let newRoutine = Routine(
                 id: lastId + 1,
                 name: routine.name,
-                image: UIImage(data: routine.image)!,
-                exercises: [Exercise]())
+                imagePic: UIImage(data: routine.imagePic)!,
+                exercises: [Exercise](),
+                image: "")
             model.list.append(newRoutine)
             lastId += 1
         }
