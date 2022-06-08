@@ -29,7 +29,7 @@ struct ExView: View {
                 }
                 viewModel.deleteMiniSets(routine: routine, exercise: exercise, miniSets: miniSetsToRemove)
             }
-        }.navigationTitle(exercise.name).font(.title3)
+        }.navigationTitle(exercise.name)
             .listStyle(PlainListStyle())
             .toolbar {
                 ToolbarItem {

@@ -13,6 +13,7 @@ struct AddRoutineView: View {
     @State var routineImage = UIImage()
     @State var isShowingImagePicker = false
     @State var imagePicked = false
+    @State private var showingAlert = false
     
     @ObservedObject var viewModel: DataLoader
 
@@ -47,11 +48,17 @@ struct AddRoutineView: View {
                 }
                 
                 Button {
-                    let routine = Routine(id: 41, name: routineName, imagePic: routineImage, exercises: [Exercise](), image: "")
-                    viewModel.addRoutine(routine: routine)
-                    dismiss()
+                    if imagePicked {
+                        let routine = Routine(id: 41, name: routineName, imagePic: routineImage, exercises: [Exercise](), image: "")
+                        viewModel.addRoutine(routine: routine)
+                        dismiss()
+                    } else {
+                        showingAlert = true
+                    }
                 } label: {
                     Text("Add Routine")
+                }.alert("Warning\nAn image must be picked.", isPresented: $showingAlert) {
+                    Button("Ok", role: .cancel) { showingAlert = false }
                 }
             }.navigationTitle("Add Routine")
         }

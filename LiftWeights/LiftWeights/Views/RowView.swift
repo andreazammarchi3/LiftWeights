@@ -12,6 +12,7 @@ struct RowView: View {
     
     var exercise: Exercise?
     var routine: Routine?
+    @State var circleShow = true
     
     var body: some View {
         HStack {
@@ -27,21 +28,24 @@ struct RowView: View {
                     .clipped()
                     .onAppear {
                         if exercise != nil {
-                            if exercise!.id <= 12 {
+                            if exercise!.id <= 40 {
                                 viewModel.loadImage(url: exercise!.imageUrl)
                             } else {
                                 viewModel.image = UIImage(data: exercise!.imagePic)!
+                                circleShow = false
                             }
                         } else {
-                            if routine!.id <= 12 {
+                            if routine!.id <= 40 {
                                 viewModel.loadImage(url: routine!.imageUrl)
                             } else {
                                 viewModel.image = UIImage(data: routine!.imagePic)!
+                                circleShow = false
                             }
                         }
                     }
-                
-                CircleProgressView(isLoading: $viewModel.isLoading)
+                if circleShow {
+                    CircleProgressView(isLoading: $viewModel.isLoading)
+                }
             }
             
             if exercise != nil {

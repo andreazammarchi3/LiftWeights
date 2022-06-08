@@ -43,7 +43,7 @@ struct AddMiniSetView: View {
                 } label: {
                     Text("Add Set")
                 }.alert("Warning\n'Reps' must be integer and 'Weight' must be decimal.", isPresented: $showingAlert) {
-                    Button("Ok", role: .destructive) { }
+                    Button("Ok", role: .cancel) { showingAlert = false }
                 }
             }.navigationTitle("Add Set")
         }

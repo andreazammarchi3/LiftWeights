@@ -17,20 +17,18 @@ class DataLoader: UIResponder, ObservableObject{
         model.list
     }
     
-    var lastId = 2
+    var lastId = 40
     
     func addRoutine(routine: Routine) {
         withAnimation {
-            /*
             let newRoutine = Routine(
                 id: lastId + 1,
                 name: routine.name,
                 imagePic: UIImage(data: routine.imagePic)!,
                 exercises: [Exercise](),
-                image: "")
+                image: "https://raw.githubusercontent.com/andreazammarchi3/LiftWeights/main/Resources/cross.png")
             model.list.append(newRoutine)
             lastId += 1
-             */
         }
     }
     
@@ -49,7 +47,7 @@ class DataLoader: UIResponder, ObservableObject{
                 name: exercise.name,
                 imagePic: UIImage(data: exercise.imagePic)!,
                 miniSets: [MiniSet](),
-                image: "")
+                image: "https://raw.githubusercontent.com/andreazammarchi3/LiftWeights/main/Resources/cross.png")
             if let fooOffset = model.list.firstIndex(where: {$0.id == routine.id}) {
                 model.list[fooOffset].exercises.append(newEx)
             }
