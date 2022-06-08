@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct RoutineView: View {
+    
     @ObservedObject var viewModel: DataLoader
     
     @State var showAddExView = false
@@ -18,8 +19,8 @@ struct RoutineView: View {
         List {
             ForEach(routine.exercises) { exercise in
                 NavigationLink(destination: ExView(viewModel: viewModel, routine: routine, exercise: exercise)) {
-                    RowView(exercise: exercise)
-                }
+                    ExRowView(exercise: exercise)
+                }.isDetailLink(false)
             }.onDelete { indexSet in
                 var exercisesToRemove = [Exercise]()
                 for indexToRemove in indexSet {

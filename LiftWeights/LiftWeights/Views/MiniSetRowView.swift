@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct MiniSetRowView: View {
-    @ObservedObject var viewModel: DataLoader
     
     var miniSet: MiniSet
     

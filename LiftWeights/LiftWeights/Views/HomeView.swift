@@ -32,8 +32,8 @@ struct HomeView: View {
             List {
                 ForEach(viewModel.routines) { routine in
                     NavigationLink(destination: RoutineView(viewModel: viewModel, routine: routine)) {
-                        RowView(routine: routine)
-                    }
+                        RoutineRowView(routine: routine)
+                    }.isDetailLink(false)
                 }.onDelete { indexSet in
                     var itemsToRemove = [Routine]()
                     for indexToRemove in indexSet {
@@ -44,7 +44,6 @@ struct HomeView: View {
                     }
                 }
             }.navigationTitle("Routines")
-                
                 .listStyle(PlainListStyle())
                 .toolbar {
                     ToolbarItem {

@@ -33,7 +33,7 @@ struct AddMiniSetView: View {
                 }
                 
                 Button {
-                    if (Int(reps) != nil) && (Float(weight) != nil) {
+                    if Int(reps) != nil && Float(weight) != nil {
                         let miniSet = MiniSet(id: 0, reps: Int(reps)!, weight: Float(weight)!)
                         viewModel.addMiniSet(routine: routine, exercise: exercise, miniSet: miniSet)
                         dismiss()
