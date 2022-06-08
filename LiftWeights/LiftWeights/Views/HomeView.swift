@@ -7,17 +7,32 @@
 
 import SwiftUI
 
+let customNavAppearance = UINavigationBarAppearance()
+
 struct HomeView: View {
+    
     @ObservedObject var viewModel: DataLoader
     
     @State var showAddRoutineView = false
+    
+    init() {
+        self.viewModel = DataLoader()
+        showAddRoutineView = showAddRoutineView
+        customNavAppearance.configureWithOpaqueBackground()
+        customNavAppearance.backgroundColor = UIColor(Color(red: 102/255, green: 44/255, blue: 147/255))
+        customNavAppearance.titleTextAttributes = [.foregroundColor: UIColor.label]
+        customNavAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.label]
+               
+        UINavigationBar.appearance().standardAppearance = customNavAppearance
+        UINavigationBar.appearance().scrollEdgeAppearance = customNavAppearance
+    }
     
     var body: some View {
         NavigationView {
             List {
                 ForEach(viewModel.routines) { routine in
                     NavigationLink(destination: RoutineView(viewModel: viewModel, routine: routine)) {
-                        RoutineRowView(routine: routine)
+                        RowView(routine: routine)
                     }
                 }.onDelete { indexSet in
                     var itemsToRemove = [Routine]()
@@ -29,6 +44,7 @@ struct HomeView: View {
                     }
                 }
             }.navigationTitle("Routines")
+                
                 .listStyle(PlainListStyle())
                 .toolbar {
                     ToolbarItem {

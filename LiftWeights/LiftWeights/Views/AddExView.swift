@@ -14,6 +14,7 @@ struct AddExView: View {
     @State var exImage = UIImage()
     @State var isShowingImagePicker = false
     @State var imagePicked = false
+    @State private var showingAlert = false
     
     @ObservedObject var viewModel: DataLoader
 
@@ -48,11 +49,17 @@ struct AddExView: View {
                 }
                 
                 Button {
-                    let exercise = Exercise(id: 0, name: exName, imagePic: exImage, miniSets: [MiniSet](), image: "")
-                    viewModel.addExercise(routine: routine, exercise: exercise)
-                    dismiss()
+                    if imagePicked {
+                        let exercise = Exercise(id: 41, name: exName, imagePic: exImage, miniSets: [MiniSet](), image: "")
+                        viewModel.addExercise(routine: routine, exercise: exercise)
+                        dismiss()
+                    } else {
+                        showingAlert = true
+                    }
                 } label: {
                     Text("Add Exercise")
+                }.alert("Warning\nAn image must be picked.", isPresented: $showingAlert) {
+                    Button("Ok", role: .cancel) { showingAlert = false }
                 }
             }.navigationTitle("Add Exercise")
         }

@@ -18,7 +18,7 @@ struct RoutineView: View {
         List {
             ForEach(routine.exercises) { exercise in
                 NavigationLink(destination: ExView(viewModel: viewModel, routine: routine, exercise: exercise)) {
-                    ExRowView(exercise: exercise)
+                    RowView(exercise: exercise)
                 }
             }.onDelete { indexSet in
                 var exercisesToRemove = [Exercise]()
@@ -29,7 +29,7 @@ struct RoutineView: View {
                 }
                 viewModel.deleteExercises(routine: routine, exercises: exercisesToRemove)
             }
-        }.navigationTitle(routine.name).font(.title3)
+        }.navigationTitle(routine.name)
             .listStyle(PlainListStyle())
             .toolbar {
                 ToolbarItemGroup(placement: .navigationBarTrailing) {

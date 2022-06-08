@@ -95,6 +95,8 @@ class DataLoader: UIResponder, ObservableObject{
         }
     }
     
+    let notFoundImage = UIImage(systemName: "multiply.circle")
+    
     @Published var image = UIImage()
     var isLoading = true
     

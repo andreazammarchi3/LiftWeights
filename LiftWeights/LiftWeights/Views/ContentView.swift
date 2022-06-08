@@ -10,11 +10,11 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         TabView {
-            HomeView(viewModel: DataLoader())
-                            .tabItem {
-                                Image(systemName: "house")
-                                Text("Home")
-                            }
+            HomeView()
+                .tabItem {
+                    Image(systemName: "house")
+                    Text("Home")
+                }
             StatsView()
                 .tabItem {
                     Image(systemName: "chart.xyaxis.line")

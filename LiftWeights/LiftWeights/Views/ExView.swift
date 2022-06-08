@@ -10,6 +10,8 @@ import SwiftUI
 struct ExView: View {
     @ObservedObject var viewModel: DataLoader
     
+    @State var showAddMiniSetView = false
+    
     var routine: Routine
     
     var exercise: Exercise
@@ -17,9 +19,7 @@ struct ExView: View {
     var body: some View {
         List {
             ForEach(exercise.miniSets) { miniSet in
-                NavigationLink(destination: MiniSetView(miniSet: miniSet)) {
-                    MiniSetRowView(viewModel: viewModel, miniSet: miniSet)
-                }
+                MiniSetRowView(viewModel: viewModel, miniSet: miniSet)
             }.onDelete { indexSet in
                 var miniSetsToRemove = [MiniSet]()
                 for indexToRemove in indexSet {
@@ -34,11 +34,13 @@ struct ExView: View {
             .toolbar {
                 ToolbarItem {
                     Button(action: {
-                        
+                        showAddMiniSetView = true
                     }, label: {
-                        Text("Add MiniSet")
+                        Label("Add MiniSet", systemImage: "plus")
                     })
                 }
+            }.sheet(isPresented: $showAddMiniSetView) {
+                AddMiniSetView(routine: routine, exercise: exercise, viewModel: viewModel)
             }
     }
 }

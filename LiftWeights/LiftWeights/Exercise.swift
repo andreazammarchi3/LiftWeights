@@ -15,7 +15,7 @@ struct Exercise: Decodable, Identifiable {
     var name: String
     var imagePic: Data
     var miniSets: Array<MiniSet>
-    var image: String
+    var image: String?
     
     init(id: Int, name: String, imagePic: UIImage, miniSets: Array<MiniSet>, image: String){
         self.id = id
@@ -26,6 +26,7 @@ struct Exercise: Decodable, Identifiable {
     }
     
     var imageUrl: URL {
-        URL(string: image)!
+        if image
+        URL(string: image)
     }
 }
