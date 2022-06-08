@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State var tabSelection = 1
+    
     var body: some View {
         TabView {
             HomeView()
@@ -25,12 +28,13 @@ struct ContentView: View {
                     Image(systemName: "gearshape")
                     Text("Settings")
                 }
-        }
+        }.animation(.easeOut, value: tabSelection)
     }
 }
-
+/*
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
     }
 }
+*/

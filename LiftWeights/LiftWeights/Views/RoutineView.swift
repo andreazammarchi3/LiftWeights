@@ -34,13 +34,9 @@ struct RoutineView: View {
             .listStyle(PlainListStyle())
             .toolbar {
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
-                    Button(action: {
-                        
-                    }, label: {
-                        Text("Start")
-                        Label("Start Routine", systemImage: "play.circle")
+                    NavigationLink(destination: GetReadyView(routine: routine), label: {
+                        Image(systemName: "play.circle")
                     })
-                        .border(.green, width: 2)
                         .foregroundColor(.green)
                     
                     Button(action: {
