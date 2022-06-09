@@ -11,9 +11,9 @@ struct CircularProgressView: View {
     
     @State private var counter: Int = 0
     
-    var countTo: Int = 120
+    var countTo: Int
     
-    var countInMinutes: Bool = false
+    var countInMinutes: Bool
     
     let timer = Timer
         .publish(every: 1, on: .main, in: .common)
@@ -69,6 +69,12 @@ struct CircularProgressView: View {
         let minutes = Int(currentTime / 60)
         
         return "\(minutes):\(seconds < 10 ? "0": "")\(seconds)"
+    }
+    
+    func updateCounter(counter: Int) {
+        
+        /* TODO */
+        
     }
 }
 

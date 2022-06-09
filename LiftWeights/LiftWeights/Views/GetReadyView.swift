@@ -28,7 +28,7 @@ struct GetReadyView: View {
     init(routine: Routine, viewModel: DataLoader) {
         self.routine = routine
         self.viewModel = viewModel
-        self.countTo = 5
+        self.countTo = 10
         self.circularProgressView = CircularProgressView(countTo: countTo, countInMinutes: false)
         self.counter = 0
     }
@@ -49,6 +49,7 @@ struct GetReadyView: View {
             .onReceive(timer) { time in
                 if (counter < countTo) {
                     counter += 1
+                    circularProgressView.updateCounter(counter: counter)
                 } else {
                     finished = true
                 }
