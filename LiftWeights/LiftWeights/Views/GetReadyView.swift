@@ -9,26 +9,50 @@ import SwiftUI
 
 struct GetReadyView: View {
     
+    @ObservedObject var viewModel: DataLoader
+    
     var routine: Routine
     
-    @State var progress: Double = 0
+    var circularProgressView: CircularProgressView
+    
+    @State var counter: Int
+    
+    @State var finished = false
+    
+    let countTo: Int
+    
+    let timer = Timer
+        .publish(every: 1, on: .main, in: .common)
+        .autoconnect()
+    
+    init(routine: Routine, viewModel: DataLoader) {
+        self.routine = routine
+        self.viewModel = viewModel
+        self.countTo = 5
+        self.circularProgressView = CircularProgressView(countTo: countTo, countInMinutes: false)
+        self.counter = 0
+    }
     
     var body: some View {
         VStack {
+            NavigationLink(destination: Text("Second view"), isActive: $finished) { EmptyView() }
+            
             Text("Get Ready!")
                 .font(.largeTitle)
                 .bold()
             
-            ZStack {
-                CircularProgressView(progress: 0)
-                    .frame(width: 200, height: 200)
-                
-                Text("\(progress * 100, specifier: "%.0f")")
-                                    .font(.largeTitle)
-                                    .bold()
-            }.padding()
+            circularProgressView
+                .frame(width: 200, height: 200)
+                .padding()
         }.navigationBarHidden(true)
             .edgesIgnoringSafeArea(.top)
+            .onReceive(timer) { time in
+                if (counter < countTo) {
+                    counter += 1
+                } else {
+                    finished = true
+                }
+            }
     }
 }
 

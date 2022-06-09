@@ -34,7 +34,7 @@ struct RoutineView: View {
             .listStyle(PlainListStyle())
             .toolbar {
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
-                    NavigationLink(destination: GetReadyView(routine: routine), label: {
+                    NavigationLink(destination: GetReadyView(routine: routine, viewModel: viewModel), label: {
                         Image(systemName: "play.circle")
                     })
                         .foregroundColor(.green)
