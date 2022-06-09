@@ -70,12 +70,6 @@ struct CircularProgressView: View {
         
         return "\(minutes):\(seconds < 10 ? "0": "")\(seconds)"
     }
-    
-    func updateCounter(counter: Int) {
-        
-        /* TODO */
-        
-    }
 }
 
 

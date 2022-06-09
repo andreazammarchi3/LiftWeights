@@ -28,14 +28,16 @@ struct GetReadyView: View {
     init(routine: Routine, viewModel: DataLoader) {
         self.routine = routine
         self.viewModel = viewModel
-        self.countTo = 10
+        self.countTo = 3
         self.circularProgressView = CircularProgressView(countTo: countTo, countInMinutes: false)
         self.counter = 0
     }
     
     var body: some View {
         VStack {
-            NavigationLink(destination: Text("Second view"), isActive: $finished) { EmptyView() }
+            NavigationLink("", isActive: $finished) {
+                DoingExView(routine: routine)
+            }
             
             Text("Get Ready!")
                 .font(.largeTitle)
@@ -49,7 +51,6 @@ struct GetReadyView: View {
             .onReceive(timer) { time in
                 if (counter < countTo) {
                     counter += 1
-                    circularProgressView.updateCounter(counter: counter)
                 } else {
                     finished = true
                 }
