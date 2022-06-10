@@ -116,7 +116,7 @@ struct FlatProgressBar: View {
             RoundedRectangle(cornerRadius: 20, style: .continuous)
                 .frame(width: value * width, height: 20)
                 .background(
-                    LinearGradientView()
+                    LinearGradientView(radius: 20)
                 )
                 .foregroundColor(.clear)
         }

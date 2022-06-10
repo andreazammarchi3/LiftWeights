@@ -28,9 +28,12 @@ struct UserView: View {
                     
                     ZStack(alignment: .center) {
                         Circle()
-                            .foregroundColor(Color.blue)
+                            .background(LinearGradientView(radius: 20))
+                            .foregroundColor(.clear)
                             .frame(width: 100, height: 100, alignment: .center)
                             .shadow(radius: 10)
+                            .clipShape(Circle())
+                            .clipped()
                         Image(uiImage: viewModel.image)
                             .resizable()
                             .frame(width: 100, height: 100, alignment: .center)

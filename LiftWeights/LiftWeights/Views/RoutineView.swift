@@ -42,7 +42,7 @@ struct RoutineView: View {
                         showAddExView = true
                     }, label: {
                         Label("New Exercise", systemImage: "plus")
-                    })
+                    }).foregroundColor(.white)
                 }
             }.sheet(isPresented: $showAddExView) {
                 AddExView(routine: routine, viewModel: viewModel)

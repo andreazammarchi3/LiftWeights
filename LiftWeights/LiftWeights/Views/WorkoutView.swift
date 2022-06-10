@@ -16,7 +16,7 @@ struct WorkoutView: View {
             RoundedRectangle(cornerRadius: 20)
                 .frame(width: 250, height: 180, alignment: .center)
                 .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color(UIColor.label), lineWidth: 5))
-                .background(LinearGradientView())
+                .background(LinearGradientView(radius: 20))
                 .foregroundColor(.clear)
                 .padding(5)
             

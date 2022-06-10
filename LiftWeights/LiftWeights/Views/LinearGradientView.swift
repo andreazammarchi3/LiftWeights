@@ -11,13 +11,17 @@ struct LinearGradientView: View {
     
     @ObservedObject var viewModel = DataLoader()
     
+    var radius: Int
+    
     var body: some View {
-        LinearGradient(gradient: Gradient(colors: [viewModel.cyan, viewModel.pink]), startPoint: .leading, endPoint: .trailing).clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+        LinearGradient(gradient: Gradient(colors: [viewModel.cyan, viewModel.pink]), startPoint: .topLeading, endPoint: .bottomTrailing).clipShape(RoundedRectangle(cornerRadius: CGFloat(radius), style: .continuous))
     }
 }
 
+/*
 struct LinearGradientView_Previews: PreviewProvider {
     static var previews: some View {
         LinearGradientView()
     }
 }
+*/

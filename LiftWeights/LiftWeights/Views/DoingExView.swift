@@ -38,7 +38,8 @@ struct DoingExView: View {
             HStack(alignment: .center) {
                 ZStack {
                     RoundedRectangle(cornerRadius: 10)
-                        .foregroundColor(Color.blue)
+                        .background(LinearGradientView(radius: 10))
+                        .foregroundColor(.clear)
                         .frame(width: 75, height: 75, alignment: .center)
                     
                     Image(uiImage: viewModel.image)

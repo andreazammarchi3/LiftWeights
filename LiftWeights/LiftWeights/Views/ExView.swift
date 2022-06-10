@@ -73,7 +73,7 @@ struct ExView: View {
                             Text("Add Set")
                         }.alert("Warning\n'Reps' must be integer and 'Weight' must be decimal.", isPresented: $showingAlert) {
                             Button("Ok", role: .cancel) { showingAlert = false }
-                        }
+                        }.foregroundColor(.white)
                     }.navigationTitle("Add Set")
                         .navigationViewStyle(.stack)
                 }

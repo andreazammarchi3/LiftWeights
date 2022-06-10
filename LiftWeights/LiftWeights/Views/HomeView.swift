@@ -20,13 +20,13 @@ struct HomeView: View {
         showAddRoutineView = showAddRoutineView
         
         customNavAppearance.configureWithOpaqueBackground()
-        customNavAppearance.backgroundColor = UIColor.systemFill
+        customNavAppearance.backgroundImage = UIImage(named: "background")
         customNavAppearance.titleTextAttributes = [.foregroundColor: UIColor.label]
         customNavAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.label]
                
         UINavigationBar.appearance().standardAppearance = customNavAppearance
         UINavigationBar.appearance().scrollEdgeAppearance = customNavAppearance
-        
+        UINavigationBar.appearance().tintColor = .white
     }
     
     var body: some View {
@@ -53,12 +53,13 @@ struct HomeView: View {
                             showAddRoutineView = true
                         }, label: {
                             Label("New Routine", systemImage: "plus")
-                        })
+                        }).foregroundColor(.white)
                     }
                 }.sheet(isPresented: $showAddRoutineView) {
                     AddRoutineView(viewModel: viewModel)
                 }
         }
+        
     }
 }
 
