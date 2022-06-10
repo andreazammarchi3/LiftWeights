@@ -17,15 +17,17 @@ struct User: Decodable, Identifiable {
     var height: Float
     var weight: Float
     var age: Int
+    var badgesOwned: [Badge]
     private var image: String
     
-    init(id: Int, nickname: String, imagePic: UIImage, height: Float, weight: Float, age: Int, image: String){
+    init(id: Int, nickname: String, imagePic: UIImage, height: Float, weight: Float, age: Int, badgesOwned: [Badge], image: String){
         self.id = id
         self.nickname = nickname
         self.imagePic = imagePic.pngData()!
         self.height = height
         self.weight = weight
         self.age = age
+        self.badgesOwned = badgesOwned
         self.image = image
     }
     

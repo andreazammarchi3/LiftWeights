@@ -27,6 +27,7 @@ struct RoutineRowView: View {
                     .frame(width: 75, height: 75, alignment: .center)
                     .clipShape(RoundedRectangle(cornerRadius: 10))
                     .clipped()
+                    .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color(UIColor.label), lineWidth: 2))
                     .onAppear {
                         if routine.id <= 40 {
                             viewModel.loadImage(url: routine.imageUrl)

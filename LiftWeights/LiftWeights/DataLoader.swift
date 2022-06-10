@@ -12,7 +12,7 @@ import CoreData
 /// ViewModel
 class DataLoader: UIResponder, ObservableObject{
     @Published var model = ModelData<Routine>(fileName: "routines")
-    @Published var user = ModelData<User>(fileName: "users")
+    @Published var users = ModelData<User>(fileName: "users")
     
     var routines: [Routine] {
         model.list
