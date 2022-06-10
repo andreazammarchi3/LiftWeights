@@ -23,10 +23,10 @@ struct ContentView: View {
                     Image(systemName: "chart.xyaxis.line")
                     Text("Stats")
                 }
-            SettingsView()
+            UserView()
                 .tabItem {
-                    Image(systemName: "gearshape")
-                    Text("Settings")
+                    Image(systemName: "person")
+                    Text("User")
                 }
         }.animation(.easeOut, value: tabSelection)
     }

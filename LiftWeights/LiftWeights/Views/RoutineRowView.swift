@@ -18,14 +18,14 @@ struct RoutineRowView: View {
     var body: some View {
         HStack {
             ZStack {
-                Circle()
-                    .foregroundColor(Color(red: 78/255, green: 116/255, blue: 177/255))
+                RoundedRectangle(cornerRadius: 10)
+                    .foregroundColor(Color.blue)
                     .frame(width: 75, height: 75, alignment: .center)
                 
                 Image(uiImage: viewModel.image)
                     .resizable()
                     .frame(width: 75, height: 75, alignment: .center)
-                    .clipShape(Circle())
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
                     .clipped()
                     .onAppear {
                         if routine.id <= 40 {

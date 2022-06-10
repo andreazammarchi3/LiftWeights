@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -12,43 +12,28 @@
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="obG-Y5-kRd">
-                                <rect key="frame" x="0.0" y="876" width="414" height="0.0"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LiftWeights" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="GJd-Yh-RWb">
-                                <rect key="frame" x="0.0" y="471" width="414" height="43"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
-                                <color key="textColor" red="0.1512072086" green="0.95551937819999999" blue="0.90474015470000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="highlightedColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Wjk-Z3-mea">
-                                <rect key="frame" x="44.5" y="313" width="325" height="150"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="200" id="1BI-GV-toW"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="150" id="8UC-V8-gPB"/>
-                                    <constraint firstAttribute="height" constant="150" id="9S3-uo-X7R"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="uD5-Ed-B6n"/>
-                                </constraints>
+                                <rect key="frame" x="57" y="317" width="261" height="108"/>
+                                <color key="tintColor" red="0.89476943019999999" green="0.093471400440000005" blue="0.97344321010000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="title" translatesAutoresizingMaskIntoConstraints="NO" id="7Iy-iB-Yx1">
+                                <rect key="frame" x="67" y="396" width="241" height="128"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>
                         <color key="backgroundColor" red="0.1097869948" green="0.1098136529" blue="0.1097853258" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="obG-Y5-kRd" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="0aQ-Tq-HlN"/>
-                            <constraint firstItem="obG-Y5-kRd" firstAttribute="leading" secondItem="GJd-Yh-RWb" secondAttribute="leading" id="2ZO-Xr-W73"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="obG-Y5-kRd" secondAttribute="bottom" constant="-14" id="71g-NK-XNa"/>
-                            <constraint firstItem="Wjk-Z3-mea" firstAttribute="top" secondItem="Bcu-3y-fUS" secondAttribute="top" constant="269" id="CsJ-wD-v8I"/>
-                            <constraint firstItem="Wjk-Z3-mea" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" constant="44.5" id="fj3-5k-i0I"/>
-                            <constraint firstItem="Wjk-Z3-mea" firstAttribute="centerX" secondItem="GJd-Yh-RWb" secondAttribute="centerX" id="hS4-9c-rG1"/>
-                            <constraint firstItem="Wjk-Z3-mea" firstAttribute="centerX" secondItem="obG-Y5-kRd" secondAttribute="centerX" id="hcX-CU-4mB"/>
-                            <constraint firstItem="Wjk-Z3-mea" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="iRH-rG-tvW"/>
-                            <constraint firstItem="GJd-Yh-RWb" firstAttribute="top" secondItem="Wjk-Z3-mea" secondAttribute="bottom" constant="8" symbolic="YES" id="pb4-sU-8wz"/>
+                            <constraint firstItem="7Iy-iB-Yx1" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" constant="67" id="3Za-r6-Ybd"/>
+                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="bottom" secondItem="7Iy-iB-Yx1" secondAttribute="bottom" constant="254" id="Cgk-Qi-aGb"/>
+                            <constraint firstItem="7Iy-iB-Yx1" firstAttribute="top" secondItem="Bcu-3y-fUS" secondAttribute="top" constant="352" id="Gcv-si-wef"/>
+                            <constraint firstItem="Wjk-Z3-mea" firstAttribute="centerX" secondItem="7Iy-iB-Yx1" secondAttribute="centerX" id="H2r-Ae-Rui"/>
+                            <constraint firstItem="Wjk-Z3-mea" firstAttribute="top" secondItem="Bcu-3y-fUS" secondAttribute="top" constant="273" id="HWE-eo-4TM"/>
+                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="bottom" secondItem="Wjk-Z3-mea" secondAttribute="bottom" constant="353" id="V9G-OF-YbE"/>
+                            <constraint firstItem="Wjk-Z3-mea" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" constant="57" id="pXX-Pz-zN1"/>
+                            <constraint firstItem="Wjk-Z3-mea" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="q9b-L2-dgt"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -59,5 +44,6 @@
     </scenes>
     <resources>
         <image name="logo" width="325.5" height="325.5"/>
+        <image name="title" width="370" height="70.5"/>
     </resources>
 </document>

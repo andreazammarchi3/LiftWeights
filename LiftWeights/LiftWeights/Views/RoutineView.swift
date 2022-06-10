@@ -36,8 +36,7 @@ struct RoutineView: View {
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
                     NavigationLink(destination: GetReadyView(routine: routine, viewModel: viewModel), label: {
                         Image(systemName: "play.circle")
-                    })
-                        .foregroundColor(.green)
+                    }).foregroundColor(.green)
                     
                     Button(action: {
                         showAddExView = true

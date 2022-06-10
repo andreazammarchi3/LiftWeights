@@ -18,13 +18,15 @@ struct HomeView: View {
     init() {
         self.viewModel = DataLoader()
         showAddRoutineView = showAddRoutineView
+        
         customNavAppearance.configureWithOpaqueBackground()
-        customNavAppearance.backgroundColor = UIColor(Color(red: 102/255, green: 44/255, blue: 147/255))
+        customNavAppearance.backgroundColor = UIColor.systemFill
         customNavAppearance.titleTextAttributes = [.foregroundColor: UIColor.label]
         customNavAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.label]
                
         UINavigationBar.appearance().standardAppearance = customNavAppearance
         UINavigationBar.appearance().scrollEdgeAppearance = customNavAppearance
+        
     }
     
     var body: some View {
