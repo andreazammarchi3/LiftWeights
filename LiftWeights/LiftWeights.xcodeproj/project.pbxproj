@@ -32,7 +32,7 @@
 		659920CA2852C000003AB5DC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659920C92852C000003AB5DC /* User.swift */; };
 		659920CC2852C11A003AB5DC /* users.json in Resources */ = {isa = PBXBuildFile; fileRef = 659920CB2852C11A003AB5DC /* users.json */; };
 		659920CE2852CE38003AB5DC /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659920CD2852CE38003AB5DC /* Badge.swift */; };
-		659920D02852D01A003AB5DC /* Badges.json in Resources */ = {isa = PBXBuildFile; fileRef = 659920CF2852D01A003AB5DC /* Badges.json */; };
+		65BCE0DB2852D0F70027ABC4 /* badges.json in Resources */ = {isa = PBXBuildFile; fileRef = 65BCE0DA2852D0F70027ABC4 /* badges.json */; };
 		65CBA0DD283E732D007AE1B4 /* LiftWeightsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CBA0DC283E732D007AE1B4 /* LiftWeightsApp.swift */; };
 		65CBA0E1283E732E007AE1B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65CBA0E0283E732E007AE1B4 /* Assets.xcassets */; };
 		65CBA0E4283E732E007AE1B4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65CBA0E3283E732E007AE1B4 /* Preview Assets.xcassets */; };
@@ -71,7 +71,7 @@
 		659920C92852C000003AB5DC /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		659920CB2852C11A003AB5DC /* users.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = users.json; sourceTree = "<group>"; };
 		659920CD2852CE38003AB5DC /* Badge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Badge.swift; sourceTree = "<group>"; };
-		659920CF2852D01A003AB5DC /* Badges.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Badges.json; sourceTree = "<group>"; };
+		65BCE0DA2852D0F70027ABC4 /* badges.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = badges.json; sourceTree = "<group>"; };
 		65CBA0D9283E732D007AE1B4 /* LiftWeights.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiftWeights.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65CBA0DC283E732D007AE1B4 /* LiftWeightsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiftWeightsApp.swift; sourceTree = "<group>"; };
 		65CBA0E0283E732E007AE1B4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -100,10 +100,10 @@
 		6526D4862843ACC200A46AA4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				65BCE0DA2852D0F70027ABC4 /* badges.json */,
 				6526D4872843ADD700A46AA4 /* routines.json */,
 				650897C92844DA7000760082 /* routinesEmpty.json */,
 				659920CB2852C11A003AB5DC /* users.json */,
-				659920CF2852D01A003AB5DC /* Badges.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -249,8 +249,8 @@
 				650897CA2844DA7000760082 /* routinesEmpty.json in Resources */,
 				65CBA0E4283E732E007AE1B4 /* Preview Assets.xcassets in Resources */,
 				659920CC2852C11A003AB5DC /* users.json in Resources */,
-				659920D02852D01A003AB5DC /* Badges.json in Resources */,
 				6526D4982843BE7F00A46AA4 /* Launch Screen.storyboard in Resources */,
+				65BCE0DB2852D0F70027ABC4 /* badges.json in Resources */,
 				65CBA0E1283E732E007AE1B4 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
