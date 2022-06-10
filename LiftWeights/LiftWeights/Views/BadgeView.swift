@@ -9,59 +9,65 @@ import SwiftUI
 
 struct BadgeView: View {
     
-    @ObservedObject var viewModel: DataLoader
-    
     @State var badge: Badge
-    var rarityBack: UIImage
     
-    init(viewModel: DataLoader, badge: Badge) {
-        self.viewModel = viewModel
-        self.badge = badge
-        DispatchQueue.global(qos: .background).async {
-            let data = try? Data(contentsOf: badge.rarityUrl)
-            DispatchQueue.main.async {
-                if let imageData = data {
-                    self.rarityBack = UIImage(data: imageData)!
-                } else {
-                    self.rarityBack = UIImage()
-                }
-            }
-        }
-    }
+    var owned: Bool
     
     var body: some View {
-        ZStack {
-            Image(uiImage: rarityBack)
-                .resizable()
-                .frame(width: 300, height: 200, alignment: .center)
-                .clipShape(RoundedRectangle(cornerRadius: 10))
-                .clipped()
-                .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color(UIColor.label), lineWidth: 2))
+        ZStack(alignment: .topLeading) {
+            RarityView(badge: badge)
             
-            /*
-            Image(uiImage: loadImage(url: badge.imageUrl))
-                .resizable()
-                .frame(width: 100, height: 100, alignment: .center)
-                .clipShape(RoundedRectangle(cornerRadius: 10))
-                .clipped()
-                .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color(UIColor.label), lineWidth: 2))
-            */
-        }.onAppear {
-            viewModel.loadImage(url: badge.rarityUrl)
-        }
+            VStack(alignment: .leading) {
+                BadgeImage(badge: badge)
+                
+                Text("\(badge.title)")
+                    .font(.largeTitle.bold())
+                
+                Text("\(badge.desc)")
+                    .font(.title2)
+                    .multilineTextAlignment(.leading)
+                    .lineLimit(2)
+            }.padding(.leading, 20)
+                .padding(.top, 10)
+        }.opacity(owned ? 1 : 0.3)
     }
+}
+
+struct RarityView: View {
     
-    private func loadImage(url: URL) -> UIImage {
-        var image = UIImage()
-        DispatchQueue.global(qos: .background).async {
-            let data = try? Data(contentsOf: url)
-            DispatchQueue.main.async {
-                if let imageData = data {
-                    image = UIImage(data: imageData)!
-                }
+    @ObservedObject var viewModel = DataLoader()
+    
+    var badge: Badge
+    
+    var body: some View {
+        Image(uiImage: viewModel.image)
+            .resizable()
+            .frame(width: 300, height: 200, alignment: .center)
+            .clipShape(RoundedRectangle(cornerRadius: 10))
+            .clipped()
+            .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color(UIColor.label), lineWidth: 2))
+            .onAppear {
+                viewModel.loadImage(url: badge.rarityUrl)
             }
-        }
-        return image
+    }
+}
+
+struct BadgeImage: View {
+    
+    @ObservedObject var viewModel = DataLoader()
+    
+    var badge: Badge
+    
+    var body: some View {
+        Image(uiImage: viewModel.image)
+            .resizable()
+            .frame(width: 75, height: 75, alignment: .center)
+            .clipShape(Circle())
+            .clipped()
+            .overlay(Circle().stroke(Color(UIColor.label), lineWidth: 2))
+            .onAppear {
+                viewModel.loadImage(url: badge.imageUrl)
+            }
     }
 }
 

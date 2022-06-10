@@ -1,16 +1,23 @@
 [
     {
         "id": 42,
-        "title": "Title1",
-        "desc": "Title 1 desc.",
+        "title": "Inarrestabile",
+        "desc": "Allenati per un totale di\n1000 minuti.",
         "rarity": "https://raw.githubusercontent.com/andreazammarchi3/LiftWeights/main/Resources/gold.png",
         "image": "https://raw.githubusercontent.com/andreazammarchi3/LiftWeights/main/Resources/cross.png"
     },
     {
         "id": 43,
-        "title": "Title2",
-        "desc": "Title 2 desc.",
+        "title": "Dormiglione",
+        "desc": "Riposati per un totale di 100\nminuti.",
         "rarity": "https://raw.githubusercontent.com/andreazammarchi3/LiftWeights/main/Resources/silver.png",
+        "image": "https://raw.githubusercontent.com/andreazammarchi3/LiftWeights/main/Resources/cross.png"
+    },
+    {
+        "id": 44,
+        "title": "Iniziato",
+        "desc": "Esegui la tua prima routine.",
+        "rarity": "https://raw.githubusercontent.com/andreazammarchi3/LiftWeights/main/Resources/bronze.png",
         "image": "https://raw.githubusercontent.com/andreazammarchi3/LiftWeights/main/Resources/cross.png"
     },
 ]

@@ -88,14 +88,14 @@ struct UserView: View {
                                 
                                 Spacer()
                                 
-                                Text("\(user.age)y")
+                                Text("\(user.age)")
                             }
                         }.padding(.leading, 20)
                             .padding(.trailing, 20)
                     }
                 }
                                 
-                Text("Badges owned")
+                Text("Badges")
                     .font(.title.bold())
                     .padding(.top, 20)
                 
@@ -103,9 +103,14 @@ struct UserView: View {
                     HStack {
                         ForEach(user.badgesOwned, id: \.self) { badgeOwned in
                             if let fooOffset = viewModel.badges.list.firstIndex(where: {$0.id == badgeOwned}) {
-                                BadgeView(viewModel: viewModel, badge: viewModel.badges.list[fooOffset])
+                                BadgeView(badge: viewModel.badges.list[fooOffset], owned: true)
                             }
                             
+                        }
+                        ForEach(viewModel.badges.list) {badge in
+                            if user.badgesOwned.contains(badge.id) == false {
+                                BadgeView(badge: badge, owned: false)
+                            }
                         }
                     }
                 }
