@@ -95,12 +95,16 @@ struct UserView: View {
                     }
                 }
                                 
-                Text("Badges")
+                Text("Badges owned")
                     .font(.title.bold())
                     .padding(.top, 20)
                 
-                ScrollView() {
-                    
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack {
+                        ForEach(user.badgesOwned, id: \.self) { badgeOwned in
+                            BadgeView(viewModel: viewModel, badgeId: badgeOwned)
+                        }
+                    }
                 }
                 
                 Spacer()

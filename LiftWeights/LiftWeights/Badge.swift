@@ -15,7 +15,7 @@ struct Badge: Decodable, Identifiable {
     var title: String
     var desc: String
     var rarity: String
-    private var image: String
+    var image: String
     
     init(id: Int, title: String, desc: String, rarity: String, image: String){
         self.id = id
@@ -23,6 +23,10 @@ struct Badge: Decodable, Identifiable {
         self.desc = desc
         self.rarity = rarity
         self.image = image
+    }
+    
+    var rarityUrl: URL {
+        URL(string: rarity)!
     }
     
     var imageUrl: URL {

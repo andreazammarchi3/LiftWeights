@@ -13,6 +13,7 @@ import CoreData
 class DataLoader: UIResponder, ObservableObject{
     @Published var model = ModelData<Routine>(fileName: "routines")
     @Published var users = ModelData<User>(fileName: "users")
+    @Published var badges = ModelData<Badge>(fileName: "badges")
     
     var routines: [Routine] {
         model.list

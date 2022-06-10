@@ -2,13 +2,15 @@
     {
         "id": 42,
         "title": "Title1",
-        "imagePic": "iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAAXNSR0IArs4c6QAAABxpRE9UAAAAAgAAAAAAAAAEAAAAKAAAAAQAAAAEAAAAWxzQ72oAAAAnSURBVCgVYjhzeOX\/\/1+uYGCQOAgz4JPEqgCmE0SDNKOYgC4JUgAAAAD\/\/ytw2SEAAAAnSURBVGP4\/+XKfxA+c3glHMPEQDQDPkmwAlw6YaYwwBTABJBpkBwAoM\/kGdRps6oAAAAASUVORK5CYII=",
-        "height": 192.0,
-        "weight": 89.0,
-        "age": 22,
-        "badgesOwned": [
-            
-        ]
+        "desc": "Title 1 desc.",
+        "rarity": "https://raw.githubusercontent.com/andreazammarchi3/LiftWeights/main/Resources/gold.png",
         "image": "https://raw.githubusercontent.com/andreazammarchi3/LiftWeights/main/Resources/user.png"
-    }
+    },
+    {
+        "id": 43,
+        "title": "Title2",
+        "desc": "Title 2 desc.",
+        "rarity": "https://raw.githubusercontent.com/andreazammarchi3/LiftWeights/main/Resources/silver.png",
+        "image": "https://raw.githubusercontent.com/andreazammarchi3/LiftWeights/main/Resources/user.png"
+    },
 ]
