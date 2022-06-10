@@ -19,6 +19,11 @@ class DataLoader: UIResponder, ObservableObject{
         model.list
     }
     
+    var purple = Color(red: 90/255, green: 60/255, blue: 137/255)
+    var pink = Color(red: 208/255, green: 42/255, blue: 251/255)
+    var blue = Color(red: 107/255, green: 130/255, blue: 248/255)
+    var cyan = Color(red: 38/255, green: 191/255, blue: 245/255)
+    
     var lastId = 40
     
     func addRoutine(routine: Routine) {

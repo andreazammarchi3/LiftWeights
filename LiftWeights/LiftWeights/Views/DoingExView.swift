@@ -21,6 +21,8 @@ struct DoingExView: View {
     
     @State private var circleShow: Bool = true
     
+    @State var showRest = false
+    
     let timer = Timer
         .publish(every: 1, on: .main, in: .common)
         .autoconnect()
@@ -34,76 +36,79 @@ struct DoingExView: View {
     var body: some View {
         VStack(alignment: .center) {
             HStack(alignment: .center) {
-                Spacer()
-                
-                VStack(alignment: .center) {
-                    Text("\(exercise.name)")
-                        .frame(alignment: .leading)
-                        .font(.title.bold())
+                ZStack {
+                    RoundedRectangle(cornerRadius: 10)
+                        .foregroundColor(Color.blue)
+                        .frame(width: 75, height: 75, alignment: .center)
                     
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 10)
-                            .foregroundColor(Color.blue)
-                            .frame(width: 75, height: 75, alignment: .center)
-                        
-                        Image(uiImage: viewModel.image)
-                            .resizable()
-                            .frame(width: 75, height: 75, alignment: .center)
-                            .clipShape(Circle())
-                            .clipped()
-                            .onAppear {
-                                if exercise.id <= 40 {
-                                    viewModel.loadImage(url: exercise.imageUrl)
-                                } else {
-                                    viewModel.image = UIImage(data: exercise.imagePic)!
-                                    circleShow = false
-                                }
-                        }
+                    Image(uiImage: viewModel.image)
+                        .resizable()
+                        .frame(width: 75, height: 75, alignment: .center)
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                        .clipped()
+                        .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color(UIColor.label), lineWidth: 2))
+                }.onAppear {
+                    if exercise.id <= 40 {
+                        viewModel.loadImage(url: exercise.imageUrl)
+                    } else {
+                        viewModel.image = UIImage(data: exercise.imagePic)!
+                        circleShow = false
                     }
                 }
                 
-                Spacer()
-                
-                ZStack(alignment: .center) {
-                    Circle()
-                        .stroke(
-                            Color.blue,
-                            lineWidth: 20
-                        )
-                        .frame(width: 110, height: 110, alignment: .center)
-                    
-                    Text("\(counterToMinutes())")
-                        .font(.title2)
-                        .bold()
-                }
+                Text("\(exercise.name)")
+                    .frame(alignment: .leading)
+                    .font(.largeTitle.bold())
                 
                 Spacer()
-                
-            }//.padding(.top, 120)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.bottom, 30)
-            
+            }
+
             List {
-                ForEach(exercise.miniSets) { miniSet in
-                    if self.miniSet.id == miniSet.id {
-                        VStack(alignment: .center) {
-                            HStack(alignment: .center) {
-                                Text("\(miniSet.reps) x \(miniSet.weight)kg")
-                            }
+                ForEach(exercise.miniSets) { currentSet in
+                    HStack(alignment: .center) {
+                        Text("\(currentSet.reps) x \(formatted(input: currentSet.weight))kg").font(.title3)
+                        
+                        Spacer()
+                        
+                        if currentSet.id < miniSet.id {
+                            Label("", systemImage: "checkmark")
+                                .foregroundColor(Color(UIColor.systemGreen))
                         }
-                    }
+                    }.opacity(isCurrentSet(id: currentSet.id) ? 1 : 0.5)
                 }
             }
             
-            VStack(alignment: .center) {
-                Button {
-                    
-                } label: {
-                    Text("Done").font(.title2.bold())
-                }
+            ZStack(alignment: .center) {
+                RoundedRectangle(cornerRadius: 10)
+                    .foregroundColor(Color(UIColor.systemGreen))
+                    .frame(width: 150, height: 50, alignment: .center)
+                    .onTapGesture {
+                        showRest = true
+                    }
+                
+                Button(action: {
+                    showRest = true
+                }, label: {
+                    Text("Set completed")
+                        .font(.title3.bold())
+                        .foregroundColor(.white)
+                        .padding(20)
+                })
+            }.padding(.bottom, 20)
+            
+            ZStack(alignment: .center) {
+                Circle()
+                    .stroke(
+                        Color.blue,
+                        lineWidth: 20
+                    )
+                    .frame(width: 110, height: 110, alignment: .center)
+                
+                Text("\(counterToMinutes())")
+                    .font(.title2)
+                    .bold()
             }
-        }
-            .navigationTitle(routine.name)
+        }.navigationTitle(routine.name)
             //.navigationBarHidden(true)
             //.edgesIgnoringSafeArea(.top)
             //.overlay(NavigationBar(title: routine.name))
@@ -112,14 +117,33 @@ struct DoingExView: View {
             .onReceive(timer) { time in
                 counter += 1
             }
+            .fullScreenCover(isPresented: $showRest) {
+                
+            } content: {
+                RestView(viewModel: viewModel)
+            }
     }
-    
-    func counterToMinutes() -> String {
+
+                
+    private func counterToMinutes() -> String {
         let currentTime = counter
         let seconds = currentTime % 60
         let minutes = Int(currentTime / 60)
         
         return "\(minutes):\(seconds < 10 ? "0": "")\(seconds)"
+    }
+    
+    private func formatted(input: Float) -> String {
+        let res = String(format: "%.1f", input)
+        return res
+    }
+    
+    private func isCurrentSet(id: Int) -> Bool {
+        if id == miniSet.id {
+            return true
+        } else {
+            return false
+        }
     }
 }
 

@@ -37,7 +37,7 @@ struct UserView: View {
                             .frame(width: 100, height: 100, alignment: .center)
                             .clipShape(Circle())
                             .clipped()
-                            .overlay(Circle().stroke(Color(UIColor.label), lineWidth: 2))
+                            .overlay(Circle().stroke(Color(UIColor.label), lineWidth: 5))
                             .onAppear {
                                 if user.id <= 41 {
                                     viewModel.loadImage(url: user.imageUrl)

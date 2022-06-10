@@ -22,14 +22,17 @@ struct BadgeView: View {
                 
                 Text("\(badge.title)")
                     .font(.largeTitle.bold())
+                    .foregroundColor(.black)
                 
                 Text("\(badge.desc)")
                     .font(.title2)
                     .multilineTextAlignment(.leading)
                     .lineLimit(2)
+                    .foregroundColor(.black)
             }.padding(.leading, 20)
                 .padding(.top, 10)
         }.opacity(owned ? 1 : 0.3)
+            .padding(5)
     }
 }
 
@@ -43,9 +46,9 @@ struct RarityView: View {
         Image(uiImage: viewModel.image)
             .resizable()
             .frame(width: 300, height: 200, alignment: .center)
-            .clipShape(RoundedRectangle(cornerRadius: 10))
+            .clipShape(RoundedRectangle(cornerRadius: 20))
             .clipped()
-            .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color(UIColor.label), lineWidth: 2))
+            .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color(UIColor.label), lineWidth: 5))
             .onAppear {
                 viewModel.loadImage(url: badge.rarityUrl)
             }
@@ -64,7 +67,6 @@ struct BadgeImage: View {
             .frame(width: 75, height: 75, alignment: .center)
             .clipShape(Circle())
             .clipped()
-            .overlay(Circle().stroke(Color(UIColor.label), lineWidth: 2))
             .onAppear {
                 viewModel.loadImage(url: badge.imageUrl)
             }
