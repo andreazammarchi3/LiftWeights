@@ -1,0 +1,23 @@
+[
+    {
+        "id": 45,
+        "date": "9 Giugno 2022",
+        "totalTime": 1000,
+        "workTime": 800,
+        "restTime": 200,
+    },
+    {
+        "id": 46,
+        "date": "9 Giugno 2022",
+        "totalTime": 2000,
+        "workTime": 1500,
+        "restTime": 500,
+    },
+    {
+        "id": 47,
+        "date": "8 Giugno 2022",
+        "totalTime": 3000,
+        "workTime": 2200,
+        "restTime": 800,
+    },
+]

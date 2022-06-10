@@ -14,6 +14,7 @@ class DataLoader: UIResponder, ObservableObject{
     @Published var model = ModelData<Routine>(fileName: "routines")
     @Published var users = ModelData<User>(fileName: "users")
     @Published var badges = ModelData<Badge>(fileName: "badges")
+    @Published var workouts = ModelData<Workout>(fileName: "workouts")
     
     var routines: [Routine] {
         model.list
@@ -21,7 +22,7 @@ class DataLoader: UIResponder, ObservableObject{
     
     var purple = Color(red: 90/255, green: 60/255, blue: 137/255)
     var pink = Color(red: 208/255, green: 42/255, blue: 251/255)
-    var blue = Color(red: 107/255, green: 130/255, blue: 248/255)
+    var blue = Color(UIColor.systemBlue)
     var cyan = Color(red: 38/255, green: 191/255, blue: 245/255)
     
     var lastId = 40

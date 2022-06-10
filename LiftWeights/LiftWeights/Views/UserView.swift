@@ -31,7 +31,6 @@ struct UserView: View {
                             .foregroundColor(Color.blue)
                             .frame(width: 100, height: 100, alignment: .center)
                             .shadow(radius: 10)
-                        
                         Image(uiImage: viewModel.image)
                             .resizable()
                             .frame(width: 100, height: 100, alignment: .center)
@@ -44,7 +43,7 @@ struct UserView: View {
                                 } else {
                                     viewModel.image = UIImage(data: user.imagePic)!
                                 }
-                        }
+                            }
                     }
                     
                     Spacer()
@@ -90,9 +89,9 @@ struct UserView: View {
                                 
                                 Text("\(user.age)")
                             }
-                        }.padding(.leading, 20)
-                            .padding(.trailing, 20)
-                    }
+                        }.padding(.leading, 10)
+                            .padding(.trailing, 10)
+                    }.padding(.leading, 10)
                 }
                                 
                 Text("Badges")
@@ -117,7 +116,7 @@ struct UserView: View {
                 
                 Spacer()
             }.navigationTitle("Hi \(user.nickname)!")
-                .padding(20)
+                .padding(10)
         }
     }
     
