@@ -4,13 +4,13 @@
         "title": "Title1",
         "desc": "Title 1 desc.",
         "rarity": "https://raw.githubusercontent.com/andreazammarchi3/LiftWeights/main/Resources/gold.png",
-        "image": "https://raw.githubusercontent.com/andreazammarchi3/LiftWeights/main/Resources/user.png"
+        "image": "https://raw.githubusercontent.com/andreazammarchi3/LiftWeights/main/Resources/cross.png"
     },
     {
         "id": 43,
         "title": "Title2",
         "desc": "Title 2 desc.",
         "rarity": "https://raw.githubusercontent.com/andreazammarchi3/LiftWeights/main/Resources/silver.png",
-        "image": "https://raw.githubusercontent.com/andreazammarchi3/LiftWeights/main/Resources/user.png"
+        "image": "https://raw.githubusercontent.com/andreazammarchi3/LiftWeights/main/Resources/cross.png"
     },
 ]

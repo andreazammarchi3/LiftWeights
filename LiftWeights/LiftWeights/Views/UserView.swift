@@ -102,7 +102,10 @@ struct UserView: View {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
                         ForEach(user.badgesOwned, id: \.self) { badgeOwned in
-                            BadgeView(viewModel: viewModel, badgeId: badgeOwned)
+                            if let fooOffset = viewModel.badges.list.firstIndex(where: {$0.id == badgeOwned}) {
+                                BadgeView(viewModel: viewModel, badge: viewModel.badges.list[fooOffset])
+                            }
+                            
                         }
                     }
                 }

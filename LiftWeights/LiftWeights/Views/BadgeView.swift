@@ -11,16 +11,29 @@ struct BadgeView: View {
     
     @ObservedObject var viewModel: DataLoader
     
-    var badgeId: Int
+    @State var badge: Badge
+    var rarityBack: UIImage
     
-    @State private var badge = Badge(id: 0, title: "", desc: "", rarity: "", image: "")
-    @State private var back = "https://raw.githubusercontent.com/andreazammarchi3/LiftWeights/main/Resources/bronze.png"
+    init(viewModel: DataLoader, badge: Badge) {
+        self.viewModel = viewModel
+        self.badge = badge
+        DispatchQueue.global(qos: .background).async {
+            let data = try? Data(contentsOf: badge.rarityUrl)
+            DispatchQueue.main.async {
+                if let imageData = data {
+                    self.rarityBack = UIImage(data: imageData)!
+                } else {
+                    self.rarityBack = UIImage()
+                }
+            }
+        }
+    }
     
     var body: some View {
         ZStack {
-            Image(uiImage: loadImage(url: badge.rarityUrl))
+            Image(uiImage: rarityBack)
                 .resizable()
-                .frame(width: 100, height: 100, alignment: .center)
+                .frame(width: 300, height: 200, alignment: .center)
                 .clipShape(RoundedRectangle(cornerRadius: 10))
                 .clipped()
                 .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color(UIColor.label), lineWidth: 2))
@@ -34,10 +47,7 @@ struct BadgeView: View {
                 .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color(UIColor.label), lineWidth: 2))
             */
         }.onAppear {
-            if let fooOffset = viewModel.badges.list.firstIndex(where: {$0.id == badgeId}) {
-                self.badge = DataLoader().badges.list[fooOffset]
-            }
-            back = badge.rarity
+            viewModel.loadImage(url: badge.rarityUrl)
         }
     }
     
