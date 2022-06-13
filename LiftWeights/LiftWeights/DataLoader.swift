@@ -122,6 +122,7 @@ class DataLoader: UIResponder, ObservableObject{
     var isLoading = true
     
     func loadImage(url: URL, id: Int) {
+        self.isLoading = true
         DispatchQueue.global(qos: .background).async {
             let data = try? Data(contentsOf: url)
             DispatchQueue.main.async {
