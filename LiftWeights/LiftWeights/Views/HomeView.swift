@@ -15,14 +15,17 @@ struct HomeView: View {
     
     @State var showAddRoutineView = false
     
-    init() {
-        self.viewModel = DataLoader()
+    @State var isActive: Bool = false
+    
+    init(viewModel: DataLoader) {
+        self.viewModel = viewModel
         showAddRoutineView = showAddRoutineView
         
         customNavAppearance.configureWithOpaqueBackground()
         customNavAppearance.backgroundImage = UIImage(named: "background")
         customNavAppearance.titleTextAttributes = [.foregroundColor: UIColor.label]
         customNavAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.label]
+        customNavAppearance.setBackIndicatorImage(.none, transitionMaskImage: .none)
                
         UINavigationBar.appearance().standardAppearance = customNavAppearance
         UINavigationBar.appearance().scrollEdgeAppearance = customNavAppearance
@@ -34,7 +37,7 @@ struct HomeView: View {
             ScrollView(.horizontal) {
                 HStack(alignment: .top) {
                     ForEach(viewModel.routines) { routine in
-                        NavigationLink(destination: RoutineView(viewModel: viewModel, routine: routine)) {
+                        NavigationLink(destination: RoutineView(viewModel: viewModel, rootIsActive: self.$isActive, routine: routine), isActive: self.$isActive) {
                             ScrollView(.vertical){
                                 RoutineRowView(routine: routine)
                                     .padding(5)
@@ -71,7 +74,7 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        HomeView(viewModel: DataLoader())
             .preferredColorScheme(.dark)
             
     }

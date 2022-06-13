@@ -9,7 +9,7 @@ import SwiftUI
 
 struct StatsView: View {
     
-    @ObservedObject var viewModel = DataLoader()
+    @ObservedObject var viewModel: DataLoader
     
     var body: some View {
         ScrollView(.vertical) {
@@ -125,7 +125,7 @@ struct FlatProgressBar: View {
 
 struct StatsView_Previews: PreviewProvider {
     static var previews: some View {
-        StatsView()
+        StatsView(viewModel: DataLoader())
             .preferredColorScheme(.dark)
     }
 }

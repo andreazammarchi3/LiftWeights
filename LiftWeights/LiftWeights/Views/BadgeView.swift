@@ -43,14 +43,14 @@ struct RarityView: View {
     var badge: Badge
     
     var body: some View {
-        Image(uiImage: viewModel.image)
+        Image(uiImage: viewModel.images[badge.id] ?? viewModel.notFoundImage!)
             .resizable()
             .frame(width: 300, height: 200, alignment: .center)
             .clipShape(RoundedRectangle(cornerRadius: 20))
             .clipped()
             .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color(UIColor.label), lineWidth: 5))
             .onAppear {
-                viewModel.loadImage(url: badge.rarityUrl)
+                viewModel.loadImage(url: badge.rarityUrl, id: badge.id)
             }
     }
 }
@@ -62,13 +62,13 @@ struct BadgeImage: View {
     var badge: Badge
     
     var body: some View {
-        Image(uiImage: viewModel.image)
+        Image(uiImage: viewModel.images[badge.id] ?? viewModel.notFoundImage!)
             .resizable()
             .frame(width: 75, height: 75, alignment: .center)
             .clipShape(Circle())
             .clipped()
             .onAppear {
-                viewModel.loadImage(url: badge.imageUrl)
+                viewModel.loadImage(url: badge.imageUrl, id: badge.id)
             }
     }
 }

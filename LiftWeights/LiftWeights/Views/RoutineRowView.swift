@@ -24,7 +24,7 @@ struct RoutineRowView: View {
                         .foregroundColor(.clear)
                         .frame(width: 75, height: 75, alignment: .center)
                     
-                    Image(uiImage: viewModel.image)
+                    Image(uiImage: viewModel.images[routine.id] ?? viewModel.notFoundImage!)
                         .resizable()
                         .frame(width: 75, height: 75, alignment: .center)
                         .clipShape(RoundedRectangle(cornerRadius: 10))
@@ -32,9 +32,9 @@ struct RoutineRowView: View {
                         .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color(UIColor.label), lineWidth: 2))
                         .onAppear {
                             if routine.id <= 40 {
-                                viewModel.loadImage(url: routine.imageUrl)
+                                viewModel.loadImage(url: routine.imageUrl, id: routine.id)
                             } else {
-                                viewModel.image = UIImage(data: routine.imagePic)!
+                                viewModel.images[routine.id] = UIImage(data: routine.imagePic)!
                                 circleShow = false
                             }
                         }

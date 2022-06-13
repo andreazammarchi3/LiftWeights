@@ -13,9 +13,11 @@ struct UserView: View {
     
     @State var user: User
     
-    init() {
-        self.viewModel = DataLoader()
-        self.user = DataLoader().users.list.first!
+    @State var showSettings = false
+    
+    init(viewModel: DataLoader) {
+        self.viewModel = viewModel
+        self.user = viewModel.users.list.first!
     }
     
     var body: some View {
@@ -34,7 +36,7 @@ struct UserView: View {
                             .shadow(radius: 10)
                             .clipShape(Circle())
                             .clipped()
-                        Image(uiImage: viewModel.image)
+                        Image(uiImage: viewModel.images[user.id] ?? viewModel.notFoundImage!)
                             .resizable()
                             .frame(width: 100, height: 100, alignment: .center)
                             .clipShape(Circle())
@@ -42,9 +44,9 @@ struct UserView: View {
                             .overlay(Circle().stroke(Color(UIColor.label), lineWidth: 5))
                             .onAppear {
                                 if user.id <= 41 {
-                                    viewModel.loadImage(url: user.imageUrl)
+                                    viewModel.loadImage(url: user.imageUrl, id: user.id)
                                 } else {
-                                    viewModel.image = UIImage(data: user.imagePic)!
+                                    viewModel.images[user.id] = UIImage(data: user.imagePic)!
                                 }
                             }
                     }
@@ -120,6 +122,20 @@ struct UserView: View {
                 Spacer()
             }.navigationTitle("Hi \(user.nickname)!")
                 .padding(10)
+                .toolbar {
+                        ToolbarItem {
+                            Button(action: {
+                                showSettings = true
+                            }, label: {
+                                Label("Settings", systemImage: "gear")
+                            }).foregroundColor(.white)
+                        }
+                    }
+                    .sheet(isPresented: $showSettings, onDismiss: {
+                        showSettings = false
+                    }, content: {
+                        SettingsView(viewModel: viewModel, showSettings: $showSettings)
+                    })
         }
     }
     
@@ -131,6 +147,6 @@ struct UserView: View {
 
 struct UserView_Previews: PreviewProvider {
     static var previews: some View {
-        UserView()
+        UserView(viewModel: DataLoader())
     }
 }

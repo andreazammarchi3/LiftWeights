@@ -9,21 +9,23 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @ObservedObject var viewModel: DataLoader
+    
     @State var tabSelection = 1
     
     var body: some View {
         TabView {
-            HomeView()
+            HomeView(viewModel: viewModel)
                 .tabItem {
                     Image(systemName: "house")
                     Text("Home")
                 }
-            StatsView()
+            StatsView(viewModel: viewModel)
                 .tabItem {
                     Image(systemName: "chart.xyaxis.line")
                     Text("Stats")
                 }
-            UserView()
+            UserView(viewModel: viewModel)
                 .tabItem {
                     Image(systemName: "person")
                     Text("User")

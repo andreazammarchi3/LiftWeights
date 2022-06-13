@@ -15,6 +15,10 @@ class DataLoader: UIResponder, ObservableObject{
     @Published var users = ModelData<User>(fileName: "users")
     @Published var badges = ModelData<Badge>(fileName: "badges")
     @Published var workouts = ModelData<Workout>(fileName: "workouts")
+    @Published var restSetTime = 30
+    @Published var restExTime = 60
+    @Published var getReadyTime = 15
+    @Published var restTime = 15
     
     var routines: [Routine] {
         model.list
@@ -25,7 +29,7 @@ class DataLoader: UIResponder, ObservableObject{
     var blue = Color(UIColor.systemBlue)
     var cyan = Color(red: 38/255, green: 191/255, blue: 245/255)
     
-    var lastId = 40
+    var lastId = 47
     
     func addRoutine(routine: Routine) {
         withAnimation {
@@ -101,17 +105,28 @@ class DataLoader: UIResponder, ObservableObject{
         }
     }
     
+    func addWorkout(workout: Workout) {
+        let newWorkout = Workout(
+            id: lastId + 1,
+            date: "",
+            totalTime: workout.totalTime,
+            workTime: workout.workTime,
+            restTime: workout.restTime)
+        lastId += 1
+        self.workouts.list.append(newWorkout)
+    }
+    
     let notFoundImage = UIImage(systemName: "multiply.circle")
     
-    @Published var image = UIImage()
+    @Published var images: [Int: UIImage] = [:]
     var isLoading = true
     
-    func loadImage(url: URL) {
+    func loadImage(url: URL, id: Int) {
         DispatchQueue.global(qos: .background).async {
             let data = try? Data(contentsOf: url)
             DispatchQueue.main.async {
                 if let imageData = data {
-                    self.image = UIImage(data: imageData)!
+                    self.images[id] = UIImage(data: imageData)!
                     self.isLoading = false
                 }
             }

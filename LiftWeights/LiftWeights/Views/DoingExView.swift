@@ -9,13 +9,15 @@ import SwiftUI
 
 struct DoingExView: View {
     
-    @ObservedObject var viewModel = DataLoader()
+    @ObservedObject var viewModel: DataLoader
     
-    var routine: Routine
+    @Binding var rootIsActive : Bool
     
-    @State private var exercise: Exercise
+    @State var routine: Routine
     
-    @State private var miniSet: MiniSet
+    @State var exercise: Exercise
+    
+    @State var miniSet: MiniSet
     
     @State private var counter: Int = 0
     
@@ -23,14 +25,23 @@ struct DoingExView: View {
     
     @State var showRest = false
     
-    let timer = Timer
-        .publish(every: 1, on: .main, in: .common)
-        .autoconnect()
+    @State var routineCompleted = false
     
-    init(routine: Routine) {
+    @State var  timer: Timer.TimerPublisher = Timer
+        .publish(every: 1, on: .main, in: .common)
+    
+    @State var workout: Workout
+    
+    init(viewModel: DataLoader, routine: Routine, exercise: Exercise, miniSet: MiniSet, rootIsActive: Binding<Bool>) {
+        self.viewModel = viewModel
         self.routine = routine
-        self.exercise = routine.exercises.first!
-        self.miniSet = routine.exercises.first!.miniSets.first!
+        self.exercise = exercise
+        self.miniSet = miniSet
+        self._rootIsActive = rootIsActive
+        self.workout = Workout(id: 0, date: "", totalTime: 0, workTime: 0, restTime: 0)
+        startTimer()
+        checkNext()
+        UINavigationBar.appearance().tintColor = .white.withAlphaComponent(0)
     }
     
     var body: some View {
@@ -42,7 +53,7 @@ struct DoingExView: View {
                         .foregroundColor(.clear)
                         .frame(width: 75, height: 75, alignment: .center)
                     
-                    Image(uiImage: viewModel.image)
+                    Image(uiImage: viewModel.images[exercise.id] ?? viewModel.notFoundImage!)
                         .resizable()
                         .frame(width: 75, height: 75, alignment: .center)
                         .clipShape(RoundedRectangle(cornerRadius: 10))
@@ -50,9 +61,9 @@ struct DoingExView: View {
                         .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color(UIColor.label), lineWidth: 2))
                 }.onAppear {
                     if exercise.id <= 40 {
-                        viewModel.loadImage(url: exercise.imageUrl)
+                        viewModel.loadImage(url: exercise.imageUrl, id: exercise.id)
                     } else {
-                        viewModel.image = UIImage(data: exercise.imagePic)!
+                        viewModel.images[exercise.id] = UIImage(data: exercise.imagePic)!
                         circleShow = false
                     }
                 }
@@ -61,11 +72,17 @@ struct DoingExView: View {
                     .frame(alignment: .leading)
                     .font(.largeTitle.bold())
                 
+                NavigationLink("", isActive: $routineCompleted) {
+                    FinishView(viewModel: viewModel, rootIsActive: self.$rootIsActive)
+                }.isDetailLink(false)
+                
                 Spacer()
             }
 
             List {
-                ForEach(exercise.miniSets) { currentSet in
+                ForEach(routine.exercises.first(where: { exercise in
+                    self.exercise.id == exercise.id
+                })!.miniSets) { currentSet in
                     HStack(alignment: .center) {
                         Text("\(currentSet.reps) x \(formatted(input: currentSet.weight))kg").font(.title3)
                         
@@ -88,7 +105,18 @@ struct DoingExView: View {
                     }
                 
                 Button(action: {
-                    showRest = true
+                    if checkNext() {
+                        stopTimer()
+                        workout.workTime += counter
+                        showRest = true
+                    } else {
+                        stopTimer()
+                        workout.totalTime = workout.workTime + workout.restTime
+                        workout.date = getCurrentDate()
+                        viewModel.addWorkout(workout: workout)
+                        routineCompleted = true
+                        UINavigationBar.appearance().tintColor = .white.withAlphaComponent(1)
+                    }
                 }, label: {
                     Text("Set completed")
                         .font(.title3.bold())
@@ -118,11 +146,14 @@ struct DoingExView: View {
             .onReceive(timer) { time in
                 counter += 1
             }
-            .fullScreenCover(isPresented: $showRest) {
-                
-            } content: {
+            .fullScreenCover(isPresented: $showRest, onDismiss: {
+                showRest = false
+                counter = 0
+                startTimer()
+            }, content: {
+                //GetReadyView(routine: routine, viewModel: viewModel)
                 RestView(viewModel: viewModel)
-            }
+            })
     }
 
                 
@@ -145,6 +176,50 @@ struct DoingExView: View {
         } else {
             return false
         }
+    }
+    
+    func checkNext() -> Bool {
+        if exercise.miniSets.count > 1 {
+            exercise.miniSets = exercise.miniSets.filter() {$0.id != miniSet.id}
+            self.miniSet = exercise.miniSets.first!
+            viewModel.restTime = viewModel.restSetTime
+            return true
+        } else {
+            if routine.exercises.count > 1 {
+                routine.exercises = routine.exercises.filter() {$0.id != exercise.id}
+                self.exercise = routine.exercises.first!
+                self.miniSet = exercise.miniSets.first!
+                viewModel.restTime = viewModel.restExTime
+                if exercise.id <= 40 {
+                    viewModel.loadImage(url: exercise.imageUrl, id: exercise.id)
+                } else {
+                    viewModel.images[exercise.id] = UIImage(data: exercise.imagePic)!
+                    circleShow = false
+                }
+                return true
+            } else {
+                return false
+            }
+        }
+        
+    }
+    
+    func startTimer() {
+        timer = Timer.publish(every: 1, on: .main, in: .common)
+        _ = timer.connect()
+    }
+    
+    func stopTimer() {
+        timer.connect().cancel()
+    }
+    
+    func getCurrentDate() -> String {
+        let date = Date()
+        let calendar = NSCalendar.current
+        let year = calendar.component(.year, from: date)
+        let month = calendar.component(.month, from: date)
+        let day = calendar.component(.day, from: date)
+        return "\(day)/\(month)/\(year)"
     }
 }
 

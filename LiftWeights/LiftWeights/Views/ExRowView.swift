@@ -23,7 +23,7 @@ struct ExRowView: View {
                     .foregroundColor(.clear)
                     .frame(width: 75, height: 75, alignment: .center)
                 
-                Image(uiImage: viewModel.image)
+                Image(uiImage: viewModel.images[exercise.id] ?? viewModel.notFoundImage!)
                     .resizable()
                     .frame(width: 75, height: 75, alignment: .center)
                     .clipShape(RoundedRectangle(cornerRadius: 10))
@@ -31,9 +31,9 @@ struct ExRowView: View {
                     .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color(UIColor.label), lineWidth: 2))
                     .onAppear {
                         if exercise.id <= 40 {
-                            viewModel.loadImage(url: exercise.imageUrl)
+                            viewModel.loadImage(url: exercise.imageUrl, id: exercise.id)
                         } else {
-                            viewModel.image = UIImage(data: exercise.imagePic)!
+                            viewModel.images[exercise.id] = UIImage(data: exercise.imagePic)!
                             circleShow = false
                         }
                     }

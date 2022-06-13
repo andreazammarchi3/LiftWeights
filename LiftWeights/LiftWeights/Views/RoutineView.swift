@@ -11,6 +11,8 @@ struct RoutineView: View {
     
     @ObservedObject var viewModel: DataLoader
     
+    @Binding var rootIsActive : Bool
+    
     @State var showAddExView = false
     
     var routine: Routine
@@ -34,9 +36,10 @@ struct RoutineView: View {
             .listStyle(PlainListStyle())
             .toolbar {
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
-                    NavigationLink(destination: GetReadyView(routine: routine, viewModel: viewModel), label: {
+                    NavigationLink(destination: GetReadyView(routine: routine, viewModel: viewModel, rootIsActive: $rootIsActive), label: {
                         Image(systemName: "play.circle")
-                    }).foregroundColor(.green)
+                    }).isDetailLink(false)
+                        .foregroundColor(.green)
                     
                     Button(action: {
                         showAddExView = true
