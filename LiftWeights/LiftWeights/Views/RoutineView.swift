@@ -11,8 +11,6 @@ struct RoutineView: View {
     
     @ObservedObject var viewModel: DataLoader
     
-    @Binding var rootIsActive : Bool
-    
     @State var showAddExView = false
     
     var routine: Routine
@@ -21,7 +19,7 @@ struct RoutineView: View {
         List {
             ForEach(routine.exercises) { exercise in
                 NavigationLink(destination: ExView(viewModel: viewModel, routine: routine, exercise: exercise)) {
-                    ExRowView(exercise: exercise)
+                    ExRowView(viewModel: viewModel, exercise: exercise)
                 }.isDetailLink(false)
             }.onDelete { indexSet in
                 var exercisesToRemove = [Exercise]()
@@ -36,7 +34,7 @@ struct RoutineView: View {
             .listStyle(PlainListStyle())
             .toolbar {
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
-                    NavigationLink(destination: GetReadyView(routine: routine, viewModel: viewModel, rootIsActive: $rootIsActive), label: {
+                    NavigationLink(destination: GetReadyView(routine: routine, viewModel: viewModel), label: {
                         Image(systemName: "play.circle")
                     }).isDetailLink(false)
                         .foregroundColor(.green)

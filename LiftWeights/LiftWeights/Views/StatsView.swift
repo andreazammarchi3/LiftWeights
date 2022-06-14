@@ -24,7 +24,7 @@ struct StatsView: View {
                 ScrollView(.horizontal) {
                     HStack {
                         ForEach(viewModel.workouts.list) { workout in
-                            WorkoutView(workout: workout)
+                            WorkoutView(viewModel: viewModel, workout: workout)
                         }
                     }
                 }
@@ -45,7 +45,7 @@ struct GlobalStatsView: View {
                 Text("Total workouts duration:")
                     .font(.title2.bold())
                 HStack(alignment: .center) {
-                    FlatProgressBar(value: 1)
+                    FlatProgressBar(viewModel: viewModel, value: 1)
                     Spacer()
                     Text("\(getTotalTime()) min")
                 }
@@ -53,14 +53,14 @@ struct GlobalStatsView: View {
                 Text("Working time:")
                     .font(.title2.bold())
                 HStack(alignment: .center) {
-                    FlatProgressBar(value: 0.75)
+                    FlatProgressBar(viewModel: viewModel, value: 0.75)
                     Spacer()
                     Text("\(getWorkTime()) min")
                 }
                 Text("Resting time:")
                     .font(.title2.bold())
                 HStack(alignment: .center) {
-                    FlatProgressBar(value: 0.25)
+                    FlatProgressBar(viewModel: viewModel, value: 0.25)
                     Spacer()
                     Text("\(getRestTime()) min")
                 }
@@ -102,6 +102,8 @@ struct GlobalStatsView: View {
 
 struct FlatProgressBar: View {
     
+    @ObservedObject var viewModel: DataLoader
+    
     @State var value: CGFloat
     
     let width: CGFloat = UIScreen.main.bounds.width - 120
@@ -116,7 +118,7 @@ struct FlatProgressBar: View {
             RoundedRectangle(cornerRadius: 20, style: .continuous)
                 .frame(width: value * width, height: 20)
                 .background(
-                    LinearGradientView(radius: 20)
+                    LinearGradientView(viewModel: viewModel, radius: 20)
                 )
                 .foregroundColor(.clear)
         }

@@ -11,8 +11,6 @@ struct DoingExView: View {
     
     @ObservedObject var viewModel: DataLoader
     
-    @Binding var rootIsActive : Bool
-    
     @State var routine: Routine
     
     @State var exercise: Exercise
@@ -32,12 +30,11 @@ struct DoingExView: View {
     
     @State var workout: Workout
     
-    init(viewModel: DataLoader, routine: Routine, exercise: Exercise, miniSet: MiniSet, rootIsActive: Binding<Bool>) {
+    init(viewModel: DataLoader, routine: Routine, exercise: Exercise, miniSet: MiniSet) {
         self.viewModel = viewModel
         self.routine = routine
         self.exercise = exercise
         self.miniSet = miniSet
-        self._rootIsActive = rootIsActive
         self.workout = Workout(id: 0, date: "", totalTime: 0, workTime: 0, restTime: 0)
         startTimer()
         checkNext()
@@ -49,7 +46,7 @@ struct DoingExView: View {
             HStack(alignment: .center) {
                 ZStack {
                     RoundedRectangle(cornerRadius: 10)
-                        .background(LinearGradientView(radius: 10))
+                        .background(LinearGradientView(viewModel: viewModel, radius: 10))
                         .foregroundColor(.clear)
                         .frame(width: 75, height: 75, alignment: .center)
                     
@@ -72,8 +69,8 @@ struct DoingExView: View {
                     .frame(alignment: .leading)
                     .font(.largeTitle.bold())
                 
-                NavigationLink("", isActive: $routineCompleted) {
-                    FinishView(viewModel: viewModel, rootIsActive: self.$rootIsActive)
+                NavigationLink("") {
+                    FinishView(viewModel: viewModel)
                 }.isDetailLink(false)
                 
                 Spacer()

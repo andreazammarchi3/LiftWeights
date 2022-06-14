@@ -9,16 +9,18 @@ import SwiftUI
 
 struct BadgeView: View {
     
+    @ObservedObject var viewModel: DataLoader
+    
     @State var badge: Badge
     
     var owned: Bool
     
     var body: some View {
         ZStack(alignment: .topLeading) {
-            RarityView(badge: badge)
+            RarityView(viewModel: viewModel, badge: badge)
             
             VStack(alignment: .leading) {
-                BadgeImage(badge: badge)
+                BadgeImage(viewModel: viewModel, badge: badge)
                 
                 Text("\(badge.title)")
                     .font(.largeTitle.bold())
@@ -38,7 +40,7 @@ struct BadgeView: View {
 
 struct RarityView: View {
     
-    @ObservedObject var viewModel = DataLoader()
+    @ObservedObject var viewModel: DataLoader
     
     var badge: Badge
     
@@ -57,7 +59,7 @@ struct RarityView: View {
 
 struct BadgeImage: View {
     
-    @ObservedObject var viewModel = DataLoader()
+    @ObservedObject var viewModel: DataLoader
     
     var badge: Badge
     

@@ -9,6 +9,8 @@ import SwiftUI
 
 struct WorkoutView: View {
     
+    @ObservedObject var viewModel: DataLoader
+    
     var workout: Workout
     
     var body: some View {
@@ -16,7 +18,7 @@ struct WorkoutView: View {
             RoundedRectangle(cornerRadius: 20)
                 .frame(width: 250, height: 180, alignment: .center)
                 .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color(UIColor.label), lineWidth: 5))
-                .background(LinearGradientView(radius: 20))
+                .background(LinearGradientView(viewModel: viewModel, radius: 20))
                 .foregroundColor(.clear)
                 .padding(5)
             

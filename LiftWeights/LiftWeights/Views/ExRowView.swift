@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ExRowView: View {
     
-    @ObservedObject var viewModel = DataLoader()
+    @ObservedObject var viewModel: DataLoader
     
     var exercise: Exercise
     
@@ -19,7 +19,7 @@ struct ExRowView: View {
         HStack {
             ZStack {
                 RoundedRectangle(cornerRadius: 10)
-                    .background(LinearGradientView(radius: 10))
+                    .background(LinearGradientView(viewModel: viewModel, radius: 10))
                     .foregroundColor(.clear)
                     .frame(width: 75, height: 75, alignment: .center)
                 

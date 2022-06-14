@@ -15,8 +15,6 @@ struct HomeView: View {
     
     @State var showAddRoutineView = false
     
-    @State var isActive: Bool = false
-    
     init(viewModel: DataLoader) {
         self.viewModel = viewModel
         showAddRoutineView = showAddRoutineView
@@ -37,9 +35,9 @@ struct HomeView: View {
             ScrollView(.horizontal) {
                 HStack(alignment: .top) {
                     ForEach(viewModel.routines) { routine in
-                        NavigationLink(destination: RoutineView(viewModel: viewModel, rootIsActive: self.$isActive, routine: routine), isActive: self.$isActive) {
+                        NavigationLink(destination: RoutineView(viewModel: viewModel, routine: routine)) {
                             ScrollView(.vertical){
-                                RoutineRowView(routine: routine)
+                                RoutineRowView(viewModel: viewModel, routine: routine)
                                     .padding(5)
                             }
                         }.isDetailLink(false)
@@ -66,11 +64,10 @@ struct HomeView: View {
                 }.sheet(isPresented: $showAddRoutineView) {
                     AddRoutineView(viewModel: viewModel)
                 }.padding(10)
-        }
+        }.navigationViewStyle(StackNavigationViewStyle())
         
     }
 }
-
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RoutineRowView: View {
     
-    @ObservedObject var viewModel = DataLoader()
+    @ObservedObject var viewModel: DataLoader
     
     var routine: Routine
     
@@ -20,7 +20,7 @@ struct RoutineRowView: View {
             HStack {
                 ZStack {
                     RoundedRectangle(cornerRadius: 10)
-                        .background(LinearGradientView(radius: 10))
+                        .background(LinearGradientView(viewModel: viewModel, radius: 10))
                         .foregroundColor(.clear)
                         .frame(width: 75, height: 75, alignment: .center)
                     
@@ -92,7 +92,7 @@ struct RoutineRowView: View {
 
 struct RoutineRowView_Previews: PreviewProvider {
     static var previews: some View {
-        RoutineRowView(routine: DataLoader().routines.first!)
+        RoutineRowView(viewModel: DataLoader(), routine: DataLoader().routines.first!)
             .preferredColorScheme(.dark)
     }
 }

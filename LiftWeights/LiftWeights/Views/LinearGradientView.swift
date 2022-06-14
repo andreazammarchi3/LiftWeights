@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LinearGradientView: View {
     
-    @ObservedObject var viewModel = DataLoader()
+    @ObservedObject var viewModel: DataLoader
     
     var radius: Int
     

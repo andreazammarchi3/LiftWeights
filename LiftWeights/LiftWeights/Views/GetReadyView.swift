@@ -11,8 +11,6 @@ struct GetReadyView: View {
     
     @ObservedObject var viewModel: DataLoader
     
-    @Binding var rootIsActive : Bool
-    
     var routine: Routine
     
     private var circularProgressView: CircularProgressView
@@ -26,10 +24,9 @@ struct GetReadyView: View {
     @State var  timer: Timer.TimerPublisher = Timer
         .publish(every: 1, on: .main, in: .common)
     
-    init(routine: Routine, viewModel: DataLoader, rootIsActive: Binding<Bool>) {
+    init(routine: Routine, viewModel: DataLoader) {
         self.routine = routine
         self.viewModel = viewModel
-        self._rootIsActive = rootIsActive
         self.countTo = viewModel.getReadyTime
         self.circularProgressView = CircularProgressView(countTo: countTo, countInMinutes: false)
         startTimer()
@@ -37,8 +34,8 @@ struct GetReadyView: View {
     
     var body: some View {
         VStack {
-            NavigationLink("", isActive: $finished) {
-                DoingExView(viewModel: viewModel, routine: routine, exercise: routine.exercises.first!, miniSet: routine.exercises.first!.miniSets.first!, rootIsActive: $rootIsActive)
+            NavigationLink("") {
+                DoingExView(viewModel: viewModel, routine: routine, exercise: routine.exercises.first!, miniSet: routine.exercises.first!.miniSets.first!)
             }.isDetailLink(false)
             
             Text("Get Ready!")

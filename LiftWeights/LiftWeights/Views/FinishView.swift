@@ -11,14 +11,12 @@ struct FinishView: View {
     
     @ObservedObject var viewModel: DataLoader
     
-    @Binding var rootIsActive : Bool
-    
     var body: some View {
         Text("Routine completed!")
             .font(.largeTitle.bold())
         ZStack {
             Button(action: {
-                self.rootIsActive = false
+
             }, label: {
                 Text("Back to HOME")
                     .font(.title2.bold())

@@ -30,7 +30,7 @@ struct UserView: View {
                     
                     ZStack(alignment: .center) {
                         Circle()
-                            .background(LinearGradientView(radius: 20))
+                            .background(LinearGradientView(viewModel: viewModel, radius: 20))
                             .foregroundColor(.clear)
                             .frame(width: 100, height: 100, alignment: .center)
                             .shadow(radius: 10)
@@ -107,13 +107,13 @@ struct UserView: View {
                     HStack {
                         ForEach(user.badgesOwned, id: \.self) { badgeOwned in
                             if let fooOffset = viewModel.badges.list.firstIndex(where: {$0.id == badgeOwned}) {
-                                BadgeView(badge: viewModel.badges.list[fooOffset], owned: true)
+                                BadgeView(viewModel: viewModel, badge: viewModel.badges.list[fooOffset], owned: true)
                             }
                             
                         }
                         ForEach(viewModel.badges.list) {badge in
                             if user.badgesOwned.contains(badge.id) == false {
-                                BadgeView(badge: badge, owned: false)
+                                BadgeView(viewModel: viewModel, badge: badge, owned: false)
                             }
                         }
                     }
