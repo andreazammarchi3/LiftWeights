@@ -13,13 +13,11 @@ struct GetReadyView: View {
     
     var routine: Routine
     
-    private var circularProgressView: CircularProgressView
+    var circularProgressView: CircularProgressView
     
     @State var counter = 0
     
     @State var finished = false
-    
-    let countTo: Int
     
     @State var  timer: Timer.TimerPublisher = Timer
         .publish(every: 1, on: .main, in: .common)
@@ -27,16 +25,17 @@ struct GetReadyView: View {
     init(routine: Routine, viewModel: DataLoader) {
         self.routine = routine
         self.viewModel = viewModel
-        self.countTo = viewModel.getReadyTime
-        self.circularProgressView = CircularProgressView(countTo: countTo, countInMinutes: false)
+        self.circularProgressView = CircularProgressView(countTo: viewModel.getReadyTime, countInMinutes: false)
         startTimer()
     }
     
+    
     var body: some View {
         VStack {
-            NavigationLink("") {
+            NavigationLink("", isActive: $finished) {
                 DoingExView(viewModel: viewModel, routine: routine, exercise: routine.exercises.first!, miniSet: routine.exercises.first!.miniSets.first!)
             }.isDetailLink(false)
+
             
             Text("Get Ready!")
                 .font(.largeTitle)
@@ -48,7 +47,7 @@ struct GetReadyView: View {
         }.navigationBarHidden(true)
             .edgesIgnoringSafeArea(.top)
             .onReceive(timer) { time in
-                if (counter < countTo) {
+                if (counter < viewModel.getReadyTime) {
                     counter += 1
                 } else {
                     stopTimer()

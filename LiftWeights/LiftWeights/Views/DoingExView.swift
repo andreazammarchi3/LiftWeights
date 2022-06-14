@@ -30,6 +30,7 @@ struct DoingExView: View {
     
     @State var workout: Workout
     
+    
     init(viewModel: DataLoader, routine: Routine, exercise: Exercise, miniSet: MiniSet) {
         self.viewModel = viewModel
         self.routine = routine
@@ -37,7 +38,6 @@ struct DoingExView: View {
         self.miniSet = miniSet
         self.workout = Workout(id: 0, date: "", totalTime: 0, workTime: 0, restTime: 0)
         startTimer()
-        checkNext()
         UINavigationBar.appearance().tintColor = .white.withAlphaComponent(0)
     }
     
@@ -69,7 +69,7 @@ struct DoingExView: View {
                     .frame(alignment: .leading)
                     .font(.largeTitle.bold())
                 
-                NavigationLink("") {
+                NavigationLink("", isActive: $routineCompleted) {
                     FinishView(viewModel: viewModel)
                 }.isDetailLink(false)
                 

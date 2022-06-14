@@ -64,13 +64,13 @@ struct BadgeImage: View {
     var badge: Badge
     
     var body: some View {
-        Image(uiImage: viewModel.images[badge.id] ?? viewModel.notFoundImage!)
+        Image(uiImage: viewModel.images[badge.id+1] ?? viewModel.notFoundImage!)
             .resizable()
             .frame(width: 75, height: 75, alignment: .center)
             .clipShape(Circle())
             .clipped()
             .onAppear {
-                viewModel.loadImage(url: badge.imageUrl, id: badge.id)
+                viewModel.loadImage(url: badge.imageUrl, id: badge.id+1)
             }
     }
 }

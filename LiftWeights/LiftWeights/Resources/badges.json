@@ -7,14 +7,14 @@
         "image": "https://raw.githubusercontent.com/andreazammarchi3/LiftWeights/main/Resources/timer.png"
     },
     {
-        "id": 43,
+        "id": 44,
         "title": "Dormiglione",
         "desc": "Riposati per un totale di 100\nminuti.",
         "rarity": "https://raw.githubusercontent.com/andreazammarchi3/LiftWeights/main/Resources/silver.png",
         "image": "https://raw.githubusercontent.com/andreazammarchi3/LiftWeights/main/Resources/sleep.png"
     },
     {
-        "id": 44,
+        "id": 46,
         "title": "Iniziato",
         "desc": "Esegui la tua prima routine.",
         "rarity": "https://raw.githubusercontent.com/andreazammarchi3/LiftWeights/main/Resources/bronze.png",
