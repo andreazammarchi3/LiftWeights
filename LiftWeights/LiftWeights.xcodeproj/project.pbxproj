@@ -26,6 +26,7 @@
 		652805E528538706005F2500 /* workouts.json in Resources */ = {isa = PBXBuildFile; fileRef = 652805E428538706005F2500 /* workouts.json */; };
 		652805E728538AA1005F2500 /* WorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652805E628538AA1005F2500 /* WorkoutView.swift */; };
 		652805E92853A386005F2500 /* LinearGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652805E82853A386005F2500 /* LinearGradientView.swift */; };
+		6539EDFE2858C85900B3653D /* ConfettiSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 6539EDFD2858C85900B3653D /* ConfettiSwiftUI */; };
 		6547AF8C2851FA530092869F /* DoingExView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6547AF8B2851FA530092869F /* DoingExView.swift */; };
 		6547AF9028522F790092869F /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6547AF8F28522F790092869F /* NavigationBar.swift */; };
 		65546A38284B5F740016DA94 /* MiniSetRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65546A37284B5F740016DA94 /* MiniSetRowView.swift */; };
@@ -44,9 +45,6 @@
 		65CBA0E4283E732E007AE1B4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65CBA0E3283E732E007AE1B4 /* Preview Assets.xcassets */; };
 		65DD3BEE2844F7080051EEC2 /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DD3BED2844F7080051EEC2 /* ImagePickerView.swift */; };
 		65DD7E2F2857321300695FFB /* FinishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DD7E2E2857321300695FFB /* FinishView.swift */; };
-		65F37B0E2841317200F3298D /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 65F37B0D2841317200F3298D /* SDWebImage */; };
-		65F37B102841317200F3298D /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 65F37B0F2841317200F3298D /* SDWebImageMapKit */; };
-		65F37B13284131A000F3298D /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 65F37B12284131A000F3298D /* SDWebImageSwiftUI */; };
 		65FD50F0284A9F2B0043E5B0 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FD50EF284A9F2B0043E5B0 /* Exercise.swift */; };
 		65FD50FC284AA6420043E5B0 /* ExView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FD50FB284AA6420043E5B0 /* ExView.swift */; };
 		65FD5100284AB5110043E5B0 /* MiniSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FD50FF284AB5110043E5B0 /* MiniSet.swift */; };
@@ -102,9 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65F37B13284131A000F3298D /* SDWebImageSwiftUI in Frameworks */,
-				65F37B102841317200F3298D /* SDWebImageMapKit in Frameworks */,
-				65F37B0E2841317200F3298D /* SDWebImage in Frameworks */,
+				6539EDFE2858C85900B3653D /* ConfettiSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,9 +212,7 @@
 			);
 			name = LiftWeights;
 			packageProductDependencies = (
-				65F37B0D2841317200F3298D /* SDWebImage */,
-				65F37B0F2841317200F3298D /* SDWebImageMapKit */,
-				65F37B12284131A000F3298D /* SDWebImageSwiftUI */,
+				6539EDFD2858C85900B3653D /* ConfettiSwiftUI */,
 			);
 			productName = LiftWeights;
 			productReference = 65CBA0D9283E732D007AE1B4 /* LiftWeights.app */;
@@ -249,8 +243,7 @@
 			);
 			mainGroup = 65CBA0D0283E732D007AE1B4;
 			packageReferences = (
-				65F37B0C2841317200F3298D /* XCRemoteSwiftPackageReference "SDWebImage" */,
-				65F37B11284131A000F3298D /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+				6539EDFC2858C85900B3653D /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */,
 			);
 			productRefGroup = 65CBA0DA283E732D007AE1B4 /* Products */;
 			projectDirPath = "";
@@ -524,39 +517,21 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		65F37B0C2841317200F3298D /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+		6539EDFC2858C85900B3653D /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			repositoryURL = "https://github.com/simibac/ConfettiSwiftUI";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
-		65F37B11284131A000F3298D /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
+				minimumVersion = 1.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		65F37B0D2841317200F3298D /* SDWebImage */ = {
+		6539EDFD2858C85900B3653D /* ConfettiSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 65F37B0C2841317200F3298D /* XCRemoteSwiftPackageReference "SDWebImage" */;
-			productName = SDWebImage;
-		};
-		65F37B0F2841317200F3298D /* SDWebImageMapKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 65F37B0C2841317200F3298D /* XCRemoteSwiftPackageReference "SDWebImage" */;
-			productName = SDWebImageMapKit;
-		};
-		65F37B12284131A000F3298D /* SDWebImageSwiftUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 65F37B11284131A000F3298D /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
-			productName = SDWebImageSwiftUI;
+			package = 6539EDFC2858C85900B3653D /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */;
+			productName = ConfettiSwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

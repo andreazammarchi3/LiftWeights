@@ -6,14 +6,19 @@
 //
 
 import SwiftUI
+import ConfettiSwiftUI
 
 struct FinishView: View {
     
     @ObservedObject var viewModel: DataLoader
     
+    @State private var counter: Int = 0
+    
     var body: some View {
         Text("Routine completed!")
             .font(.largeTitle.bold())
+            .confettiCannon(counter: $counter, repetitions: 3, repetitionInterval: 2)
+        
         ZStack {
             Button(action: {
 
@@ -23,6 +28,8 @@ struct FinishView: View {
                     .foregroundColor(.white)
                     .padding(20)
             })
+        }.onAppear {
+            counter += 1
         }
     }
 }
