@@ -14,14 +14,17 @@ struct FinishView: View {
     
     @State private var counter: Int = 0
     
+    //@Environment(\.rootPresentationMode) private var rootPresentationMode
+    
     var body: some View {
         Text("Routine completed!")
             .font(.largeTitle.bold())
-            .confettiCannon(counter: $counter, repetitions: 3, repetitionInterval: 2)
+            .confettiCannon(counter: $counter, repetitions: 5, repetitionInterval: 1)
         
         ZStack {
             Button(action: {
-
+                //self.rootPresentationMode.wrappedValue.dismiss()
+                NavigationUtil.popToRootView()
             }, label: {
                 Text("Back to HOME")
                     .font(.title2.bold())
