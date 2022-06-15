@@ -26,7 +26,9 @@
                     },
 
                 ],
-                "image": "https://raw.githubusercontent.com/andreazammarchi3/LiftWeights/main/Resources/muscles/biceps.png"
+                "image": "https://raw.githubusercontent.com/andreazammarchi3/LiftWeights/main/Resources/muscles/biceps.png",
+                "timeRecord": 220,
+                "weightRecord": 17.5
             },
             {
                 "id": 5,
@@ -49,7 +51,9 @@
                         "weight": 20
                     },
                 ],
-                "image": "https://raw.githubusercontent.com/andreazammarchi3/LiftWeights/main/Resources/muscles/triceps.png"
+                "image": "https://raw.githubusercontent.com/andreazammarchi3/LiftWeights/main/Resources/muscles/triceps.png",
+                "timeRecord": 230,
+                "weightRecord": 20
             },
             {
                 "id": 6,
@@ -72,7 +76,9 @@
                         "weight": 20
                     }
                 ],
-                "image": "https://raw.githubusercontent.com/andreazammarchi3/LiftWeights/main/Resources/muscles/shoulders.png"
+                "image": "https://raw.githubusercontent.com/andreazammarchi3/LiftWeights/main/Resources/muscles/shoulders.png",
+                "timeRecord": 215,
+                "weightRecord": 20
             },
         ],
         "image": "https://raw.githubusercontent.com/andreazammarchi3/LiftWeights/main/Resources/muscles/arm.png"
@@ -104,7 +110,9 @@
                     },
 
                 ],
-                "image": "https://raw.githubusercontent.com/andreazammarchi3/LiftWeights/main/Resources/muscles/calves.png"
+                "image": "https://raw.githubusercontent.com/andreazammarchi3/LiftWeights/main/Resources/muscles/calves.png",
+                "timeRecord": 220,
+                "weightRecord": 20
             },
             {
                 "id": 8,
@@ -132,7 +140,9 @@
                         "weight": 50
                     },
                 ],
-                "image": "https://raw.githubusercontent.com/andreazammarchi3/LiftWeights/main/Resources/muscles/hamstrings.png"
+                "image": "https://raw.githubusercontent.com/andreazammarchi3/LiftWeights/main/Resources/muscles/hamstrings.png",
+                "timeRecord": 340,
+                "weightRecord": 50
             },
             {
                 "id": 9,
@@ -155,7 +165,9 @@
                         "weight": 120
                     }
                 ],
-                "image": "https://raw.githubusercontent.com/andreazammarchi3/LiftWeights/main/Resources/muscles/quadriceps.png"
+                "image": "https://raw.githubusercontent.com/andreazammarchi3/LiftWeights/main/Resources/muscles/quadriceps.png",
+                "timeRecord": 320,
+                "weightRecord": 120
             },
         ],
         "image": "https://raw.githubusercontent.com/andreazammarchi3/LiftWeights/main/Resources/muscles/leg.png"
@@ -187,7 +199,9 @@
                     },
 
                 ],
-                "image": "https://raw.githubusercontent.com/andreazammarchi3/LiftWeights/main/Resources/muscles/chest.png"
+                "image": "https://raw.githubusercontent.com/andreazammarchi3/LiftWeights/main/Resources/muscles/chest.png",
+                "timeRecord": 210,
+                "weightRecord": 60
             },
             {
                 "id": 11,
@@ -210,7 +224,9 @@
                         "weight": 5
                     },
                 ],
-                "image": "https://raw.githubusercontent.com/andreazammarchi3/LiftWeights/main/Resources/muscles/core.png"
+                "image": "https://raw.githubusercontent.com/andreazammarchi3/LiftWeights/main/Resources/muscles/core.png",
+                "timeRecord": 250,
+                "weightRecord": 5
             },
             {
                 "id": 12,
@@ -233,7 +249,9 @@
                         "weight": 65
                     }
                 ],
-                "image": "https://raw.githubusercontent.com/andreazammarchi3/LiftWeights/main/Resources/muscles/lats.png"
+                "image": "https://raw.githubusercontent.com/andreazammarchi3/LiftWeights/main/Resources/muscles/lats.png",
+                "timeRecord": 200,
+                "weightRecord": 65
             },
         ],
         "image": "https://raw.githubusercontent.com/andreazammarchi3/LiftWeights/main/Resources/muscles/body.png"

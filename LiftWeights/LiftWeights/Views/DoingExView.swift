@@ -81,7 +81,7 @@ struct DoingExView: View {
                     self.exercise.id == exercise.id
                 })!.miniSets) { currentSet in
                     HStack(alignment: .center) {
-                        Text("\(currentSet.reps) x \(formatted(input: currentSet.weight))kg").font(.title3)
+                        Text("\(currentSet.reps) x \(Utils.formatted(input: currentSet.weight))kg").font(.title3)
                         
                         Spacer()
                         
@@ -159,11 +159,6 @@ struct DoingExView: View {
         let minutes = Int(currentTime / 60)
         
         return "\(minutes):\(seconds < 10 ? "0": "")\(seconds)"
-    }
-    
-    private func formatted(input: Float) -> String {
-        let res = String(format: "%.1f", input)
-        return res
     }
     
     private func isCurrentSet(id: Int) -> Bool {

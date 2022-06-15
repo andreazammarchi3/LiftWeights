@@ -74,7 +74,7 @@ struct UserView: View {
                                 
                                 Spacer()
                                 
-                                Text("\(formatted(input: user.height))cm")
+                                Text("\(Utils.formatted(input: user.height))cm")
                             }
                             
                             HStack(alignment: .center) {
@@ -83,7 +83,7 @@ struct UserView: View {
                                 
                                 Spacer()
                                 
-                                Text("\(formatted(input: user.weight))kg")
+                                Text("\(Utils.formatted(input: user.weight))kg")
                             }
                             
                             HStack(alignment: .center) {
@@ -137,11 +137,6 @@ struct UserView: View {
                         SettingsView(viewModel: viewModel, showSettings: $showSettings)
                     })
         }
-    }
-    
-    private func formatted(input: Float) -> String {
-        let res = String(format: "%.1f", input)
-        return res
     }
 }
 

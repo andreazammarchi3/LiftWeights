@@ -19,16 +19,27 @@ struct StatsView: View {
         return workouts
     }
     
+    var exercises: [Exercise] {
+        var list = [Exercise]()
+        let routines = viewModel.routines
+        for routine in routines {
+            for exercise in routine.exercises {
+                list.append(exercise)
+            }
+        }
+        return list
+    }
+    
     var body: some View {
         ScrollView(.vertical) {
             VStack(alignment: .leading) {
                 Text("Global stats")
                     .font(.largeTitle.bold())
-
                 GlobalStatsView(viewModel: viewModel)
                 
                 Text("Workouts completed")
                     .font(.largeTitle.bold())
+                    .padding(.top, 40)
                 ScrollView(.horizontal) {
                     HStack {
                         ForEach(workouts) { workout in
@@ -37,13 +48,20 @@ struct StatsView: View {
                     }
                 }
                 
+                Text("Exercises Records")
+                    .font(.largeTitle.bold())
+                    .padding(.top, 40)
+                ScrollView(.horizontal) {
+                    HStack {
+                        ForEach(exercises) { exercise in
+                            RecordView(viewModel: viewModel, exercise: exercise)
+                        }
+                    }
+                }
+                
                 Spacer()
             }
         }.padding(10)
-    }
-    
-    func updateStats() {
-        
     }
 }
 
@@ -103,11 +121,6 @@ struct GlobalStatsView: View {
         for workout in viewModel.workouts.list {
             res += workout.restTime
         }
-        return res
-    }
-    
-    private func formatted(input: Float) -> String {
-        let res = String(format: "%.0f", input)
         return res
     }
 }

@@ -16,6 +16,8 @@ struct Exercise: Decodable, Identifiable {
     var imagePic: Data
     var miniSets: Array<MiniSet>
     var image: String
+    var timeRecord: Int
+    var weightRecord: Float
     
     init(id: Int, name: String, imagePic: UIImage, miniSets: Array<MiniSet>, image: String){
         self.id = id
@@ -23,6 +25,8 @@ struct Exercise: Decodable, Identifiable {
         self.imagePic = imagePic.pngData()!
         self.miniSets = miniSets
         self.image = image
+        self.timeRecord = 0
+        self.weightRecord = 0
     }
     
     var imageUrl: URL {

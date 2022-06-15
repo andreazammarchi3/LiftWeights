@@ -62,7 +62,7 @@ struct RoutineRowView: View {
                         VStack {
                             ForEach(currentEx.miniSets) { currentSet in
                                 HStack {
-                                    Text("- \(currentSet.reps) x \(formatted(input: currentSet.weight))kg")
+                                    Text("- \(currentSet.reps) x \(Utils.formatted(input: currentSet.weight))kg")
                                         .font(.title3)
                                     Spacer()
                                 }
@@ -81,11 +81,6 @@ struct RoutineRowView: View {
             .clipShape(RoundedRectangle(cornerRadius: 20))
             .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color(UIColor.label), lineWidth: 2))
         .frame(width: 300, alignment: .leading)
-    }
-    
-    private func formatted(input: Float) -> String {
-        let res = String(format: "%.2f", input)
-        return res
     }
 }
 
