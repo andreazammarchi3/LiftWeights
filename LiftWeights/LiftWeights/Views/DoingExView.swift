@@ -149,7 +149,7 @@ struct DoingExView: View {
                 startTimer()
             }, content: {
                 //GetReadyView(routine: routine, viewModel: viewModel)
-                RestView(viewModel: viewModel)
+                RestView(viewModel: viewModel, countTo: viewModel.restTime)
             })
     }
 
@@ -180,6 +180,7 @@ struct DoingExView: View {
             exercise.miniSets = exercise.miniSets.filter() {$0.id != miniSet.id}
             self.miniSet = exercise.miniSets.first!
             viewModel.restTime = viewModel.restSetTime
+            workout.restTime += viewModel.restSetTime
             return true
         } else {
             if routine.exercises.count > 1 {
@@ -187,6 +188,7 @@ struct DoingExView: View {
                 self.exercise = routine.exercises.first!
                 self.miniSet = exercise.miniSets.first!
                 viewModel.restTime = viewModel.restExTime
+                workout.restTime += viewModel.restExTime
                 if exercise.id <= 40 {
                     viewModel.loadImage(url: exercise.imageUrl, id: exercise.id)
                 } else {
@@ -212,11 +214,14 @@ struct DoingExView: View {
     
     func getCurrentDate() -> String {
         let date = Date()
-        let calendar = NSCalendar.current
-        let year = calendar.component(.year, from: date)
-        let month = calendar.component(.month, from: date)
-        let day = calendar.component(.day, from: date)
-        return "\(day)/\(month)/\(year)"
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy"
+        let year = dateFormatter.string(from: date)
+        dateFormatter.dateFormat = "MM"
+        let month = dateFormatter.string(from: date)
+        dateFormatter.dateFormat = "dd"
+        let day = dateFormatter.string(from: date)
+        return "\(year)/\(month)/\(day)"
     }
 }
 

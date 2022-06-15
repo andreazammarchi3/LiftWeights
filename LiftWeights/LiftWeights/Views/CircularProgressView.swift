@@ -44,7 +44,7 @@ struct CircularProgressView: View {
                                     .font(.largeTitle)
                                     .bold()
             } else {
-                Text("\(countTo - counter)")
+                Text("\(countTo - counter + 1)")
                                     .font(.largeTitle)
                                     .bold()
             }

@@ -21,9 +21,9 @@ struct SettingsView: View {
     
     init(viewModel: DataLoader, showSettings: Binding<Bool>) {
         self.viewModel = viewModel
-        self.restSetTime = viewModel.restSetTime - 1
-        self.restExTime = viewModel.restExTime - 1
-        self.getReadyTime = viewModel.getReadyTime - 1
+        self.restSetTime = viewModel.restSetTime
+        self.restExTime = viewModel.restExTime
+        self.getReadyTime = viewModel.getReadyTime
         self._showSettings = showSettings
     }
     

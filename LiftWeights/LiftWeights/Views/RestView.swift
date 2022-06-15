@@ -22,9 +22,9 @@ struct RestView: View {
     @State var  timer: Timer.TimerPublisher = Timer
         .publish(every: 1, on: .main, in: .common)
     
-    init(viewModel: DataLoader) {
+    init(viewModel: DataLoader, countTo: Int) {
         self.viewModel = viewModel
-        self.countTo = viewModel.restExTime
+        self.countTo = countTo
         self.circularProgressView = CircularProgressView(countTo: countTo, countInMinutes: false)
         startTimer()
     }
@@ -60,6 +60,6 @@ struct RestView: View {
 
 struct RestView_Previews: PreviewProvider {
     static var previews: some View {
-        RestView(viewModel: DataLoader())
+        RestView(viewModel: DataLoader(), countTo: 5)
     }
 }

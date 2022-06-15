@@ -15,10 +15,10 @@ class DataLoader: UIResponder, ObservableObject{
     @Published var users = ModelData<User>(fileName: "users")
     @Published var badges = ModelData<Badge>(fileName: "badges")
     @Published var workouts = ModelData<Workout>(fileName: "workouts")
-    @Published var restSetTime = 30
-    @Published var restExTime = 60
-    @Published var getReadyTime = 15
-    @Published var restTime = 15
+    @Published var restSetTime = 29
+    @Published var restExTime = 59
+    @Published var getReadyTime = 14
+    @Published var restTime = 14
     
     var routines: [Routine] {
         model.list
@@ -29,7 +29,7 @@ class DataLoader: UIResponder, ObservableObject{
     var blue = Color(UIColor.systemBlue)
     var cyan = Color(red: 38/255, green: 191/255, blue: 245/255)
     
-    var lastId = 47
+    var lastId = 50
     
     func addRoutine(routine: Routine) {
         withAnimation {
@@ -109,9 +109,9 @@ class DataLoader: UIResponder, ObservableObject{
         let newWorkout = Workout(
             id: lastId + 1,
             date: "",
-            totalTime: workout.totalTime,
-            workTime: workout.workTime,
-            restTime: workout.restTime)
+            totalTime: workout.totalTime/60,
+            workTime: workout.workTime/60,
+            restTime: workout.restTime/60)
         lastId += 1
         self.workouts.list.append(newWorkout)
     }

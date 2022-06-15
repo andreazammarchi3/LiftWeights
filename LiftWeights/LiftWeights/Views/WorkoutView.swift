@@ -51,7 +51,7 @@ struct WorkoutDetailsView: View {
                         
                         Spacer()
                         
-                        Text("\(workout.totalTime/60) min")
+                        Text("\(workout.totalTime) min")
                     }
                     
                     HStack(alignment: .center) {
@@ -60,7 +60,7 @@ struct WorkoutDetailsView: View {
                         
                         Spacer()
                         
-                        Text("\(workout.workTime/60) min")
+                        Text("\(workout.workTime) min")
                     }
                     
                     HStack(alignment: .center) {
@@ -69,7 +69,7 @@ struct WorkoutDetailsView: View {
                         
                         Spacer()
                         
-                        Text("\(workout.restTime/60) min")
+                        Text("\(workout.restTime) min")
                     }
                     
                 }.padding(.leading, 10)

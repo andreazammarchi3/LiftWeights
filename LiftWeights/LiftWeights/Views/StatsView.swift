@@ -33,6 +33,10 @@ struct StatsView: View {
             }
         }.padding(10)
     }
+    
+    func updateStats() {
+        
+    }
 }
 
 struct GlobalStatsView: View {
