@@ -5,6 +5,7 @@
         "totalTime": 120,
         "workTime": 60,
         "restTime": 60,
+        "routineId": 1
     },
     {
         "id": 49,
@@ -12,6 +13,7 @@
         "totalTime": 100,
         "workTime": 75,
         "restTime": 25,
+        "routineId": 2
     },
     {
         "id": 50,
@@ -19,5 +21,6 @@
         "totalTime": 150,
         "workTime": 110,
         "restTime": 40,
+        "routineId": 3
     },
 ]

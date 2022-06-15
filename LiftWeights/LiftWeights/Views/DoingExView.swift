@@ -38,7 +38,7 @@ struct DoingExView: View {
         self.routine = routine
         self.exercise = exercise
         self.miniSet = miniSet
-        self.workout = Workout(id: 0, date: "", totalTime: 0, workTime: 0, restTime: 0)
+        self.workout = Workout(id: 0, date: "", totalTime: 0, workTime: 0, restTime: 0, routineId: 0)
         startTimer()
         UINavigationBar.appearance().tintColor = .white.withAlphaComponent(0)
     }
@@ -106,12 +106,11 @@ struct DoingExView: View {
                 Button(action: {
                     if checkNext() {
                         stopTimer()
-                        workout.workTime += counter
                         showRest = true
                     } else {
                         stopTimer()
                         workout.totalTime = workout.workTime + workout.restTime
-                        viewModel.addWorkout(workout: workout)
+                        viewModel.addWorkout(workout: workout, routineId: routine.id)
                         routineCompleted = true
                         UINavigationBar.appearance().tintColor = .white.withAlphaComponent(1)
                     }
@@ -144,6 +143,7 @@ struct DoingExView: View {
             .onReceive(timer) { time in
                 counter += 1
                 exTime += 1
+                workout.workTime += 1
             }
             .fullScreenCover(isPresented: $showRest, onDismiss: {
                 showRest = false

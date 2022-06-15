@@ -16,13 +16,13 @@ struct WorkoutView: View {
     var body: some View {
         ZStack(alignment: .topLeading) {
             RoundedRectangle(cornerRadius: 20)
-                .frame(width: 250, height: 180, alignment: .center)
+                .frame(width: 250, height: 210, alignment: .center)
                 .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color(UIColor.label), lineWidth: 5))
                 .background(LinearGradientView(viewModel: viewModel, radius: 20))
                 .foregroundColor(.clear)
                 .padding(5)
             
-            WorkoutDetailsView(workout: workout)
+            WorkoutDetailsView(workout: workout, viewModel: viewModel)
         }
     }
 }
@@ -31,6 +31,8 @@ struct WorkoutDetailsView: View {
     
     var workout: Workout
     
+    @ObservedObject var viewModel: DataLoader
+    
     var body: some View {
         VStack(alignment: .leading) {
             Text("\(workout.date)")
@@ -38,6 +40,11 @@ struct WorkoutDetailsView: View {
                 .padding(.leading, 20)
                 .padding(.trailing, 20)
                 .padding(.top, 20)
+            
+            Text("\(getRoutineName(workout: workout))")
+                .font(.title2.bold())
+                .padding(.leading, 20)
+                .padding(.trailing, 20)
             
             ZStack {
                 RoundedRectangle(cornerRadius: 10)
@@ -77,6 +84,14 @@ struct WorkoutDetailsView: View {
             }.padding(.leading, 20)
                 .padding(.trailing, 20)
                 .padding(.bottom, 10)
+        }
+    }
+    
+    func getRoutineName(workout: Workout) -> String {
+        if let routineOffset = viewModel.routines.firstIndex(where: {$0.id == workout.routineId}) {
+            return viewModel.routines[routineOffset].name
+        } else {
+            return ""
         }
     }
 }

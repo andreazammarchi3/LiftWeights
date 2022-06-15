@@ -116,13 +116,14 @@ class DataLoader: UIResponder, ObservableObject{
         }
     }
     
-    func addWorkout(workout: Workout) {
+    func addWorkout(workout: Workout, routineId: Int) {
         let newWorkout = Workout(
             id: lastId + 1,
             date: Utils.getCurrentDate(),
             totalTime: workout.totalTime/60,
             workTime: workout.workTime/60,
-            restTime: workout.restTime/60)
+            restTime: workout.restTime/60,
+            routineId: routineId)
         lastId += 1
         self.workouts.list.append(newWorkout)
     }
