@@ -1,22 +1,22 @@
 [
     {
         "id": 42,
-        "title": "Inarrestabile",
-        "desc": "Allenati per un totale di\n1000 minuti.",
+        "title": "Unstoppable",
+        "desc": "Workout for at least 371 min.",
         "rarity": "https://raw.githubusercontent.com/andreazammarchi3/LiftWeights/main/Resources/gold.png",
         "image": "https://raw.githubusercontent.com/andreazammarchi3/LiftWeights/main/Resources/timer.png"
     },
     {
         "id": 44,
-        "title": "Dormiglione",
-        "desc": "Riposati per un totale di 100\nminuti.",
+        "title": "Sleepyhead",
+        "desc": "Rest for at least 100 min.",
         "rarity": "https://raw.githubusercontent.com/andreazammarchi3/LiftWeights/main/Resources/silver.png",
         "image": "https://raw.githubusercontent.com/andreazammarchi3/LiftWeights/main/Resources/sleep.png"
     },
     {
         "id": 46,
-        "title": "Iniziato",
-        "desc": "Esegui la tua prima routine.",
+        "title": "Ready... GO!",
+        "desc": "Do your first workout.",
         "rarity": "https://raw.githubusercontent.com/andreazammarchi3/LiftWeights/main/Resources/bronze.png",
         "image": "https://raw.githubusercontent.com/andreazammarchi3/LiftWeights/main/Resources/start.png"
     },

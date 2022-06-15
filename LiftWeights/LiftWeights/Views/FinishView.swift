@@ -40,8 +40,10 @@ struct FinishView: View {
             })
         }.onAppear {
             counter += 1
+            viewModel.checkMissionsComplete()
         }.navigationTitle(routineName)
     }
+    
 }
 
 

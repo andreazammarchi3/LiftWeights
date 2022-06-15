@@ -31,4 +31,16 @@ class Utils {
             completionHandler([.badge, .banner, .sound])
         }
     }
+    
+    static func getCurrentDate() -> String {
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy"
+        let year = dateFormatter.string(from: date)
+        dateFormatter.dateFormat = "MM"
+        let month = dateFormatter.string(from: date)
+        dateFormatter.dateFormat = "dd"
+        let day = dateFormatter.string(from: date)
+        return "\(day)/\(month)/\(year)"
+    }
 }

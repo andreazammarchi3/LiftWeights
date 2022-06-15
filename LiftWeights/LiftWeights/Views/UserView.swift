@@ -11,14 +11,7 @@ struct UserView: View {
     
     @ObservedObject var viewModel: DataLoader
     
-    @State var user: User
-    
     @State var showSettings = false
-    
-    init(viewModel: DataLoader) {
-        self.viewModel = viewModel
-        self.user = viewModel.users.list.first!
-    }
     
     var body: some View {
         NavigationView {
@@ -36,17 +29,17 @@ struct UserView: View {
                             .shadow(radius: 10)
                             .clipShape(Circle())
                             .clipped()
-                        Image(uiImage: viewModel.images[user.id] ?? viewModel.notFoundImage!)
+                        Image(uiImage: viewModel.images[viewModel.users.list[0].id] ?? viewModel.notFoundImage!)
                             .resizable()
                             .frame(width: 100, height: 100, alignment: .center)
                             .clipShape(Circle())
                             .clipped()
                             .overlay(Circle().stroke(Color(UIColor.label), lineWidth: 5))
                             .onAppear {
-                                if user.id <= 41 {
-                                    viewModel.loadImage(url: user.imageUrl, id: user.id)
+                                if viewModel.users.list[0].id <= 41 {
+                                    viewModel.loadImage(url: viewModel.users.list[0].imageUrl, id: viewModel.users.list[0].id)
                                 } else {
-                                    viewModel.images[user.id] = UIImage(data: user.imagePic)!
+                                    viewModel.images[viewModel.users.list[0].id] = UIImage(data: viewModel.users.list[0].imagePic)!
                                 }
                             }
                     }
@@ -65,7 +58,7 @@ struct UserView: View {
                                 
                                 Spacer()
                                 
-                                Text("\(user.nickname)")
+                                Text("\(viewModel.users.list[0].nickname)")
                             }
                             
                             HStack(alignment: .center) {
@@ -74,7 +67,7 @@ struct UserView: View {
                                 
                                 Spacer()
                                 
-                                Text("\(Utils.formatted(input: user.height))cm")
+                                Text("\(Utils.formatted(input: viewModel.users.list[0].height))cm")
                             }
                             
                             HStack(alignment: .center) {
@@ -83,7 +76,7 @@ struct UserView: View {
                                 
                                 Spacer()
                                 
-                                Text("\(Utils.formatted(input: user.weight))kg")
+                                Text("\(Utils.formatted(input: viewModel.users.list[0].weight))kg")
                             }
                             
                             HStack(alignment: .center) {
@@ -92,7 +85,7 @@ struct UserView: View {
                                 
                                 Spacer()
                                 
-                                Text("\(user.age)")
+                                Text("\(viewModel.users.list[0].age)")
                             }
                         }.padding(.leading, 10)
                             .padding(.trailing, 10)
@@ -105,14 +98,14 @@ struct UserView: View {
                 
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
-                        ForEach(user.badgesOwned, id: \.self) { badgeOwned in
+                        ForEach(viewModel.users.list[0].badgesOwned, id: \.self) { badgeOwned in
                             if let fooOffset = viewModel.badges.list.firstIndex(where: {$0.id == badgeOwned}) {
                                 BadgeView(viewModel: viewModel, badge: viewModel.badges.list[fooOffset], owned: true)
                             }
                             
                         }
                         ForEach(viewModel.badges.list) {badge in
-                            if user.badgesOwned.contains(badge.id) == false {
+                            if viewModel.users.list[0].badgesOwned.contains(badge.id) == false {
                                 BadgeView(viewModel: viewModel, badge: badge, owned: false)
                             }
                         }
@@ -120,7 +113,7 @@ struct UserView: View {
                 }
                 
                 Spacer()
-            }.navigationTitle("Hi \(user.nickname)!")
+            }.navigationTitle("Hi \(viewModel.users.list[0].nickname)!")
                 .padding(10)
                 .toolbar {
                         ToolbarItem {

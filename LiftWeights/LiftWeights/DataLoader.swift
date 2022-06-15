@@ -119,24 +119,12 @@ class DataLoader: UIResponder, ObservableObject{
     func addWorkout(workout: Workout) {
         let newWorkout = Workout(
             id: lastId + 1,
-            date: getCurrentDate(),
+            date: Utils.getCurrentDate(),
             totalTime: workout.totalTime/60,
             workTime: workout.workTime/60,
             restTime: workout.restTime/60)
         lastId += 1
         self.workouts.list.append(newWorkout)
-    }
-    
-    private func getCurrentDate() -> String {
-        let date = Date()
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy"
-        let year = dateFormatter.string(from: date)
-        dateFormatter.dateFormat = "MM"
-        let month = dateFormatter.string(from: date)
-        dateFormatter.dateFormat = "dd"
-        let day = dateFormatter.string(from: date)
-        return "\(day)/\(month)/\(year)"
     }
     
     let notFoundImage = UIImage(systemName: "multiply.circle")
@@ -154,6 +142,57 @@ class DataLoader: UIResponder, ObservableObject{
                     self.isLoading = false
                 }
             }
+        }
+    }
+    
+    func getTotalTime() -> Int {
+        var res: Int = 0
+        for workout in workouts.list {
+            res += workout.totalTime
+        }
+        return res
+    }
+    
+    func getWorkTime() -> Int {
+        var res: Int = 0
+        for workout in workouts.list {
+            res += workout.workTime
+        }
+        return res
+    }
+    
+    func getRestTime() -> Int {
+        var res: Int = 0
+        for workout in workouts.list {
+            res += workout.restTime
+        }
+        return res
+    }
+    
+    private func unstoppable() -> Bool {
+        // check 'unstoppable' badge
+        var unstoppable = false
+        for badgeId in users.list.first!.badgesOwned {
+            if badgeId == 42 {
+                unstoppable = true
+            }
+        }
+        if unstoppable == false {
+            if getTotalTime() >= 371 {
+                return true
+            } else {
+                return false
+            }
+        } else {
+            return false
+        }
+    }
+    
+    func checkMissionsComplete() {
+        if unstoppable() {
+            let badge = badges.list.first(where: {$0.id == 42})!
+            Utils.createNotification(title: "New Badge Unlocked!", subtitle: "\(badge.title)")
+            users.list[0].badgesOwned.append(42)
         }
     }
 }

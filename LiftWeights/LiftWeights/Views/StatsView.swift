@@ -66,51 +66,27 @@ struct GlobalStatsView: View {
                 HStack(alignment: .center) {
                     FlatProgressBar(viewModel: viewModel, value: 1)
                     Spacer()
-                    Text("\(getTotalTime()) min")
+                    Text("\(viewModel.getTotalTime()) min")
                 }
                 
                 Text("Working time:")
                     .font(.title2.bold())
                 HStack(alignment: .center) {
-                    FlatProgressBar(viewModel: viewModel, value: 0.75)
+                    FlatProgressBar(viewModel: viewModel, value: CGFloat(viewModel.getWorkTime())/CGFloat(viewModel.getTotalTime()))
                     Spacer()
-                    Text("\(getWorkTime()) min")
+                    Text("\(viewModel.getWorkTime()) min")
                 }
                 Text("Resting time:")
                     .font(.title2.bold())
                 HStack(alignment: .center) {
-                    FlatProgressBar(viewModel: viewModel, value: 0.25)
+                    FlatProgressBar(viewModel: viewModel, value: CGFloat(viewModel.getRestTime())/CGFloat(viewModel.getTotalTime()))
                     Spacer()
-                    Text("\(getRestTime()) min")
+                    Text("\(viewModel.getRestTime()) min")
                 }
             }.padding(10)
         }.background(Color(UIColor.label).opacity(0.1))
             .clipped()
             .clipShape(RoundedRectangle(cornerRadius: 20))
-    }
-    
-    private func getTotalTime() -> Int {
-        var res: Int = 0
-        for workout in viewModel.workouts.list {
-            res += workout.totalTime
-        }
-        return res
-    }
-    
-    private func getWorkTime() -> Int {
-        var res: Int = 0
-        for workout in viewModel.workouts.list {
-            res += workout.workTime
-        }
-        return res
-    }
-    
-    private func getRestTime() -> Int {
-        var res: Int = 0
-        for workout in viewModel.workouts.list {
-            res += workout.restTime
-        }
-        return res
     }
 }
 
