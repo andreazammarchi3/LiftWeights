@@ -19,17 +19,6 @@ struct StatsView: View {
         return workouts
     }
     
-    var exercises: [Exercise] {
-        var list = [Exercise]()
-        let routines = viewModel.routines
-        for routine in routines {
-            for exercise in routine.exercises {
-                list.append(exercise)
-            }
-        }
-        return list
-    }
-    
     var body: some View {
         ScrollView(.vertical) {
             VStack(alignment: .leading) {
@@ -53,7 +42,7 @@ struct StatsView: View {
                     .padding(.top, 40)
                 ScrollView(.horizontal) {
                     HStack {
-                        ForEach(exercises) { exercise in
+                        ForEach(viewModel.exercises) { exercise in
                             RecordView(viewModel: viewModel, exercise: exercise)
                         }
                     }

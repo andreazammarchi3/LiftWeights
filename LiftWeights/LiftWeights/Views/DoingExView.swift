@@ -30,6 +30,7 @@ struct DoingExView: View {
     
     @State var workout: Workout
     
+    @State var exTime: Int = 0
     
     init(viewModel: DataLoader, routine: Routine, exercise: Exercise, miniSet: MiniSet) {
         self.viewModel = viewModel
@@ -141,6 +142,7 @@ struct DoingExView: View {
             .padding(20)
             .onReceive(timer) { time in
                 counter += 1
+                exTime += 1
             }
             .fullScreenCover(isPresented: $showRest, onDismiss: {
                 showRest = false
@@ -178,6 +180,8 @@ struct DoingExView: View {
             return true
         } else {
             if routine.exercises.count > 1 {
+                checkRecords()
+                exTime = 0
                 routine.exercises = routine.exercises.filter() {$0.id != exercise.id}
                 self.exercise = routine.exercises.first!
                 self.miniSet = exercise.miniSets.first!
@@ -191,19 +195,45 @@ struct DoingExView: View {
                 }
                 return true
             } else {
+                checkRecords()
                 return false
             }
         }
         
     }
     
-    func startTimer() {
+    private func startTimer() {
         timer = Timer.publish(every: 1, on: .main, in: .common)
         _ = timer.connect()
     }
     
-    func stopTimer() {
+    private func stopTimer() {
         timer.connect().cancel()
+    }
+    
+    private func checkRecords() {
+        if exTime < exercise.timeRecord {
+            updateExTimeRecord(timeRecord: exTime, exId: exercise.id)
+        }
+        if miniSet.weight > exercise.weightRecord {
+            updateExWeightRecord(weightRecord: miniSet.weight, exId: exercise.id)
+        }
+    }
+    
+    private func updateExTimeRecord(timeRecord: Int, exId: Int) {
+        if let routineOffset = viewModel.model.list.firstIndex(where: {$0.id == routine.id}) {
+            if let exOffset = viewModel.model.list[routineOffset].exercises.firstIndex(where: {$0.id == exId}) {
+                viewModel.model.list[routineOffset].exercises[exOffset].updateTimeRecord(timeRecord: timeRecord)
+            }
+        }
+    }
+    
+    private func updateExWeightRecord(weightRecord: Float, exId: Int) {
+        if let routineOffset = viewModel.model.list.firstIndex(where: {$0.id == routine.id}) {
+            if let exOffset = viewModel.model.list[routineOffset].exercises.firstIndex(where: {$0.id == exId}) {
+                viewModel.model.list[routineOffset].exercises[exOffset].updateWeightRecord(weightRecord: weightRecord)
+            }
+        }
     }
 }
 

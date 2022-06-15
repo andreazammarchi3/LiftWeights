@@ -32,4 +32,12 @@ struct Exercise: Decodable, Identifiable {
     var imageUrl: URL {
         URL(string: image)!
     }
+    
+    mutating func updateTimeRecord(timeRecord: Int) {
+        self.timeRecord = timeRecord
+    }
+    
+    mutating func updateWeightRecord(weightRecord: Float) {
+        self.weightRecord = weightRecord
+    }
 }

@@ -24,6 +24,17 @@ class DataLoader: UIResponder, ObservableObject{
         model.list
     }
     
+    var exercises: [Exercise] {
+        var list = [Exercise]()
+        let routines = routines
+        for routine in routines {
+            for exercise in routine.exercises {
+                list.append(exercise)
+            }
+        }
+        return list
+    }
+    
     var purple = Color(red: 90/255, green: 60/255, blue: 137/255)
     var pink = Color(red: 208/255, green: 42/255, blue: 251/255)
     var blue = Color(UIColor.systemBlue)

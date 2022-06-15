@@ -10,7 +10,6 @@
 		650652F72859F035009D69E0 /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650652F62859F035009D69E0 /* RecordView.swift */; };
 		650652F92859F3DE009D69E0 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650652F82859F3DE009D69E0 /* Utils.swift */; };
 		650897C82844D5F000760082 /* AddRoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650897C72844D5F000760082 /* AddRoutineView.swift */; };
-		650897CA2844DA7000760082 /* routinesEmpty.json in Resources */ = {isa = PBXBuildFile; fileRef = 650897C92844DA7000760082 /* routinesEmpty.json */; };
 		650953BE2841276E007C1822 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650953BD2841276E007C1822 /* HomeView.swift */; };
 		650E8BB0284E3EE000032B9F /* CircleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650E8BAF284E3EE000032B9F /* CircleProgressView.swift */; };
 		650E8BB2284E4BF400032B9F /* RoutineRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650E8BB1284E4BF400032B9F /* RoutineRowView.swift */; };
@@ -57,7 +56,6 @@
 		650652F62859F035009D69E0 /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
 		650652F82859F3DE009D69E0 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		650897C72844D5F000760082 /* AddRoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRoutineView.swift; sourceTree = "<group>"; };
-		650897C92844DA7000760082 /* routinesEmpty.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = routinesEmpty.json; sourceTree = "<group>"; };
 		650953BD2841276E007C1822 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		650E8BAF284E3EE000032B9F /* CircleProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleProgressView.swift; sourceTree = "<group>"; };
 		650E8BB1284E4BF400032B9F /* RoutineRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineRowView.swift; sourceTree = "<group>"; };
@@ -118,7 +116,6 @@
 			children = (
 				65BCE0DA2852D0F70027ABC4 /* badges.json */,
 				6526D4872843ADD700A46AA4 /* routines.json */,
-				650897C92844DA7000760082 /* routinesEmpty.json */,
 				659920CB2852C11A003AB5DC /* users.json */,
 				652805E428538706005F2500 /* workouts.json */,
 			);
@@ -269,7 +266,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6526D4882843ADD700A46AA4 /* routines.json in Resources */,
-				650897CA2844DA7000760082 /* routinesEmpty.json in Resources */,
 				65CBA0E4283E732E007AE1B4 /* Preview Assets.xcassets in Resources */,
 				659920CC2852C11A003AB5DC /* users.json in Resources */,
 				6526D4982843BE7F00A46AA4 /* Launch Screen.storyboard in Resources */,
