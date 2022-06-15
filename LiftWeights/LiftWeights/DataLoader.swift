@@ -108,12 +108,24 @@ class DataLoader: UIResponder, ObservableObject{
     func addWorkout(workout: Workout) {
         let newWorkout = Workout(
             id: lastId + 1,
-            date: "",
+            date: getCurrentDate(),
             totalTime: workout.totalTime/60,
             workTime: workout.workTime/60,
             restTime: workout.restTime/60)
         lastId += 1
         self.workouts.list.append(newWorkout)
+    }
+    
+    private func getCurrentDate() -> String {
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy"
+        let year = dateFormatter.string(from: date)
+        dateFormatter.dateFormat = "MM"
+        let month = dateFormatter.string(from: date)
+        dateFormatter.dateFormat = "dd"
+        let day = dateFormatter.string(from: date)
+        return "\(day)/\(month)/\(year)"
     }
     
     let notFoundImage = UIImage(systemName: "multiply.circle")

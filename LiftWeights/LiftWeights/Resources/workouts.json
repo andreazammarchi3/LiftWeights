@@ -1,21 +1,21 @@
 [
     {
         "id": 48,
-        "date": "2022/06/06",
+        "date": "06/06/2022",
         "totalTime": 120,
         "workTime": 60,
         "restTime": 60,
     },
     {
         "id": 49,
-        "date": "2022/06/08",
+        "date": "08/06/2022",
         "totalTime": 100,
         "workTime": 75,
         "restTime": 25,
     },
     {
         "id": 50,
-        "date": "2022/06/10",
+        "date": "10/06/2022",
         "totalTime": 150,
         "workTime": 110,
         "restTime": 40,

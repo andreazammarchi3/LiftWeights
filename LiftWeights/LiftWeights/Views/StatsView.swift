@@ -11,6 +11,14 @@ struct StatsView: View {
     
     @ObservedObject var viewModel: DataLoader
     
+    var workouts: [Workout] {
+        var workouts = viewModel.workouts.list
+        workouts.sort {
+            $0.id > $1.id
+        }
+        return workouts
+    }
+    
     var body: some View {
         ScrollView(.vertical) {
             VStack(alignment: .leading) {
@@ -23,7 +31,7 @@ struct StatsView: View {
                     .font(.largeTitle.bold())
                 ScrollView(.horizontal) {
                     HStack {
-                        ForEach(viewModel.workouts.list) { workout in
+                        ForEach(workouts) { workout in
                             WorkoutView(viewModel: viewModel, workout: workout)
                         }
                     }

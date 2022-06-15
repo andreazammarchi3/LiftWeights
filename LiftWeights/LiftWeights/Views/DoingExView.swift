@@ -70,7 +70,7 @@ struct DoingExView: View {
                     .font(.largeTitle.bold())
                 
                 NavigationLink("", isActive: $routineCompleted) {
-                    FinishView(viewModel: viewModel)
+                    FinishView(viewModel: viewModel, routineName: routine.name)
                 }.isDetailLink(false)
                 
                 Spacer()
@@ -109,7 +109,6 @@ struct DoingExView: View {
                     } else {
                         stopTimer()
                         workout.totalTime = workout.workTime + workout.restTime
-                        workout.date = getCurrentDate()
                         viewModel.addWorkout(workout: workout)
                         routineCompleted = true
                         UINavigationBar.appearance().tintColor = .white.withAlphaComponent(1)
@@ -210,18 +209,6 @@ struct DoingExView: View {
     
     func stopTimer() {
         timer.connect().cancel()
-    }
-    
-    func getCurrentDate() -> String {
-        let date = Date()
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy"
-        let year = dateFormatter.string(from: date)
-        dateFormatter.dateFormat = "MM"
-        let month = dateFormatter.string(from: date)
-        dateFormatter.dateFormat = "dd"
-        let day = dateFormatter.string(from: date)
-        return "\(year)/\(month)/\(day)"
     }
 }
 

@@ -12,9 +12,9 @@ struct FinishView: View {
     
     @ObservedObject var viewModel: DataLoader
     
-    @State private var counter: Int = 0
+    let routineName: String
     
-    //@Environment(\.rootPresentationMode) private var rootPresentationMode
+    @State private var counter: Int = 0
     
     var body: some View {
         Text("Routine completed!")
@@ -22,6 +22,13 @@ struct FinishView: View {
             .confettiCannon(counter: $counter, repetitions: 5, repetitionInterval: 1)
         
         ZStack {
+            RoundedRectangle(cornerRadius: 10)
+                .foregroundColor(Color(UIColor.systemBlue))
+                .frame(width: 170, height: 50, alignment: .center)
+                .onTapGesture {
+                    NavigationUtil.popToRootView()
+                }
+            
             Button(action: {
                 //self.rootPresentationMode.wrappedValue.dismiss()
                 NavigationUtil.popToRootView()
@@ -33,14 +40,15 @@ struct FinishView: View {
             })
         }.onAppear {
             counter += 1
-        }
+        }.navigationTitle(routineName)
     }
 }
 
-/*
+
 struct FinishView_Previews: PreviewProvider {
     static var previews: some View {
-        FinishView(viewModel: DataLoader())
+        FinishView(viewModel: DataLoader(), routineName: "Arms")
+            .preferredColorScheme(.dark)
     }
 }
-*/
+
