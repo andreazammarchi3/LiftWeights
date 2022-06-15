@@ -15,6 +15,8 @@ struct HomeView: View {
     
     @State var showAddRoutineView = false
     
+    @StateObject var delegate = Utils.NotificationDelegate()
+    
     init(viewModel: DataLoader) {
         self.viewModel = viewModel
         showAddRoutineView = showAddRoutineView
@@ -65,7 +67,12 @@ struct HomeView: View {
                     AddRoutineView(viewModel: viewModel)
                 }.padding(10)
         }.navigationViewStyle(StackNavigationViewStyle())
-            //.environment(\.rootPresentationMode, self.$isPresented)
+            .onAppear {
+                UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (_, _) in
+                }
+                
+                UNUserNotificationCenter.current().delegate = delegate
+            }
         
     }
 }

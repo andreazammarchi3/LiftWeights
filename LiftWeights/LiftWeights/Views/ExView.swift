@@ -16,11 +16,6 @@ struct ExView: View {
     var exercise: Exercise
     
     @State var showAddMiniSetView = false
-    @State private var showingAlert = false
-    @State var reps = ""
-    @State var weight = ""
-    
-    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         List {
@@ -43,41 +38,13 @@ struct ExView: View {
                         showAddMiniSetView = true
                     }, label: {
                         Label("Add MiniSet", systemImage: "plus")
-                    })
+                    }).foregroundColor(.white)
                 }
-            }.sheet(isPresented: $showAddMiniSetView) {
-                
-            } content: {
-                // AddMiniSetView(routine: routine, exercise: exercise, viewModel: viewModel)
-                NavigationView {
-                    Form {
-                        Section(header: Text("Set Details")) {
-                            TextField("Reps", text: $reps)
-                                .padding()
-                                .keyboardType(.numberPad)
-                            
-                            TextField("Weight", text: $weight)
-                                .padding()
-                                .keyboardType(.decimalPad)
-                        }
-                        
-                        Button {
-                            if Int(reps) != nil && Float(weight) != nil {
-                                let miniSet = MiniSet(id: 0, reps: Int(reps)!, weight: Float(weight)!)
-                                viewModel.addMiniSet(routine: routine, exercise: exercise, miniSet: miniSet)
-                                dismiss()
-                            } else {
-                                showingAlert = true
-                            }
-                        } label: {
-                            Text("Add Set")
-                        }.alert("Warning\n'Reps' must be integer and 'Weight' must be decimal.", isPresented: $showingAlert) {
-                            Button("Ok", role: .cancel) { showingAlert = false }
-                        }.foregroundColor(.white)
-                    }.navigationTitle("Add Set")
-                        .navigationViewStyle(.stack)
-                }
-            }
+            }.sheet(isPresented: $showAddMiniSetView, onDismiss: {
+                showAddMiniSetView = false
+            }, content: {
+                AddMiniSetView(viewModel: viewModel, showAddMiniSetView: $showAddMiniSetView, routine: routine, exercise: exercise)
+            })
 
             
 

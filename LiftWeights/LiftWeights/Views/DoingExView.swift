@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UserNotifications
 
 struct DoingExView: View {
     
@@ -214,7 +215,7 @@ struct DoingExView: View {
     }
     
     private func checkTimeRecord() {
-        if exTime < exercise.timeRecord {
+        if exTime < exercise.timeRecord || exercise.timeRecord == 0{
             updateExTimeRecord(timeRecord: exTime, exId: exercise.id)
         }
     }
@@ -231,6 +232,7 @@ struct DoingExView: View {
                 viewModel.model.list[routineOffset].exercises[exOffset].updateTimeRecord(timeRecord: timeRecord)
             }
         }
+        Utils.createNotification(title: "New Time Record!", subtitle: "\(timeRecord/60)min \(timeRecord%60)s for \(exercise.name)")
     }
     
     private func updateExWeightRecord(weightRecord: Float, exId: Int) {
@@ -239,6 +241,7 @@ struct DoingExView: View {
                 viewModel.model.list[routineOffset].exercises[exOffset].updateWeightRecord(weightRecord: weightRecord)
             }
         }
+        Utils.createNotification(title: "New Weight Record!", subtitle: "\(weightRecord)kg for \(exercise.name)")
     }
 }
 
