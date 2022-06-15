@@ -173,6 +173,7 @@ struct DoingExView: View {
     
     func checkNext() -> Bool {
         if exercise.miniSets.count > 1 {
+            checkWeightRecord()
             exercise.miniSets = exercise.miniSets.filter() {$0.id != miniSet.id}
             self.miniSet = exercise.miniSets.first!
             viewModel.restTime = viewModel.restSetTime
@@ -180,7 +181,7 @@ struct DoingExView: View {
             return true
         } else {
             if routine.exercises.count > 1 {
-                checkRecords()
+                checkTimeRecord()
                 exTime = 0
                 routine.exercises = routine.exercises.filter() {$0.id != exercise.id}
                 self.exercise = routine.exercises.first!
@@ -195,7 +196,8 @@ struct DoingExView: View {
                 }
                 return true
             } else {
-                checkRecords()
+                checkTimeRecord()
+                checkWeightRecord()
                 return false
             }
         }
@@ -211,10 +213,13 @@ struct DoingExView: View {
         timer.connect().cancel()
     }
     
-    private func checkRecords() {
+    private func checkTimeRecord() {
         if exTime < exercise.timeRecord {
             updateExTimeRecord(timeRecord: exTime, exId: exercise.id)
         }
+    }
+    
+    private func checkWeightRecord() {
         if miniSet.weight > exercise.weightRecord {
             updateExWeightRecord(weightRecord: miniSet.weight, exId: exercise.id)
         }
